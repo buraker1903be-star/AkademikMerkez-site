@@ -24,7 +24,7 @@ export default function TeklifAlPage() {
       </section>
 
       <section className="section">
-        <div className="container" style={{ maxWidth: 640, margin: "0 auto" }}>
+        <div className="container offer-form-shell">
           <Suspense fallback={<div className="form-card">Form yükleniyor...</div>}>
             <LeadForm />
           </Suspense>
