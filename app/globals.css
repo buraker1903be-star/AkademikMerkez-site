@@ -235,19 +235,12 @@ h1, h2, h3, h4 {
   object-fit: contain;
 }
 
-.footer-logo-chip {
-  display: inline-block;
-  background: #fff;
-  padding: 12px 18px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
 .footer-logo-img {
-  height: 26px;
+  height: 32px;
   width: auto;
   object-fit: contain;
   display: block;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 480px) {
