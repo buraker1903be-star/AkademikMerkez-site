@@ -7,7 +7,7 @@ import Image from "next/image";
 const NAV_LINKS = [
   { href: "/hizmetlerimiz", label: "Hizmetlerimiz" },
   { href: "/hakkimizda", label: "Hakkımızda" },
-  { href: "/etik-ilkelerimiz", label: "Etik İlkelerimiz" },
+  { href: "/sikca-sorulan-sorular", label: "SSS" },
   { href: "/iletisim", label: "İletişim" },
 ];
 

@@ -26,8 +26,8 @@ export default function HomePage() {
               <p className="lead">
                 Tez, makale ve doçentlik başvuru süreçlerinde yöntem, istatistiksel analiz,
                 literatür tarama, dil editörlüğü ve akademik çeviri danışmanlığı sunuyoruz.
-                Çalışmanızı sizin yerinize üretmiyoruz — doğru kurgulamanız ve güvenle
-                tamamlamanız için yanınızda oluyoruz.
+                Doğru kurgulamanız ve güvenle tamamlamanız için, sürecin her adımında
+                yanınızda oluyoruz.
               </p>
             </Reveal>
             <Reveal delay={240}>

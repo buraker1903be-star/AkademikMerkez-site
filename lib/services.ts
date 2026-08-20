@@ -111,6 +111,20 @@ export const services: Service[] = [
     audience: "Doçentlik başvurusu yapacak akademisyenler",
   },
   {
+    slug: "kaynakca-atif-uyum-danismanligi",
+    title: "Kaynakça ve Atıf Uyum Danışmanlığı",
+    short: "APA, MLA ve kurum şablonlarına uygun kaynakça ve atıf düzeni desteği.",
+    description:
+      "Çalışmanızdaki atıfların ve kaynakçanın; kurumunuzun istediği stile (APA 7, MLA, Chicago vb.) tam uyumlu, eksiksiz ve tutarlı olması için danışmanlık sağlıyoruz. Metin içi atıflarla kaynakça listesinin birebir eşleştiğini, biçim kurallarına uyduğunu ve gerekli tüm alanların doğru girildiğini birlikte kontrol ediyoruz.",
+    bullets: [
+      "Kurumun istediği atıf stiline (APA 7, MLA, Chicago vb.) uyum kontrolü",
+      "Metin içi atıf ile kaynakça listesi tutarlılığı",
+      "Kaynak yönetimi araçları (Zotero, Mendeley vb.) kullanım desteği",
+      "Eksik veya hatalı kaynak kayıtlarının tamamlanması",
+    ],
+    audience: "Kaynakçasını teslim öncesi son kez sağlama almak isteyen herkes",
+  },
+  {
     slug: "sunum-juri-hazirlik",
     title: "Sunum ve Jüri Hazırlık Danışmanlığı",
     short: "Tez savunması ve jüri sunumuna özgüvenli hazırlık.",

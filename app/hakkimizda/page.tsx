@@ -33,11 +33,14 @@ export default function AboutPage() {
           <h2>Nasıl çalışırız</h2>
           <p>
             Sunduğumuz tüm hizmetler <strong>danışmanlık ve süreç desteği</strong> niteliğindedir.
-            Bir çalışmayı sizin adınıza üretmeyiz veya sizin yerinize teslim etmeyiz; araştırma
-            tasarımından analiz yöntemine, dil düzenlemesinden sunum hazırlığına kadar sizin
-            kendi çalışmanızı doğru şekilde yürütmeniz için bilgi ve yönlendirme sağlarız. Bu
-            yaklaşım, akademik dürüstlük ilkeleri ile YÖK ve ÜAK mevzuatına tam uyum
-            göstermek için bilinçli bir tercihtir.
+            Araştırma tasarımından analiz yöntemine, dil düzenlemesinden sunum hazırlığına kadar
+            sizin kendi çalışmanızı doğru ve güvenle yürütmeniz için bilgi, yöntem ve yönlendirme
+            sağlarız. Bu yaklaşım, akademik dürüstlük ilkeleri ile YÖK ve ÜAK mevzuatına tam uyum
+            göstermek için bilinçli bir tercihtir; detaylar için{" "}
+            <a href="/etik-ilkelerimiz" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
+              Etik İlkelerimiz
+            </a>{" "}
+            sayfamıza göz atabilirsiniz.
           </p>
 
           <h2>Kimlere hizmet veriyoruz</h2>

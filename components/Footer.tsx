@@ -12,8 +12,8 @@ export default function Footer() {
             <Image src="/logo-white-trimmed.png" alt="Akademik Merkez" width={1878} height={308} className="footer-logo-img" />
             <p>
               Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve
-              danışmanlık desteği. Çalışmalarınızı sizin yerinize üretmeyiz; süreci doğru ve
-              zamanında yönetmeniz için yanınızda oluruz.
+              danışmanlık desteği. Süreci doğru ve zamanında yönetmeniz için, akademik
+              yolculuğunuzun her aşamasında yanınızdayız.
             </p>
           </div>
           <div>
@@ -30,8 +30,8 @@ export default function Footer() {
             <ul>
               <li><Link href="/hakkimizda">Hakkımızda</Link></li>
               <li><Link href="/etik-ilkelerimiz">Etik İlkelerimiz</Link></li>
+              <li><Link href="/sikca-sorulan-sorular">Sıkça Sorulan Sorular</Link></li>
               <li><Link href="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</Link></li>
-              <li><Link href="/iletisim">İletişim</Link></li>
             </ul>
           </div>
           <div>
@@ -42,9 +42,26 @@ export default function Footer() {
               <li><a href={`${APP_URL}/login`}>Personel Girişi</a></li>
             </ul>
           </div>
+          <div>
+            <h4>İletişim</h4>
+            <ul>
+              <li><a href="mailto:uzman@akademikmerkez.com">uzman@akademikmerkez.com</a></li>
+              <li><a href="tel:+905060009499">0506 000 94 99</a></li>
+              <li style={{ lineHeight: 1.6 }}>
+                Yakuplu Mah. Hürriyet Bulvarı
+                <br />
+                Skyport Residence No:1 D:113
+                <br />
+                34524 Beylikdüzü / İstanbul
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Akademik Merkez. Tüm hakları saklıdır.</span>
+          <span>
+            © {new Date().getFullYear()} Akademik Merkez — ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE
+            TİCARET LTD. ŞTİ. Vergi No: 086 178 5335. Tüm hakları saklıdır.
+          </span>
           <span>Hizmetlerimiz danışmanlık ve süreç desteği niteliğindedir; YÖK ve ÜAK mevzuatına uygun şekilde yürütülür.</span>
         </div>
       </div>

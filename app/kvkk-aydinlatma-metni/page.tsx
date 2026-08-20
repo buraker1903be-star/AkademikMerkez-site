@@ -21,7 +21,8 @@ export default function KvkkPage() {
       <section className="section">
         <div className="container prose">
           <p>
-            Akademik Merkez ("Veri Sorumlusu") olarak, akademikmerkez.com üzerinden
+            Akademik Merkez markasının işletmecisi ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE TİCARET
+            LTD. ŞTİ. ("Veri Sorumlusu") olarak, akademikmerkez.com üzerinden
             "Teklif Al" formu ile paylaştığınız ad-soyad, telefon, e-posta ve mesaj
             içeriğindeki kişisel verileriniz; 6698 sayılı Kişisel Verilerin Korunması Kanunu
             ("KVKK") uyarınca aşağıda açıklanan kapsamda işlenmektedir.
@@ -48,8 +49,8 @@ export default function KvkkPage() {
             yurt içinde/yurt dışında aktarıldığı üçüncü kişileri bilme, eksik/yanlış işlenmişse
             düzeltilmesini isteme, silinmesini/yok edilmesini isteme haklarına sahipsiniz. Bu
             haklarınızı kullanmak için{" "}
-            <a href="mailto:info@akademikmerkez.com" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
-              info@akademikmerkez.com
+            <a href="mailto:uzman@akademikmerkez.com" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
+              uzman@akademikmerkez.com
             </a>{" "}
             adresinden bize ulaşabilirsiniz.
           </p>

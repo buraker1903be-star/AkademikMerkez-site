@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/teklif-al",
     "/iletisim",
     "/kvkk-aydinlatma-metni",
+    "/sikca-sorulan-sorular",
   ].map((path) => ({
     url: `${BASE_URL}${path}`,
     lastModified: new Date(),

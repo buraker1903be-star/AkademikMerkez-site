@@ -65,6 +65,89 @@
   .float-blob, .shimmer { animation: none; }
 }
 
+/* WhatsApp floating button */
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 10px 28px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.45); }
+  50% { box-shadow: 0 10px 28px rgba(37,211,102,0.4), 0 0 0 10px rgba(37,211,102,0); }
+}
+
+.whatsapp-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  animation: whatsapp-pulse 2.6s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-fab:hover { transform: scale(1.08); }
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-fab { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .whatsapp-fab { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+}
+
+/* FAQ Accordion */
+.accordion { display: grid; gap: 14px; }
+
+.accordion-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accordion-item.is-open { border-color: rgba(199,154,68,0.4); box-shadow: var(--shadow-soft); }
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 20px 24px;
+  font-family: var(--font-heading);
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+
+.accordion-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #f7f0e0; color: var(--gold-dark);
+  display: grid; place-items: center;
+  font-size: 16px; font-weight: 700;
+}
+
+.accordion-panel {
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.accordion-panel p {
+  margin: 0;
+  padding: 0 24px 22px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -102,7 +185,7 @@ h1, h2, h3, h4 {
 }
 
 .section {
-  padding: 72px 0;
+  padding: 104px 0;
 }
 
 .section-alt {
@@ -143,8 +226,8 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 15px 28px;
-  border-radius: 11px;
+  padding: 15px 30px;
+  border-radius: 980px;
   font-weight: 600;
   font-family: var(--font-body);
   font-size: 14.5px;
@@ -346,9 +429,9 @@ h1, h2, h3, h4 {
 
 .hero h1 {
   color: #fff;
-  font-size: 50px;
+  font-size: 58px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 .hero h1 span {
@@ -515,7 +598,7 @@ h1, h2, h3, h4 {
 /* Section head */
 .section-head { max-width: 640px; margin-bottom: 48px; }
 
-.section-head h2 { font-size: 32px; }
+.section-head h2 { font-size: 36px; }
 
 /* Steps */
 .step-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
@@ -620,10 +703,14 @@ h1, h2, h3, h4 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.3fr 0.85fr 0.95fr 0.85fr 1.1fr;
+  gap: 32px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 .footer-grid h4 {
