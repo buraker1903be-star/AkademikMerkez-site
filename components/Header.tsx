@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,6 +15,11 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.akademikmerkez.c
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("drawer-open", open);
+    return () => document.body.classList.remove("drawer-open");
+  }, [open]);
 
   return (
     <header className="site-header">
@@ -59,7 +64,18 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`nav-mobile ${open ? "open" : ""}`}>
+      <button
+        className={`nav-backdrop ${open ? "open" : ""}`}
+        aria-label="Menüyü kapat"
+        tabIndex={open ? 0 : -1}
+        onClick={() => setOpen(false)}
+      />
+
+      <aside className={`nav-mobile ${open ? "open" : ""}`} aria-label="Mobil menü" aria-hidden={!open}>
+        <div className="drawer-head">
+          <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} className="drawer-logo" />
+          <button className="drawer-close" aria-label="Menüyü kapat" onClick={() => setOpen(false)}>✕</button>
+        </div>
         {NAV_LINKS.map((l) => (
           <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
             {l.label}
@@ -70,7 +86,7 @@ export default function Header() {
         <Link href="/teklif-al" onClick={() => setOpen(false)}>
           Teklif Al
         </Link>
-      </div>
+      </aside>
     </header>
   );
 }
