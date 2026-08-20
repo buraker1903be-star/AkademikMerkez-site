@@ -48,8 +48,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <p>{service.audience}</p>
             <div className="badge-row">
               <span className="badge">Danışmanlık esaslı</span>
-              <span className="badge">YÖK/ÜAK uyumlu</span>
-              <span className="badge">Gizlilik güvencesi</span>
+              <span className="badge">Kurum ölçütleri gözetilir</span>
+              <span className="badge">KVKK çerçevesinde veri işleme</span>
             </div>
           </div>
 

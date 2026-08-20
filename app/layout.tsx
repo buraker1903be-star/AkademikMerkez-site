@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Akademik Merkez",
   },
   description:
-    "Akademik Merkez; tez, makale ve doçentlik başvuru süreçlerinde yöntem, istatistiksel analiz, literatür tarama, dil editörlüğü ve akademik çeviri danışmanlığı sunar. Güvenilir, kurumsal ve YÖK/ÜAK uyumlu hizmet.",
+    "Akademik Merkez; tez, makale ve doçentlik başvuru süreçlerinde etik ilkelere dayalı yöntem, analiz, literatür, dil editörlüğü ve akademik çeviri danışmanlığı sunar.",
   keywords: [
     "akademik danışmanlık",
     "tez danışmanlığı",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Akademik Merkez",
     title: "Akademik Merkez | Tez, Makale ve Doçentlik Danışmanlığı",
     description:
-      "Yöntem, analiz, dil ve süreç danışmanlığıyla akademik çalışmanızı doğru ve zamanında tamamlayın.",
+      "Yöntem, analiz, dil ve süreç danışmanlığıyla araştırmanızı daha sağlam bir akademik zeminde ilerletin.",
     url: "https://akademikmerkez.com",
   },
   twitter: {

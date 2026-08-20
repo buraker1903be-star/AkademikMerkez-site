@@ -5,7 +5,7 @@ import Accordion from "@/components/Accordion";
 export const metadata: Metadata = {
   title: "Sıkça Sorulan Sorular",
   description:
-    "Akademik Merkez hizmetleri, süreç işleyişi, gizlilik ve YÖK/ÜAK uyumluluğu hakkında sıkça sorulan sorular.",
+    "Akademik Merkez hizmetleri, süreç işleyişi, gizlilik ve etik danışmanlık çerçevesi hakkında sıkça sorulan sorular.",
   alternates: { canonical: "/sikca-sorulan-sorular" },
 };
 
@@ -15,8 +15,8 @@ const FAQS = [
     a: "Tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, literatür tarama, dil editörlüğü, akademik çeviri ve kaynakça/atıf uyum danışmanlığı sağlıyoruz. Tüm hizmetlerimiz danışmanlık ve süreç desteği niteliğindedir; kapsamını Etik İlkelerimiz sayfamızda detaylı olarak açıklıyoruz.",
   },
   {
-    q: "Hizmetleriniz YÖK ve ÜAK mevzuatına uygun mu?",
-    a: "Evet. Danışmanlık çerçevemiz, akademik dürüstlük ilkeleri ile YÖK ve ÜAK mevzuatına uygun şekilde tasarlanmıştır. Çalışmanın özgünlüğü ve sorumluluğu her zaman öğrenci veya araştırmacıda kalır.",
+    q: "YÖK ve ÜAK ile bağlantınız var mı; sonuç garantisi veriyor musunuz?",
+    a: "Hayır. Akademik Merkez bağımsız bir danışmanlık hizmetidir; YÖK, ÜAK veya herhangi bir üniversiteyle kurumsal bağlantısı yoktur. İlgili kurumun yayımladığı güncel ölçütleri dikkate alırız ancak kabul, yayın, mezuniyet veya akademik başarı garantisi vermeyiz. Nihai kontrol ve sorumluluk araştırmacıya aittir.",
   },
   {
     q: "Teklif Al formunu doldurduktan sonra ne oluyor?",

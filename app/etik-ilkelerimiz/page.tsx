@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Etik İlkelerimiz",
   description:
-    "Akademik Merkez'in akademik dürüstlük, YÖK ve ÜAK mevzuatına uygunluk konusundaki etik ilkeleri.",
+    "Akademik Merkez'in akademik dürüstlük, özgünlük, sorumluluk ve kurum kurallarını gözetme konusundaki etik ilkeleri.",
   alternates: { canonical: "/etik-ilkelerimiz" },
 };
 
@@ -28,13 +28,21 @@ export default function EthicsPage() {
             müşterimiz adına baştan sona üretip teslim etmeyiz.
           </p>
 
-          <h2>Mevzuata uygunluk</h2>
+          <h2>Kurum kuralları ve sorumluluk</h2>
           <p>
-            Hizmetlerimizi, Yükseköğretim Kurulu (YÖK) ve Üniversitelerarası Kurul (ÜAK)
-            mevzuatı ile akademik kurumların intihal ve akademik dürüstlük politikalarına
-            uygun şekilde tasarlıyoruz. Danışmanlarımız, çalışmanın özgünlüğünün ve
-            sorumluluğunun her zaman öğrenci/araştırmacıda kaldığı bir çerçevede destek
-            verir.
+            Danışmanlık kapsamı belirlenirken ilgili üniversitenin güncel yazım kılavuzu,
+            etik kuralları ve gerekli olduğunda ÜAK'ın ilan ettiği başvuru koşulları dikkate
+            alınır. Akademik Merkez'in YÖK veya ÜAK ile kurumsal bağlantısı yoktur; bir
+            başvurunun kabul edileceğini ya da akademik sonuç alınacağını garanti etmez.
+            Çalışmanın içeriği, özgünlüğü, beyanları ve teslimi araştırmacının sorumluluğundadır.
+          </p>
+
+          <h2>Yasaklanan talepler</h2>
+          <p>
+            Kişi adına tez, makale veya ödev üretimi; veri uydurma ya da değiştirme; sahte
+            kaynak oluşturma; intihal gizleme ve tespit sistemlerini yanıltma talepleri kabul
+            edilmez. Editörlük, çeviri ve yöntem desteği araştırmacının anlamlı katkısını ve
+            nihai kontrolünü ortadan kaldıracak biçimde yürütülmez.
           </p>
 
           <h2>Gizlilik</h2>

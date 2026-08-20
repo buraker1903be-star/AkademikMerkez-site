@@ -35,8 +35,8 @@ export default function AboutPage() {
             Sunduğumuz tüm hizmetler <strong>danışmanlık ve süreç desteği</strong> niteliğindedir.
             Araştırma tasarımından analiz yöntemine, dil düzenlemesinden sunum hazırlığına kadar
             sizin kendi çalışmanızı doğru ve güvenle yürütmeniz için bilgi, yöntem ve yönlendirme
-            sağlarız. Bu yaklaşım, akademik dürüstlük ilkeleri ile YÖK ve ÜAK mevzuatına tam uyum
-            göstermek için bilinçli bir tercihtir; detaylar için{" "}
+            sağlarız. Bu yaklaşım akademik dürüstlüğü, araştırmacının fikrî emeğini ve kurumun
+            güncel yazım/başvuru kurallarını merkeze alır; detaylar için{" "}
             <a href="/etik-ilkelerimiz" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
               Etik İlkelerimiz
             </a>{" "}
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <li>Alanında uzman, deneyimli danışman kadrosu</li>
             <li>Şeffaf süreç planı ve düzenli iletişim</li>
             <li>Gizlilik ve KVKK uyumlu veri işleme</li>
-            <li>YÖK ve ÜAK mevzuatına uygun, etik hizmet çerçevesi</li>
+            <li>Akademik dürüstlük ve araştırmacı sorumluluğu temelli hizmet çerçevesi</li>
           </ul>
 
           <div style={{ marginTop: 30 }}>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/lib/services";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
@@ -7,33 +8,32 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero">
-        <div className="float-blob" style={{ width: 340, height: 340, top: -80, right: "8%", background: "rgba(199,154,68,0.28)" }} />
-        <div className="float-blob" style={{ width: 260, height: 260, bottom: -60, left: "2%", background: "rgba(199,154,68,0.12)", animationDelay: "3s" }} />
+        <Image src="/images/hero-akademik-merkez.webp" alt="Akademik araştırma çalışma masası" fill priority sizes="100vw" className="hero-background" />
+        <div className="hero-overlay" />
         <div className="container hero-grid">
           <div>
             <Reveal>
               <div className="kicker" style={{ color: "#e4c675" }}>
-                AKADEMİK DANIŞMANLIK VE SÜREÇ DESTEĞİ
+                ETİK AKADEMİK DANIŞMANLIK
               </div>
             </Reveal>
             <Reveal delay={80}>
               <h1>
-                Akademik çalışmanızı
-                <span>doğru yöntemle, zamanında tamamlayın.</span>
+                Araştırmanızı daha güçlü bir
+                <span>akademik zeminde ilerletin.</span>
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="lead">
-                Tez, makale ve doçentlik başvuru süreçlerinde yöntem, istatistiksel analiz,
-                literatür tarama, dil editörlüğü ve akademik çeviri danışmanlığı sunuyoruz.
-                Doğru kurgulamanız ve güvenle tamamlamanız için, sürecin her adımında
-                yanınızda oluyoruz.
+                Tez, makale ve doçentlik başvurularında yöntem, analiz, literatür,
+                dil ve biçim danışmanlığı. Özgün çalışma size ait kalır; biz süreci
+                şeffaf, öğretici ve izlenebilir hâle getiririz.
               </p>
             </Reveal>
             <Reveal delay={240}>
               <div className="hero-actions">
                 <Link href="/teklif-al" className="btn btn-primary">
-                  Ücretsiz Ön Görüşme İçin Teklif Al
+                  Ön Görüşme Talebi
                 </Link>
                 <Link href="/hizmetlerimiz" className="btn btn-outline-light">
                   Hizmetleri İncele
@@ -42,27 +42,19 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={320}>
               <div className="trust-row">
-                <div className="trust-item"><i>✓</i> YÖK ve ÜAK mevzuatına uygun danışmanlık</div>
-                <div className="trust-item"><i>✓</i> Alanında uzman danışman kadrosu</div>
-                <div className="trust-item"><i>✓</i> Gizlilik ve KVKK uyumlu süreç</div>
+                <div className="trust-item"><i>✓</i> Akademik dürüstlük odaklı</div>
+                <div className="trust-item"><i>✓</i> Uzmanlık alanına göre eşleşme</div>
+                <div className="trust-item"><i>✓</i> KVKK çerçevesinde veri işleme</div>
               </div>
             </Reveal>
           </div>
 
           <Reveal delay={200} className="hero-card-wrap">
-            <div className="hero-card">
-              <h3>Talebinizi bırakın, sizi arayalım</h3>
-              <p>Formu doldurun, uzman ekibimiz 24 saat içinde sizinle iletişime geçsin.</p>
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px", display: "grid", gap: 10 }}>
-                {["Ücretsiz ön değerlendirme", "Alanınıza uygun danışman eşleşmesi", "Netlik ve şeffaf süreç planı"].map((t) => (
-                  <li key={t} style={{ display: "flex", gap: 10, fontSize: 13.5, color: "#41525f", fontWeight: 600 }}>
-                    <span style={{ color: "#b6892f" }}>●</span> {t}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/teklif-al" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                Teklif Al →
-              </Link>
+            <div className="hero-card hero-glass-card">
+              <span className="eyebrow">Kişiye özel süreç</span>
+              <h3>Önce ihtiyacı anlıyor, sonra kapsamı birlikte belirliyoruz.</h3>
+              <p>Her çalışma; alan, kurum kılavuzu ve araştırma aşamasına göre ayrı değerlendirilir.</p>
+              <Link href="/etik-ilkelerimiz" className="text-link">Etik çalışma çerçevemizi inceleyin <span>↗</span></Link>
             </div>
           </Reveal>
         </div>
@@ -72,11 +64,25 @@ export default function HomePage() {
         <div className="container">
           <Reveal>
             <div className="stat-row">
-              <div className="stat-card"><div className="stat-num"><CountUp to={8} suffix="+" /></div><div className="stat-label">Uzmanlık alanı</div></div>
-              <div className="stat-card"><div className="stat-num"><CountUp to={100} prefix="%" /></div><div className="stat-label">Danışmanlık esaslı hizmet</div></div>
+              <div className="stat-card"><div className="stat-num"><CountUp to={8} suffix="+" /></div><div className="stat-label">Danışmanlık başlığı</div></div>
+              <div className="stat-card"><div className="stat-num"><CountUp to={100} prefix="%" /></div><div className="stat-label">Danışmanlık ve editörlük modeli</div></div>
               <div className="stat-card"><div className="stat-num">7/24</div><div className="stat-label">Talep bırakma imkanı</div></div>
-              <div className="stat-card"><div className="stat-num">TR</div><div className="stat-label">YÖK/ÜAK uyumlu çerçeve</div></div>
+              <div className="stat-card"><div className="stat-num">Etik</div><div className="stat-label">Özgünlük sorumluluğu araştırmacıda</div></div>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section editorial-section">
+        <div className="container editorial-grid">
+          <Reveal className="editorial-media">
+            <Image src="/images/literatur-kaynaklari.webp" alt="Akademik literatür kaynakları" fill sizes="(max-width: 900px) 100vw, 50vw" />
+          </Reveal>
+          <Reveal delay={100} className="editorial-copy">
+            <div className="kicker">DERİNLİKLİ ÇALIŞMA</div>
+            <h2>Kaynağa ulaşmaktan öte, kaynağı doğru konumlandırmak.</h2>
+            <p className="lead">Literatür stratejisi, yöntem seçimi ve atıf düzenini birbiriyle konuşan tek bir araştırma sistemi olarak ele alıyoruz.</p>
+            <Link href="/hizmetlerimiz/literatur-tarama-danismanligi" className="text-link">Literatür danışmanlığını keşfedin <span>→</span></Link>
           </Reveal>
         </div>
       </section>
@@ -111,6 +117,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section showcase-section">
+        <div className="container showcase-grid">
+          <Reveal className="showcase-card showcase-card-large">
+            <Image src="/images/istatistiksel-analiz.webp" alt="İstatistiksel analiz danışmanlığı" fill sizes="(max-width: 900px) 100vw, 62vw" />
+            <div className="showcase-shade" />
+            <div className="showcase-content"><span>Analiz</span><h3>Veriyi yalnızca hesaplamayın. Doğru yorumlayın.</h3></div>
+          </Reveal>
+          <Reveal delay={100} className="showcase-card">
+            <Image src="/images/dijital-calisma.webp" alt="Dijital akademik çalışma" fill sizes="(max-width: 900px) 100vw, 38vw" />
+            <div className="showcase-shade" />
+            <div className="showcase-content"><span>Editörlük</span><h3>Dilinizi koruyan akademik netlik.</h3></div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <Reveal>
@@ -141,7 +162,7 @@ export default function HomePage() {
               <div className="float-blob" style={{ width: 220, height: 220, top: -60, right: "10%", background: "rgba(199,154,68,0.22)" }} />
               <div>
                 <h3>Akademik sürecinizi konuşalım</h3>
-                <p>Formu doldurmanız yeterli — talebiniz doğrudan uzman ekibimize ulaşır.</p>
+                <p>Kapsam, takvim ve sorumlulukları işe başlamadan önce birlikte netleştirelim.</p>
               </div>
               <Link href="/teklif-al" className="btn btn-primary">Hemen Teklif Al</Link>
             </div>

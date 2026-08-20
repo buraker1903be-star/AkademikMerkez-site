@@ -12,8 +12,8 @@ export default function Footer() {
             <Image src="/logo-white-trimmed.png" alt="Akademik Merkez" width={1878} height={308} className="footer-logo-img" />
             <p>
               Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve
-              danışmanlık desteği. Süreci doğru ve zamanında yönetmeniz için, akademik
-              yolculuğunuzun her aşamasında yanınızdayız.
+              danışmanlık desteği. Araştırmacının özgün üretimini merkeze alan etik ve şeffaf
+              bir çalışma çerçevesi sunuyoruz.
             </p>
           </div>
           <div>
@@ -62,7 +62,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Akademik Merkez — ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE
             TİCARET LTD. ŞTİ. Vergi No: 086 178 5335. Tüm hakları saklıdır.
           </span>
-          <span>Hizmetlerimiz danışmanlık ve süreç desteği niteliğindedir; YÖK ve ÜAK mevzuatına uygun şekilde yürütülür.</span>
+          <span>YÖK veya ÜAK ile bağlantımız yoktur. Güncel kurum ölçütleri esas alınır; nihai uygunluk ve başvuru sorumluluğu araştırmacıya aittir.</span>
         </div>
       </div>
     </footer>

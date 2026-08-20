@@ -10,7 +10,7 @@ export type Service = {
 // Not: Aşağıdaki hizmetler danışmanlık/yöntem desteği çerçevesinde sunulur.
 // Akademik Merkez; öğrencinin veya akademisyenin adına çalışma üretmez,
 // yalnızca yöntem, analiz, dil ve süreç danışmanlığı sağlar. Bu çerçeve
-// YÖK ve ÜAK mevzuatı ile uyumlu, yasal bir hizmet modelidir.
+// Kurumların güncel kuralları gözetilir; nihai akademik sorumluluk araştırmacıdadır.
 export const services: Service[] = [
   {
     slug: "tez-makale-yontem-danismanligi",
@@ -36,7 +36,7 @@ export const services: Service[] = [
       "Uygun istatistiksel test ve model seçimi",
       "SPSS / R / Python üzerinde analiz danışmanlığı",
       "Sonuçların akademik dille yorumlanması",
-      "Tablo ve grafiklerin APA/YÖK formatına uygunluğu",
+      "Tablo ve grafiklerin APA veya kurum kılavuzuna göre kontrolü",
     ],
     audience: "Nicel araştırma yürüten tüm öğrenci ve akademisyenler",
   },
@@ -99,9 +99,9 @@ export const services: Service[] = [
   {
     slug: "docentlik-basvuru-danismanligi",
     title: "Doçentlik Başvuru Dosyası Danışmanlığı",
-    short: "ÜAK kriterlerine uygun başvuru dosyası hazırlama desteği.",
+    short: "ÜAK'ın ilan ettiği güncel koşulları esas alan başvuru dosyası desteği.",
     description:
-      "Doçentlik başvurunuzda ÜAK'ın (Üniversitelerarası Kurul) güncel kriterlerine göre yayın, atıf ve faaliyet dosyanızın eksiksiz ve doğru formatta hazırlanması için danışmanlık sağlıyoruz. Dosya düzeni, başvuru formu ve gerekli belgelerin derlenmesinde sürecinizi kolaylaştırıyoruz.",
+      "Doçentlik başvurunuzda ÜAK'ın (Üniversitelerarası Kurul) yayımladığı güncel koşulları inceleyerek yayın, atıf ve faaliyet bilgilerinizin sınıflandırılması ve dosya düzeni için danışmanlık sağlıyoruz. Nihai beyan, belge doğruluğu, puanlama ve başvuru sorumluluğu adaya aittir; kabul veya sonuç garantisi verilmez.",
     bullets: [
       "ÜAK kriterlerine göre dosya kontrol listesi",
       "Yayın, atıf ve faaliyet dökümü düzenleme desteği",
