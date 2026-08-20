@@ -54,6 +54,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <div className="ambient-canvas" aria-hidden="true">
+          <span className="ambient-ring ambient-ring-a" />
+          <span className="ambient-ring ambient-ring-b" />
+          <span className="ambient-ring ambient-ring-c" />
+          <span className="ambient-ring ambient-ring-d" />
+        </div>
         <OrganizationJsonLd />
         <Header />
         {children}

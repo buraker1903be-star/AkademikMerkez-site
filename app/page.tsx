@@ -10,8 +10,6 @@ export default function HomePage() {
       <section className="hero">
         <Image src="/images/hero-akademik-merkez.webp" alt="Akademik araştırma çalışma masası" fill priority sizes="100vw" className="hero-background" />
         <div className="hero-overlay" />
-        <div className="hero-orbit hero-orbit-one" />
-        <div className="hero-orbit hero-orbit-two" />
         <div className="container hero-grid">
           <div>
             <Reveal>
