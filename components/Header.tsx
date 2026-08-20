@@ -20,8 +20,14 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label="Akademik Merkez anasayfa">
-          <Image src="/icon-mark.png" alt="Akademik Merkez" width={40} height={40} className="brand-mark-img" priority />
-          <span className="brand-name-desktop">Akademik Merkez</span>
+          <Image
+            src="/logo-trimmed.png"
+            alt="Akademik Merkez — Bilimsel Araştırma ve Akademik Danışmanlık"
+            width={1897}
+            height={311}
+            className="brand-logo-img"
+            priority
+          />
         </Link>
 
         <nav className="nav-desktop" aria-label="Ana menü">

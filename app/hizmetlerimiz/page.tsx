@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { services } from "@/lib/services";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Hizmetlerimiz",
@@ -26,13 +27,15 @@ export default function ServicesPage() {
       <section className="section">
         <div className="container">
           <div className="grid-3">
-            {services.map((s) => (
-              <Link key={s.slug} href={`/hizmetlerimiz/${s.slug}`} className="card">
-                <div className="card-icon">{s.title.charAt(0)}</div>
-                <h3>{s.title}</h3>
-                <p>{s.short}</p>
-                <span className="card-link">Detayları gör →</span>
-              </Link>
+            {services.map((s, i) => (
+              <Reveal key={s.slug} delay={(i % 3) * 70}>
+                <Link href={`/hizmetlerimiz/${s.slug}`} className="card">
+                  <div className="card-icon">{s.title.charAt(0)}</div>
+                  <h3>{s.title}</h3>
+                  <p>{s.short}</p>
+                  <span className="card-link">Detayları gör →</span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

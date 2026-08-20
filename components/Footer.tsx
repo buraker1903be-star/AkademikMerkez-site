@@ -9,7 +9,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <Image src="/icon-mark.png" alt="Akademik Merkez" width={140} height={108} className="footer-logo" />
+            <div className="footer-logo-chip">
+              <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} className="footer-logo-img" />
+            </div>
             <p>
               Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve
               danışmanlık desteği. Çalışmalarınızı sizin yerinize üretmeyiz; süreci doğru ve
@@ -39,7 +41,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/teklif-al">Teklif Al</Link></li>
               <li><a href={`${APP_URL}/takip`}>Dosya Takip</a></li>
-              <li><a href={`${APP_URL}/giris`}>Personel Girişi</a></li>
+              <li><a href={`${APP_URL}/login`}>Personel Girişi</a></li>
             </ul>
           </div>
         </div>
