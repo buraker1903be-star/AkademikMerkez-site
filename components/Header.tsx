@@ -39,8 +39,11 @@ export default function Header() {
         </nav>
 
         <div className="header-cta">
+          <a className="header-access-link nav-desktop-only" href={`${APP_URL}/login`}>
+            Personel Giriş
+          </a>
           <a className="btn btn-secondary nav-desktop-only" href={`${APP_URL}/takip`}>
-            Dosya Takip
+            Takip
           </a>
           <Link href="/teklif-al" className="btn btn-primary">
             Teklif Al
@@ -62,6 +65,8 @@ export default function Header() {
             {l.label}
           </Link>
         ))}
+        <a href={`${APP_URL}/login`} onClick={() => setOpen(false)}>Personel Giriş</a>
+        <a href={`${APP_URL}/takip`} onClick={() => setOpen(false)}>Takip</a>
         <Link href="/teklif-al" onClick={() => setOpen(false)}>
           Teklif Al
         </Link>

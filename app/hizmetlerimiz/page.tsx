@@ -29,7 +29,8 @@ export default function ServicesPage() {
           <div className="grid-3">
             {services.map((s, i) => (
               <Reveal key={s.slug} delay={(i % 3) * 70}>
-                <Link href={`/hizmetlerimiz/${s.slug}`} className="card">
+                <Link href={`/hizmetlerimiz/${s.slug}`} className="card service-card">
+                  <div className="service-card-top"><span>{String(i + 1).padStart(2, "0")}</span><b>↗</b></div>
                   <div className="card-icon">{s.title.charAt(0)}</div>
                   <h3>{s.title}</h3>
                   <p>{s.short}</p>
