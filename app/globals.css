@@ -1266,3 +1266,15 @@ main,
 @media (prefers-reduced-motion: reduce) {
   body { animation: none; }
 }
+
+/* Equal-height service cards across every grid row */
+.grid-3 { align-items: stretch; }
+.grid-3 > .reveal { height: 100%; }
+.grid-3 .service-card {
+  height: 100%;
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+}
+.grid-3 .service-card p { flex: 1; }
+.grid-3 .service-card .card-link { margin-top: auto; }
