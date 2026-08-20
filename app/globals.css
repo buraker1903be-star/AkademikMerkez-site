@@ -1282,8 +1282,9 @@ main,
 /* Mobile list cards and right-side navigation drawer */
 .nav-backdrop { display: none; }
 
-@media (max-width: 620px) {
+@media (max-width: 880px) {
   body.drawer-open { overflow: hidden; }
+  .nav-desktop-only { display: none !important; }
 
   .nav-backdrop {
     display: block;
