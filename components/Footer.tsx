@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <Image src="/logo-white-trimmed.png" alt="Akademik Merkez" width={1878} height={308} className="footer-logo-img" />
+            <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} className="footer-logo-img" />
             <p>
               Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve
               danışmanlık desteği. Araştırmacının özgün üretimini merkeze alan etik ve şeffaf
@@ -47,7 +47,7 @@ export default function Footer() {
             <ul>
               <li><a href="mailto:uzman@akademikmerkez.com">uzman@akademikmerkez.com</a></li>
               <li><a href="tel:+905060009499">0506 000 94 99</a></li>
-              <li style={{ lineHeight: 1.6 }}>
+              <li className="footer-address">
                 Yakuplu Mah. Hürriyet Bulvarı
                 <br />
                 Skyport Residence No:1 D:113
@@ -60,7 +60,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <span>
             © {new Date().getFullYear()} Akademik Merkez — ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE
-            TİCARET LTD. ŞTİ. Vergi No: 086 178 5335. Tüm hakları saklıdır.
+            TİCARET LTD. ŞTİ. Tüm hakları saklıdır.
           </span>
           <span>YÖK veya ÜAK ile bağlantımız yoktur. Güncel kurum ölçütleri esas alınır; nihai uygunluk ve başvuru sorumluluğu araştırmacıya aittir.</span>
         </div>

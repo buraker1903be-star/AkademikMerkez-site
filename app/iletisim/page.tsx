@@ -58,17 +58,6 @@ export default function ContactPage() {
             <Link href="/teklif-al" className="btn btn-primary">Teklif Al →</Link>
           </div>
         </div>
-
-        <div className="container prose" style={{ marginTop: 56 }}>
-          <h2>Firma Bilgileri</h2>
-          <p>
-            ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE TİCARET LTD. ŞTİ.
-            <br />
-            Vergi No: 086 178 5335
-            <br />
-            Yakuplu Mah. Hürriyet Bulvarı Skyport Residence No:1 D:113, 34524 Beylikdüzü / İstanbul
-          </p>
-        </div>
       </section>
     </main>
   );

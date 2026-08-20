@@ -10,6 +10,8 @@ export default function HomePage() {
       <section className="hero">
         <Image src="/images/hero-akademik-merkez.webp" alt="Akademik araştırma çalışma masası" fill priority sizes="100vw" className="hero-background" />
         <div className="hero-overlay" />
+        <div className="hero-orbit hero-orbit-one" />
+        <div className="hero-orbit hero-orbit-two" />
         <div className="container hero-grid">
           <div>
             <Reveal>
@@ -102,7 +104,8 @@ export default function HomePage() {
           <div className="grid-3">
             {services.slice(0, 6).map((s, i) => (
               <Reveal key={s.slug} delay={i * 70}>
-                <Link href={`/hizmetlerimiz/${s.slug}`} className="card">
+                <Link href={`/hizmetlerimiz/${s.slug}`} className="card service-card">
+                  <div className="service-card-top"><span>0{i + 1}</span><b>↗</b></div>
                   <div className="card-icon">{s.title.charAt(0)}</div>
                   <h3>{s.title}</h3>
                   <p>{s.short}</p>
