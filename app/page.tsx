@@ -20,9 +20,9 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={80}>
-              <h1>
-                Araştırmanızı daha güçlü bir
-                <span>akademik zeminde ilerletin.</span>
+              <h1 className="hero-title">
+                <span className="hero-title-main">Araştırmanızı daha güçlü</span>
+                <span className="hero-title-accent">bir akademik zeminde ilerletin.</span>
               </h1>
             </Reveal>
             <Reveal delay={160}>
@@ -143,7 +143,7 @@ export default function HomePage() {
               <h2>Dört adımda süreciniz netleşsin</h2>
             </div>
           </Reveal>
-          <div className="step-row">
+          <div className="step-row process-grid">
             {[
               { n: "01", t: "Teklif Al", d: "Formu doldurun, ihtiyacınızı kısaca anlatın." },
               { n: "02", t: "Ön Görüşme", d: "Uzman ekibimiz sizinle iletişime geçip alanınıza uygun danışmanı belirler." },
@@ -151,7 +151,13 @@ export default function HomePage() {
               { n: "04", t: "Danışmanlık Süreci", d: "Belirlenen plana göre düzenli danışmanlık desteği alırsınız." },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 80}>
-                <div className="step"><div className="step-num">{s.n}</div><h4>{s.t}</h4><p>{s.d}</p></div>
+                <div className="card service-card process-card">
+                  <div className="service-card-top"><span>{s.n}</span><b>↗</b></div>
+                  <div className="card-icon">{s.n}</div>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
+                  <span className="card-link">Süreci incele →</span>
+                </div>
               </Reveal>
             ))}
           </div>
