@@ -1290,7 +1290,7 @@ main,
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 79;
+    z-index: 9998;
     padding: 0;
     border: 0;
     background: rgba(5,12,20,.46);
@@ -1304,10 +1304,11 @@ main,
   .nav-mobile {
     display: flex;
     position: fixed;
-    z-index: 80;
+    z-index: 9999;
     top: 0;
     right: 0;
     bottom: 0;
+    height: 100dvh;
     width: min(86vw, 370px);
     padding: 22px 24px 32px;
     border: 0;

@@ -22,8 +22,9 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="site-header">
-      <div className="container header-inner">
+    <>
+      <header className="site-header">
+        <div className="container header-inner">
         <Link href="/" className="brand" aria-label="Akademik Merkez anasayfa">
           <Image
             src="/logo-trimmed.png"
@@ -62,7 +63,8 @@ export default function Header() {
             {open ? "✕" : "☰"}
           </button>
         </div>
-      </div>
+        </div>
+      </header>
 
       <button
         className={`nav-backdrop ${open ? "open" : ""}`}
@@ -87,6 +89,6 @@ export default function Header() {
           Teklif Al
         </Link>
       </aside>
-    </header>
+    </>
   );
 }
