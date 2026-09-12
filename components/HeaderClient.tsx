@@ -103,6 +103,9 @@ export default function HeaderClient({
               <a className="nav-quiet" href={`${appUrl}/takip`}>
                 Dosya Takip
               </a>
+              <a className="btn btn-outline btn-sm nav-staff" href={`${appUrl}/login`}>
+                <Icon name="lock" size={14} strokeWidth={2} /> Personel Giriş
+              </a>
               <Link href="/teklif-al" className="btn btn-primary btn-sm">
                 Teklif Al
               </Link>

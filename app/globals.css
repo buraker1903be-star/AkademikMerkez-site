@@ -1028,9 +1028,9 @@ a.contact-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--
   .offer-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .nav-inner { gap: 12px; }
-  .nav-inner > nav, .nav-quiet { display: none; }
+  .nav-inner > nav, .nav-quiet, .nav-staff { display: none; }
   .nav-toggle { display: inline-flex; }
   .mega { display: none; }
 }
