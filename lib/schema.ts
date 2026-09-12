@@ -24,7 +24,7 @@ export function siteSchema() {
         logo: `${SITE.url}/icon-512.png`,
         image: `${SITE.url}/opengraph-image.png`,
         description:
-          "Akademik Merkez; tez, makale ve doçentlik süreçlerinde istatistiksel analiz (SPSS, R, AMOS, SmartPLS), ANSYS simülasyonu, MAXQDA ve NVivo ile nitel analiz, Python ile veri bilimi ve yapay zekâ, literatür, dil editörlüğü ve akademik çeviri danışmanlığı sunan bağımsız bir akademik danışmanlık merkezidir.",
+          "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı ile literatür, dil editörlüğü ve akademik çeviri hizmetleri sunan bağımsız bir akademik danışmanlık merkezidir.",
         email: SITE.email,
         telephone: SITE.phone,
         address: {

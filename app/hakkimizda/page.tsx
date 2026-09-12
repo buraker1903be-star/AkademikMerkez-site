@@ -5,29 +5,27 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
 import Icon, { CATEGORY_ICON } from "@/components/Icon";
-import { categories, services } from "@/lib/services";
+import { categories } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
   description:
-    "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem, analiz, dil ve süreç danışmanlığı sunan, etik ve şeffaf çalışan bağımsız bir akademik danışmanlık merkezidir.",
+    "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem ve danışmanlık desteği sunan kurumsal bir akademik danışmanlık merkezidir.",
   alternates: { canonical: "/hakkimizda" },
 };
 
 const VALUES = [
-  { icon: "users" as const, t: "Uzman eşleştirme", d: "Talebiniz, alanında deneyimli ve ilgili yazılıma hâkim danışmanla eşleştirilir." },
-  { icon: "doc" as const, t: "Şeffaf süreç", d: "Kapsam, takvim ve ücret baştan yazılı olarak netleşir; düzenli iletişim sürer." },
-  { icon: "lock" as const, t: "Gizlilik", d: "Veri ve belgeleriniz KVKK çerçevesinde, yalnızca hizmet amacıyla işlenir." },
-  { icon: "shield" as const, t: "Etik çerçeve", d: "Akademik dürüstlük ve araştırmacı sorumluluğu her sürecin merkezindedir." },
+  { icon: "users" as const, t: "Uzman danışman kadrosu", d: "Talebiniz, alanında uzman ve deneyimli bir danışmanla eşleştirilir." },
+  { icon: "doc" as const, t: "Şeffaf süreç planı", d: "Kapsam, takvim ve ücret baştan yazılı olarak netleşir; düzenli iletişim sürer." },
+  { icon: "lock" as const, t: "Gizlilik ve KVKK", d: "Veri ve belgeleriniz KVKK uyumlu biçimde, yalnızca hizmet amacıyla işlenir." },
+  { icon: "shield" as const, t: "Akademik dürüstlük", d: "Araştırmacı sorumluluğu temelli, YÖK ve ÜAK düzenlemelerini gözeten hizmet çerçevesi." },
 ];
 
 const AUDIENCE = [
   "Lisans ve yüksek lisans öğrencileri",
   "Doktora adayları ve doktora öğrencileri",
   "Doçentlik başvurusu hazırlayan akademisyenler",
-  "Yayın süreci yürüten araştırmacılar",
-  "Proje başvurusu hazırlayan Ar-Ge ekipleri",
-  "Araştırma ve raporlama ihtiyacı olan kurumlar",
+  "Akademik makale ve yayın süreci yürüten araştırmacılar",
 ];
 
 export default function AboutPage() {
@@ -41,7 +39,7 @@ export default function AboutPage() {
             Akademik süreçleri sadeleştiren <span className="serif gold">güvenilir merkez.</span>
           </>
         }
-        lede="Araştırmacıların karşılaştığı yöntem, analiz, dil ve süreç zorluklarını; alanında uzman danışmanlarla doğru ve şeffaf bir şekilde aşmalarına yardımcı oluyoruz."
+        lede="Akademik süreçlerin karmaşasını sadeleştiren, güvenilir bir danışmanlık merkeziyiz."
       />
 
       <section className="section-sm">
@@ -52,17 +50,19 @@ export default function AboutPage() {
           <Reveal className="split-copy prose" delay={100}>
             <h2>Kim olduğumuz</h2>
             <p>
-              Akademik Merkez; lisans, yüksek lisans, doktora öğrencileri ve doçentlik başvurusu hazırlayan
-              akademisyenler için kurulmuş bağımsız bir akademik danışmanlık merkezidir. {categories.length}{" "}
-              disiplinde {services.length} uzmanlık alanında; istatistikten mühendislik simülasyonuna, nitel
-              analizden Python ile yapay zekâya kadar geniş bir yelpazede hizmet veriyoruz.
+              Akademik Merkez, lisans, yüksek lisans, doktora öğrencileri ve doçentlik başvurusu hazırlayan
+              akademisyenler için kurulmuş bir akademik danışmanlık merkezidir. Amacımız, araştırmacıların
+              karşılaştığı yöntem, analiz, dil ve süreç zorluklarını; alanında uzman danışmanlarımızla
+              birlikte, doğru ve şeffaf bir şekilde aşmalarına yardımcı olmaktır.
             </p>
             <h2>Nasıl çalışırız</h2>
             <p>
               Sunduğumuz tüm hizmetler <strong>danışmanlık ve süreç desteği</strong> niteliğindedir.
-              Araştırma tasarımından analiz yöntemine, dil düzenlemesinden sunum hazırlığına kadar kendi
-              çalışmanızı doğru ve güvenle yürütmeniz için bilgi, yöntem ve yönlendirme sağlarız. Ayrıntılar
-              için <Link href="/etik-ilkelerimiz">Etik İlkelerimiz</Link> sayfasına göz atabilirsiniz.
+              Araştırma tasarımından analiz yöntemine, dil düzenlemesinden sunum hazırlığına kadar sizin
+              kendi çalışmanızı doğru ve güvenle yürütmeniz için bilgi, yöntem ve yönlendirme sağlarız. Bu
+              yaklaşım akademik dürüstlüğü, araştırmacının fikrî emeğini ve kurumun güncel yazım/başvuru
+              kurallarını merkeze alır; detaylar için <Link href="/etik-ilkelerimiz">Etik İlkelerimiz</Link>{" "}
+              sayfamıza göz atabilirsiniz.
             </p>
           </Reveal>
         </div>
@@ -107,7 +107,7 @@ export default function AboutPage() {
             </ul>
           </Reveal>
           <Reveal className="split-copy" delay={100}>
-            <p className="eyebrow">Uzmanlık alanlarımız</p>
+            <p className="eyebrow">Hizmet alanlarımız</p>
             <ul className="cat-list" style={{ marginTop: 18 }}>
               {categories.map((c) => (
                 <li key={c.key}>

@@ -23,7 +23,7 @@ const serif = Instrument_Serif({
 });
 
 const DESCRIPTION =
-  "Tez, makale ve doçentlik süreçlerinde SPSS, R, AMOS, ANSYS, MAXQDA ve Python ile analiz; yöntem, literatür, editörlük ve çeviri danışmanlığı. Etik ve şeffaf süreç.";
+  "Tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS, MAXQDA, ANSYS ve Python analiz danışmanlığı; literatür, dil editörlüğü ve akademik çeviri.";
 
 export const viewport: Viewport = {
   themeColor: "#fbfbfd",
@@ -44,23 +44,18 @@ export const metadata: Metadata = {
     "tez danışmanlığı",
     "istatistik danışmanlığı",
     "SPSS analizi",
-    "R analizi",
-    "AMOS yapısal eşitlik modeli",
-    "SmartPLS analizi",
-    "ANSYS analizi",
-    "ANSYS Fluent CFD",
-    "sonlu elemanlar analizi",
+    "nicel analiz",
+    "nitel analiz",
     "MAXQDA analizi",
-    "NVivo analizi",
-    "nitel veri analizi",
+    "ANSYS analizi",
     "Python veri analizi",
-    "makine öğrenmesi danışmanlığı",
-    "meta-analiz",
-    "bibliyometrik analiz",
     "literatür tarama",
+    "anket tasarımı",
     "akademik çeviri",
     "akademik dil editörlüğü",
+    "kaynakça düzenleme",
     "doçentlik başvuru dosyası",
+    "tez savunması hazırlık",
   ],
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
@@ -72,7 +67,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: "Akademik Merkez | Tez, İstatistik ve Analiz Danışmanlığı",
     description:
-      "İstatistikten ANSYS simülasyonuna, MAXQDA'dan Python ile yapay zekâya; 35 uzmanlık alanında etik akademik danışmanlık.",
+      "Tez, makale ve doçentlik süreçlerinde yöntem, analiz, dil ve süreç danışmanlığı. SPSS, MAXQDA, ANSYS ve Python analiz desteği.",
     url: SITE.url,
   },
   twitter: {

@@ -4,16 +4,16 @@ type Token = [string, string?];
 
 const CODE: Token[][] = [
   [["import", "k"], [" pandas "], ["as", "k"], [" pd"]],
+  [["import", "k"], [" statsmodels.formula.api "], ["as", "k"], [" smf"]],
   [["from", "k"], [" scipy "], ["import", "k"], [" stats"]],
-  [["from", "k"], [" sklearn.ensemble "], ["import", "k"], [" RandomForestClassifier"]],
   [],
   [["df = pd."], ["read_csv", "f"], ["("], ['"anket_verisi.csv"', "s"], [")"]],
   [["t, p = stats."], ["ttest_ind", "f"], ["(df.grup_a, df.grup_b)"]],
   [["print", "b"], ["("], ['f"t = {t:.2f}, p = {p:.3f}"', "s"], [")"]],
   [],
-  [["# Açıklanabilir yapay zekâ modeli", "c"]],
-  [["model = "], ["RandomForestClassifier", "f"], ["(n_estimators="], ["300", "n"], [")"]],
-  [["model."], ["fit", "f"], ["(X_train, y_train)"]],
+  [["# Çoklu doğrusal regresyon", "c"]],
+  [["model = smf."], ["ols", "f"], ["("], ['"basari ~ motivasyon + sure"', "s"], [", df)."], ["fit", "f"], ["()"]],
+  [["print", "b"], ["(model."], ["summary", "f"], ["())"]],
 ];
 
 export function PythonCode() {
@@ -43,7 +43,7 @@ export function PythonCode() {
           ))}
         </code>
       </pre>
-      <div className="code-out">→ t = 3.41, p = 0.001 · Doğruluk: 0.92</div>
+      <div className="code-out">→ t = 3.41, p = 0.001 · R² = 0.46</div>
     </div>
   );
 }
@@ -139,85 +139,6 @@ export function StatsVisual() {
         strokeLinecap="round"
       />
       <line x1="0" y1="165" x2="300" y2="165" stroke="rgba(0,0,0,.12)" />
-    </svg>
-  );
-}
-
-export function NetworkVisual() {
-  const layers = [3, 5, 5, 2];
-  const width = 300;
-  const height = 190;
-  const nodes = layers.map((count, li) =>
-    Array.from({ length: count }, (_, ni) => ({
-      x: 24 + (li * (width - 48)) / (layers.length - 1),
-      y: height / 2 + (ni - (count - 1) / 2) * 38,
-    }))
-  );
-  return (
-    <svg className="viz" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
-      {nodes.slice(0, -1).map((layer, li) =>
-        layer.flatMap((a, ai) =>
-          nodes[li + 1].map((b, bi) => (
-            <line
-              key={`${li}-${ai}-${bi}`}
-              x1={a.x}
-              y1={a.y}
-              x2={b.x}
-              y2={b.y}
-              stroke={(ai + bi + li) % 4 === 0 ? "rgba(224,187,114,.55)" : "rgba(255,255,255,.1)"}
-              strokeWidth="1"
-            />
-          ))
-        )
-      )}
-      {nodes.flatMap((layer, li) =>
-        layer.map((n, ni) => (
-          <circle
-            key={`n-${li}-${ni}`}
-            className={li === layers.length - 1 || (li + ni) % 3 === 0 ? "pulse" : undefined}
-            style={{ animationDelay: `${(li + ni) * -0.4}s` }}
-            cx={n.x}
-            cy={n.y}
-            r={li === layers.length - 1 ? 8 : 6}
-            fill={li === layers.length - 1 ? "#e0bb72" : "#2c2c2e"}
-            stroke="#e0bb72"
-            strokeWidth="1.4"
-          />
-        ))
-      )}
-    </svg>
-  );
-}
-
-export function FlowVisual() {
-  const lines = [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5];
-  return (
-    <svg className="viz" viewBox="0 0 600 220" aria-hidden="true">
-      <defs>
-        <linearGradient id="am-flow" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="rgba(110,170,255,.15)" />
-          <stop offset="0.35" stopColor="#7fd0ff" />
-          <stop offset="0.6" stopColor="#f0c66d" />
-          <stop offset="1" stopColor="rgba(240,110,80,.3)" />
-        </linearGradient>
-      </defs>
-      {lines.map((k) => {
-        const y = 110 + k * 19;
-        const d = Math.sign(k) * (27 - (Math.abs(k) - 1) * 5);
-        return (
-          <path
-            key={k}
-            className="flow-line"
-            style={{ animationDelay: `${k * 0.23}s` }}
-            d={`M0 ${y} C170 ${y}, 210 ${y + d}, 300 ${y + d} S430 ${y}, 600 ${y}`}
-            fill="none"
-            stroke="url(#am-flow)"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-          />
-        );
-      })}
-      <path d="M214 112 C246 86, 330 84, 392 106 C330 120, 256 124, 214 112 Z" fill="#2c2c2e" stroke="rgba(255,255,255,.35)" />
     </svg>
   );
 }

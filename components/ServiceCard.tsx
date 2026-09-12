@@ -8,7 +8,7 @@ export default function ServiceCard({ service }: { service: Service }) {
       <span className="svc-arrow">
         <Icon name="arrowUpRight" size={16} />
       </span>
-      {service.featured && <span className="svc-badge">Öne çıkan</span>}
+      {service.isNew && <span className="svc-badge">Yeni</span>}
       <h3>{service.title}</h3>
       <p>{service.short}</p>
       <span className="chip-row">

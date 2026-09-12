@@ -18,8 +18,8 @@ npm run dev
 ### Ticari unvan
 
 Ticari unvan şu an sitede gösterilmiyor; footer ve KVKK metninde "AkademikMerkez" yazar.
-Unvanı yeniden göstermek için Vercel'de `SITE_LEGAL_NAME` ortam değişkenini tanımlayıp
-yeniden deploy etmek yeterlidir (bkz. `lib/site.ts`).
+Unvanı yeniden göstermek için Vercel'de `SITE_LEGAL_NAME` (ve varsa `SITE_MERSIS_NO`) ortam
+değişkenini tanımlayıp yeniden deploy etmek yeterlidir (bkz. `lib/site.ts`).
 
 ## Yayına alma (Vercel)
 

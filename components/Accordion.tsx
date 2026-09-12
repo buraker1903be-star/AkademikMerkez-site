@@ -36,7 +36,7 @@ export default function Accordion({
                 </span>
               </button>
             </h3>
-            {/* İçerik her zaman DOM'da kalır; arama motorları ve yapay zekâ tarayıcıları okuyabilir. */}
+            {/* İçerik her zaman DOM'da kalır; arama motorları kapalı yanıtları da okuyabilir. */}
             <div id={panelId} role="region" aria-labelledby={buttonId} className="acc-panel">
               <div className="acc-inner">
                 <p>{item.a}</p>

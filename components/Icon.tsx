@@ -128,11 +128,8 @@ const PATHS = {
 export type IconName = keyof typeof PATHS;
 
 export const CATEGORY_ICON: Record<CategoryKey, IconName> = {
-  nicel: "chart",
-  python: "code",
-  muhendislik: "cube",
-  nitel: "quote",
   tez: "cap",
+  analiz: "chart",
   dil: "lang",
 };
 

@@ -15,14 +15,15 @@ export const SITE = {
     country: "TR",
   },
   // Ticari unvan şimdilik gizli ve kaynak kodda tutulmuyor. Tekrar göstermek için
-  // Vercel > Settings > Environment Variables'a SITE_LEGAL_NAME ekleyip yeniden deploy edin;
-  // footer, KVKK metni ve yapısal veri (JSON-LD) otomatik olarak güncellenir.
+  // Vercel > Settings > Environment Variables'a SITE_LEGAL_NAME (ve varsa SITE_MERSIS_NO)
+  // ekleyip yeniden deploy edin; footer, KVKK metni ve yapısal veri otomatik güncellenir.
   legalName: process.env.SITE_LEGAL_NAME?.trim() || "",
+  mersisNo: process.env.SITE_MERSIS_NO?.trim() || "",
   publicEntityName: "AkademikMerkez",
   get showLegalName() {
     return this.legalName.length > 0;
   },
 };
 
-/** Footer, KVKK ve JSON-LD'de gösterilecek işletme adı. */
+/** Footer, KVKK ve yapısal veride gösterilecek işletme adı. */
 export const OPERATOR_NAME = SITE.showLegalName ? SITE.legalName : SITE.publicEntityName;

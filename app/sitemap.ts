@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE.url}/hizmetlerimiz/${s.slug}`,
       lastModified: LAST_MODIFIED,
       changeFrequency: "monthly" as const,
-      priority: s.featured ? 0.85 : 0.75,
+      priority: 0.8,
     })),
   ];
 }

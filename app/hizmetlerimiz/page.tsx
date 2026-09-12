@@ -5,17 +5,17 @@ import ServiceCard from "@/components/ServiceCard";
 import JsonLd from "@/components/JsonLd";
 import Cta from "@/components/Cta";
 import Icon, { CATEGORY_ICON } from "@/components/Icon";
-import { categories, services, servicesByCategory, toolCount } from "@/lib/services";
+import { categories, services, servicesByCategory } from "@/lib/services";
 import { serviceListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Hizmetlerimiz: Akademik Danışmanlık ve Analiz Hizmetleri",
+  title: "Hizmetlerimiz",
   description:
-    "SPSS, R, AMOS, SmartPLS, ANSYS, Fluent CFD, MAXQDA, NVivo ve Python analizi; tez yöntem, literatür, meta-analiz, dergi seçimi, doçentlik, editörlük ve çeviri danışmanlığı.",
+    "Tez ve makale yöntem danışmanlığı, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı, literatür tarama, anket, doçentlik dosyası, dil editörlüğü, çeviri ve kaynakça.",
   alternates: { canonical: "/hizmetlerimiz" },
   openGraph: {
     title: "Akademik Merkez Hizmetleri",
-    description: "6 disiplinde 35 akademik danışmanlık ve analiz hizmeti.",
+    description: "Tez, analiz ve dil süreçlerinde akademik danışmanlık hizmetleri.",
     url: "/hizmetlerimiz",
   },
 };
@@ -29,15 +29,15 @@ export default function ServicesPage() {
         eyebrow="Hizmetlerimiz"
         title={
           <>
-            Her analiz. Her aşama. <span className="serif gold">Tek merkez.</span>
+            Her aşamada, <span className="serif gold">yanınızdayız.</span>
           </>
         }
-        lede="İstatistik ve nicel analizden mühendislik simülasyonuna, nitel analizden Python ile yapay zekâya; tez, yayın ve dil süreçlerinde uçtan uca danışmanlık. Tüm hizmetlerimiz danışmanlık ve süreç desteği niteliğindedir."
+        lede="Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde; yöntem, analiz, dil ve danışmanlık desteği. Tüm hizmetlerimiz danışmanlık ve süreç desteği niteliğindedir."
       >
         <div className="hero-meta">
           <span className="chip chip-lg">{services.length} hizmet</span>
-          <span className="chip chip-lg">{categories.length} disiplin</span>
-          <span className="chip chip-lg">{toolCount}+ yazılım ve araç</span>
+          <span className="chip chip-lg">{categories.length} ana alan</span>
+          <span className="chip chip-lg">Türkçe ve İngilizce</span>
         </div>
       </PageHero>
 
@@ -78,7 +78,7 @@ export default function ServicesPage() {
             Aradığınızı bulamadınız mı? <span className="serif gold">Konuşalım.</span>
           </>
         }
-        text="Listede yer almayan bir yazılım, yöntem veya ihtiyaç için de bize yazın; uygun uzmanla eşleştirelim."
+        text="İhtiyacınızı bize yazın; kapsamı değerlendirip size uygun danışmanla eşleştirelim."
       />
     </main>
   );

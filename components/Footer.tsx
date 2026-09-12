@@ -1,23 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import Icon from "./Icon";
-import { getService } from "@/lib/services";
+import { categories, servicesByCategory } from "@/lib/services";
 import { OPERATOR_NAME, SITE } from "@/lib/site";
-
-const COLUMNS: { title: string; slugs: string[] }[] = [
-  {
-    title: "Analiz",
-    slugs: ["spss-analizi", "r-analizi", "amos-yapisal-esitlik-modeli", "smartpls-analizi", "python-analizi", "makine-ogrenmesi-yapay-zeka"],
-  },
-  {
-    title: "Mühendislik ve Nitel",
-    slugs: ["ansys-analizi", "ansys-fluent-cfd-analizi", "sonlu-elemanlar-analizi", "matlab-simulink-analizi", "maxqda-analizi", "nvivo-analizi"],
-  },
-  {
-    title: "Akademik Süreç",
-    slugs: ["tez-makale-yontem-danismanligi", "sistematik-derleme-meta-analiz", "dergi-secimi-yayin-sureci", "docentlik-basvuru-danismanligi", "akademik-dil-imla-editorlugu", "akademik-ceviri"],
-  },
-];
 
 export default function Footer() {
   return (
@@ -41,18 +26,15 @@ export default function Footer() {
             </div>
           </div>
 
-          {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <p className="footer-h">{col.title}</p>
+          {categories.map((c) => (
+            <div key={c.key}>
+              <p className="footer-h">{c.title}</p>
               <ul>
-                {col.slugs.map((slug) => {
-                  const s = getService(slug);
-                  return s ? (
-                    <li key={slug}>
-                      <Link href={`/hizmetlerimiz/${slug}`}>{s.title}</Link>
-                    </li>
-                  ) : null;
-                })}
+                {servicesByCategory(c.key).map((s) => (
+                  <li key={s.slug}>
+                    <Link href={`/hizmetlerimiz/${s.slug}`}>{s.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
@@ -75,14 +57,16 @@ export default function Footer() {
 
         <p className="footer-disclaimer">
           Akademik Merkez bağımsız bir danışmanlık hizmetidir; YÖK, ÜAK veya herhangi bir üniversiteyle
-          kurumsal bağlantısı yoktur. Hizmetlerimiz danışmanlık esaslıdır; kişi adına tez, makale veya
-          ödev üretilmez. Güncel kurum ölçütleri esas alınır; nihai uygunluk ve başvuru sorumluluğu
-          araştırmacıya aittir.
+          kurumsal bağlantısı yoktur. Hizmetlerimiz danışmanlık esaslıdır; kişi adına tez, makale, ödev
+          veya başvuru dosyası hazırlanmaz ve hiçbir aşamada e-Devlet, YÖKSİS veya ÜAK sistem şifresi talep
+          edilmez. YÖK ve ÜAK&apos;ın güncel düzenlemeleri esas alınır; kabul veya sonuç garantisi verilmez,
+          nihai uygunluk ve başvuru sorumluluğu araştırmacıya aittir.
         </p>
 
         <div className="footer-bottom">
           <span>
             © {new Date().getFullYear()} {OPERATOR_NAME}. Tüm hakları saklıdır.
+            {SITE.showLegalName && SITE.mersisNo && <> · MERSİS No: {SITE.mersisNo}</>}
           </span>
           <address>
             {SITE.address.street}, {SITE.address.postalCode} {SITE.address.district} / {SITE.address.city}

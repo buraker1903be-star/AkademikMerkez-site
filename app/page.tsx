@@ -7,8 +7,8 @@ import Accordion from "@/components/Accordion";
 import JsonLd from "@/components/JsonLd";
 import Cta from "@/components/Cta";
 import Icon, { CATEGORY_ICON } from "@/components/Icon";
-import { FlowVisual, MeshVisual, NetworkVisual, PythonCode, QualVisual, StatsVisual } from "@/components/Visuals";
-import { categories, services, servicesByCategory, toolCount } from "@/lib/services";
+import { MeshVisual, PythonCode, QualVisual, StatsVisual } from "@/components/Visuals";
+import { categories, services, servicesByCategory } from "@/lib/services";
 import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
 };
 
 const MARQUEE = [
-  "SPSS", "R", "Python", "ANSYS Fluent", "ANSYS Mechanical", "MAXQDA", "NVivo", "ATLAS.ti",
-  "AMOS", "SmartPLS", "Stata", "EViews", "MATLAB", "Simulink", "Abaqus", "COMSOL",
-  "Minitab", "TensorFlow", "PyTorch", "scikit-learn", "VOSviewer", "Zotero", "LaTeX", "Power BI",
+  "SPSS", "R", "Python", "Jamovi", "JASP", "MAXQDA", "ANSYS Workbench", "ANSYS Mechanical",
+  "ANSYS Fluent", "pandas", "SciPy", "Jupyter", "Zotero", "Mendeley", "EndNote",
+  "Web of Science", "Scopus", "TR Dizin", "Qualtrics", "Google Forms",
 ];
 
 const STEPS = [
   { t: "Talebinizi paylaşın", d: "Formu doldurun veya WhatsApp'tan yazın; ihtiyacınızı birkaç cümleyle anlatın." },
-  { t: "Ön görüşme", d: "Alanınıza uygun uzman danışman sizinle iletişime geçer, kapsamı birlikte netleştirirsiniz." },
+  { t: "Ön görüşme", d: "Alanınıza uygun danışman sizinle iletişime geçer, kapsamı birlikte netleştirirsiniz." },
   { t: "Şeffaf plan", d: "Kapsam, takvim ve ücret yazılı olarak paylaşılır; sürpriz maliyet yoktur." },
   { t: "Danışmanlık süreci", d: "Plan doğrultusunda düzenli oturumlar, açıklamalı çıktılar ve dosya takibi." },
 ];
@@ -31,23 +31,23 @@ const STEPS = [
 const HOME_FAQS = [
   {
     q: "Akademik Merkez nedir?",
-    a: "Akademik Merkez; lisans, yüksek lisans, doktora öğrencileri ve akademisyenlere tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, mühendislik simülasyonu, nitel analiz, Python ile veri bilimi, literatür, dil editörlüğü ve akademik çeviri alanlarında danışmanlık veren bağımsız bir akademik danışmanlık merkezidir.",
+    a: "Akademik Merkez; lisans, yüksek lisans, doktora öğrencileri ve akademisyenlere tez, makale ve doçentlik süreçlerinde yöntem, analiz, literatür, dil ve biçim danışmanlığı sunan bağımsız bir akademik danışmanlık merkezidir.",
   },
   {
-    q: "Hangi yazılımlarla analiz desteği veriyorsunuz?",
-    a: "SPSS, R, AMOS, SmartPLS, Stata ve EViews ile nicel analiz; ANSYS Workbench, Fluent, Abaqus, COMSOL ve MATLAB ile mühendislik simülasyonu; MAXQDA, NVivo ve ATLAS.ti ile nitel analiz; Python (pandas, scikit-learn, TensorFlow, PyTorch) ile veri bilimi ve yapay zekâ çalışmalarında destek veriyoruz.",
+    q: "Hangi analiz hizmetlerini sunuyorsunuz?",
+    a: "İstatistiksel analiz danışmanlığı, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ile mühendislik analizleri ve Python ile veri analizi alanlarında yöntemsel danışmanlık veriyoruz.",
   },
   {
-    q: "ANSYS, MAXQDA veya Python analizi süreci nasıl işliyor?",
-    a: "Önce araştırma sorunuzu ve verinizi inceleyerek analiz planını birlikte kuruyoruz. Ardından uygulamayı adım adım yürütüyor; model, kod veya proje dosyalarını açıklamalı olarak paylaşıyoruz. Bulguları yorumlamanız ve savunabilmeniz için rehberlik ediyoruz.",
+    q: "Analiz danışmanlığı süreci nasıl işliyor?",
+    a: "Önce araştırma sorunuzu ve verinizi inceleyerek analiz planını birlikte kuruyoruz. Ardından analiz adımlarını sizinle birlikte yürütüyor, her adımı gerekçesiyle açıklıyoruz. Amaç, bulgularınızı anlayarak yorumlayabilmeniz ve savunabilmenizdir.",
   },
   {
     q: "Tezimi veya makalemi sizin yazmanız mümkün mü?",
-    a: "Hayır. Etik ilkelerimiz gereği kişi adına tez, makale veya ödev üretmiyoruz. Yöntem, analiz, dil ve süreç danışmanlığıyla kendi çalışmanızı güçlü biçimde tamamlamanızı destekliyoruz.",
+    a: "Hayır. Etik ilkelerimiz ve mevzuat gereği kişi adına tez, makale, ödev veya başvuru dosyası hazırlamıyoruz. Yöntem, analiz, dil ve süreç danışmanlığıyla kendi çalışmanızı güçlü biçimde tamamlamanızı destekliyoruz.",
   },
   {
     q: "Nasıl teklif alabilirim?",
-    a: "Teklif Al formunu doldurmanız veya WhatsApp'tan yazmanız yeterli. Talebiniz genellikle 24 saat içinde değerlendirilir ve kapsam, takvim ve ücret içeren şeffaf bir teklif sunulur.",
+    a: "Teklif Al formunu doldurmanız veya WhatsApp'tan yazmanız yeterli. Talebiniz genellikle 24 saat içinde değerlendirilir; kapsam, takvim ve ücret içeren şeffaf bir teklif sunulur.",
   },
 ];
 
@@ -60,10 +60,10 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-aurora" aria-hidden="true" />
         <div className="container hero-inner">
-          {/* Hero, JavaScript beklemeden yalnızca CSS ile canlanır (LCP ve SEO için). */}
+          {/* Hero, JavaScript beklemeden yalnızca CSS ile canlanır (açılış hızı ve SEO için). */}
           <div className="intro">
-            <Link href="/hizmetlerimiz" className="hero-badge">
-              <b>Yeni</b> ANSYS, MAXQDA ve Python analiz hizmetleri
+            <Link href="/hizmetlerimiz#analiz" className="hero-badge">
+              <b>Yeni</b> SPSS, MAXQDA, ANSYS ve Python analiz danışmanlığı
               <Icon name="arrowRight" size={14} strokeWidth={2} />
             </Link>
           </div>
@@ -73,9 +73,8 @@ export default function HomePage() {
             <span className="serif gold">kişiye özel.</span>
           </h1>
           <p className="lede intro" style={{ animationDelay: "160ms" }}>
-            Tez, makale ve doçentlik süreçlerinde; istatistikten ANSYS simülasyonuna, MAXQDA ile nitel
-            analizden Python ile yapay zekâya kadar {services.length} uzmanlık alanında etik, şeffaf ve
-            öğretici akademik danışmanlık.
+            Tez, makale ve doçentlik başvurularında yöntem, analiz, literatür, dil ve biçim danışmanlığı.
+            Özgün çalışma size ait kalır; biz süreci şeffaf, öğretici ve izlenebilir hâle getiririz.
           </p>
           <div className="hero-actions intro" style={{ animationDelay: "240ms" }}>
             <Link href="/teklif-al" className="btn btn-primary btn-lg">
@@ -94,27 +93,27 @@ export default function HomePage() {
               alt="Akademik araştırma çalışma masası: kitaplar, notlar ve dizüstü bilgisayar"
               fill
               priority
-              sizes="(max-width: 1368px) 100vw, 1368px"
+              sizes="(max-width: 1600px) 100vw, 1600px"
             />
           </div>
           <div className="float-card fc-1" aria-hidden="true">
             <span className="fc-icon"><Icon name="cube" /></span>
-            <span><strong>ANSYS Fluent</strong><small>CFD ve ısı transferi</small></span>
+            <span><strong>ANSYS</strong><small>Yapısal ve akış analizleri</small></span>
           </div>
           <div className="float-card fc-2" aria-hidden="true">
             <span className="fc-icon"><Icon name="quote" /></span>
-            <span><strong>MAXQDA</strong><small>Tematik kodlama</small></span>
+            <span><strong>MAXQDA</strong><small>Nitel analiz</small></span>
           </div>
           <div className="float-card fc-3" aria-hidden="true">
-            <span className="fc-icon"><Icon name="code" /></span>
-            <span><strong>Python</strong><small>Makine öğrenmesi</small></span>
+            <span className="fc-icon"><Icon name="chart" /></span>
+            <span><strong>SPSS</strong><small>Nicel analiz</small></span>
           </div>
         </div>
       </section>
 
       {/* YAZILIM BANDI */}
-      <section className="marquee-section" aria-label="Danışmanlık verdiğimiz yazılımlar">
-        <p className="marquee-label">{toolCount}+ yazılım, kütüphane ve araçta uzman danışmanlık</p>
+      <section className="marquee-section" aria-label="Danışmanlık verdiğimiz yazılım ve araçlar">
+        <p className="marquee-label">Danışmanlık verdiğimiz yazılım ve araçlardan bazıları</p>
         <div className="marquee">
           <div className="marquee-track">
             {[...MARQUEE, ...MARQUEE].map((t, i) => (
@@ -141,19 +140,19 @@ export default function HomePage() {
             <div className="stats">
               <div className="stat">
                 <div className="stat-value"><CountUp to={services.length} /></div>
-                <div className="stat-label">Uzmanlık alanı</div>
+                <div className="stat-label">Hizmet başlığı</div>
               </div>
               <div className="stat">
-                <div className="stat-value"><CountUp to={toolCount} suffix="+" /></div>
-                <div className="stat-label">Yazılım, kütüphane ve araç</div>
+                <div className="stat-value"><CountUp to={100} prefix="%" /></div>
+                <div className="stat-label">Danışmanlık esaslı model</div>
               </div>
               <div className="stat">
-                <div className="stat-value"><CountUp to={categories.length} /></div>
-                <div className="stat-label">Disiplin kategorisi</div>
+                <div className="stat-value">7/24</div>
+                <div className="stat-label">Talep bırakma imkânı</div>
               </div>
               <div className="stat">
                 <div className="stat-value"><CountUp to={24} suffix=" sa" /></div>
-                <div className="stat-label">İçinde ilk dönüş</div>
+                <div className="stat-label">İçinde ilk dönüş hedefi</div>
               </div>
             </div>
           </Reveal>
@@ -164,23 +163,23 @@ export default function HomePage() {
       <section className="section section-gray" id="analiz">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Analiz stüdyosu</p>
+            <p className="eyebrow">Analiz hizmetleri</p>
             <h2 className="headline">
-              Verinizin dili ne olursa olsun, <span className="serif">biz konuşuyoruz.</span>
+              Veriyi yalnızca hesaplamayın. <span className="serif">Doğru yorumlayın.</span>
             </h2>
             <p className="lede">
-              İstatistikten simülasyona, nitel kodlamadan yapay zekâya; her analiz açıklamalı,
-              tekrarlanabilir ve savunulabilir.
+              Nicel ve nitel analizden mühendislik simülasyonuna; her adım gerekçesiyle açıklanır, siz de
+              bulgularınızı anlayarak savunursunuz.
             </p>
           </Reveal>
 
           <div className="bento">
             <Reveal className="tile tile-dark span-4">
-              <p className="tile-kicker">Python Veri Analizi</p>
+              <p className="tile-kicker">Python ile Veri Analizi</p>
               <h3 className="tile-title">Kodun her satırı, anlayacağınız dilde.</h3>
-              <p className="tile-text">pandas, SciPy, scikit-learn ve PyTorch ile açıklamalı Jupyter Notebook&apos;lar ve tekrarlanabilir analiz.</p>
+              <p className="tile-text">pandas, SciPy ve statsmodels ile açıklamalı Jupyter Notebook&apos;lar ve tekrarlanabilir analiz.</p>
               <div className="tile-visual"><PythonCode /></div>
-              <Link href="/hizmetlerimiz/python-analizi" className="tile-link" aria-label="Python Veri Analizi hizmetini inceleyin">
+              <Link href="/hizmetlerimiz/python-analizi" className="tile-link" aria-label="Python ile Veri Analizi Danışmanlığı sayfasını inceleyin">
                 <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
               </Link>
             </Reveal>
@@ -188,59 +187,39 @@ export default function HomePage() {
             <Reveal className="tile span-2" delay={80}>
               <p className="tile-kicker">ANSYS Analizi</p>
               <h3 className="tile-title">Gerilme, ısı ve akış.</h3>
-              <p className="tile-text">Workbench, Mechanical ve Fluent ile doğrulanmış simülasyonlar.</p>
+              <p className="tile-text">Workbench, Mechanical ve Fluent ile doğrulanmış sayısal analizler.</p>
               <div className="tile-visual"><MeshVisual /></div>
-              <Link href="/hizmetlerimiz/ansys-analizi" className="tile-link" aria-label="ANSYS Analizi hizmetini inceleyin">
+              <Link href="/hizmetlerimiz/ansys-analizi" className="tile-link" aria-label="ANSYS Analiz Danışmanlığı sayfasını inceleyin">
                 <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
               </Link>
             </Reveal>
 
             <Reveal className="tile tile-cream span-2">
-              <p className="tile-kicker">MAXQDA Analizi</p>
+              <p className="tile-kicker">Nitel Analiz · MAXQDA</p>
               <h3 className="tile-title">Görüşmelerden temalara.</h3>
               <p className="tile-text">Kod sistemi, tema haritaları ve kodlayıcılar arası uyum.</p>
               <div className="tile-visual"><QualVisual /></div>
-              <Link href="/hizmetlerimiz/maxqda-analizi" className="tile-link" aria-label="MAXQDA Analizi hizmetini inceleyin">
+              <Link href="/hizmetlerimiz/maxqda-analizi" className="tile-link" aria-label="MAXQDA ile Nitel Analiz Danışmanlığı sayfasını inceleyin">
                 <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
               </Link>
             </Reveal>
 
             <Reveal className="tile span-2" delay={80}>
-              <p className="tile-kicker">İstatistiksel Analiz</p>
-              <h3 className="tile-title">SPSS, R, AMOS, SmartPLS.</h3>
-              <p className="tile-text">Doğru test, doğru model ve APA 7 uyumlu raporlama.</p>
+              <p className="tile-kicker">Nicel Analiz · SPSS</p>
+              <h3 className="tile-title">Doğru test, doğru yorum.</h3>
+              <p className="tile-text">Varsayım kontrolü ve APA 7 uyumlu raporlama.</p>
               <div className="tile-visual"><StatsVisual /></div>
-              <Link href="/hizmetlerimiz/istatistiksel-analiz-danismanligi" className="tile-link" aria-label="İstatistiksel Analiz hizmetini inceleyin">
+              <Link href="/hizmetlerimiz/spss-analizi" className="tile-link" aria-label="SPSS ile Nicel Analiz Danışmanlığı sayfasını inceleyin">
                 <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
               </Link>
             </Reveal>
 
-            <Reveal className="tile tile-dark span-2" delay={160}>
-              <p className="tile-kicker">Makine Öğrenmesi</p>
-              <h3 className="tile-title">Yapay zekâ, akademik titizlikle.</h3>
-              <p className="tile-text">XGBoost&apos;tan Transformer&apos;a, SHAP ile açıklanabilir modeller.</p>
-              <div className="tile-visual"><NetworkVisual /></div>
-              <Link href="/hizmetlerimiz/makine-ogrenmesi-yapay-zeka" className="tile-link" aria-label="Makine Öğrenmesi ve Yapay Zekâ hizmetini inceleyin">
-                <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
-              </Link>
-            </Reveal>
-
-            <Reveal className="tile tile-dark span-3">
-              <p className="tile-kicker">ANSYS Fluent CFD</p>
-              <h3 className="tile-title">Akışı görün. Isıyı ölçün.</h3>
-              <p className="tile-text">Türbülans modellemesi, ısı değiştiriciler, çok fazlı akış ve doğrulama çalışmaları.</p>
-              <div className="tile-visual"><FlowVisual /></div>
-              <Link href="/hizmetlerimiz/ansys-fluent-cfd-analizi" className="tile-link" aria-label="ANSYS Fluent CFD Analizi hizmetini inceleyin">
-                <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
-              </Link>
-            </Reveal>
-
-            <Reveal className="tile tile-image span-3" delay={80}>
-              <Image src="/images/dijital-calisma.webp" alt="" fill sizes="(max-width: 760px) 100vw, 50vw" />
-              <p className="tile-kicker">Tez ve Yayın</p>
-              <h3 className="tile-title">Tezden yayına, stratejik rehberlik.</h3>
-              <p className="tile-text">Yöntem tasarımı, sistematik derleme, dergi seçimi ve hakem yanıtı.</p>
-              <Link href="/hizmetlerimiz#tez" className="tile-link" aria-label="Tez, Yayın ve Akademik Kariyer hizmetlerini inceleyin">
+            <Reveal className="tile tile-image span-2" delay={160}>
+              <Image src="/images/dijital-calisma.webp" alt="" fill sizes="(max-width: 760px) 100vw, 34vw" />
+              <p className="tile-kicker">İstatistiksel Analiz</p>
+              <h3 className="tile-title">SPSS, R ve Python ile yöntem desteği.</h3>
+              <p className="tile-text">Uygun test ve model seçimi, sonuçların akademik dille yorumlanması.</p>
+              <Link href="/hizmetlerimiz/istatistiksel-analiz-danismanligi" className="tile-link" aria-label="İstatistiksel Analiz Danışmanlığı sayfasını inceleyin">
                 <span className="tile-plus"><Icon name="arrowUpRight" size={16} strokeWidth={2} /></span>
               </Link>
             </Reveal>
@@ -252,26 +231,26 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Uzmanlık alanları</p>
+            <p className="eyebrow">Hizmetlerimiz</p>
             <h2 className="headline">
-              Altı disiplin. <span className="serif gold">Tek merkez.</span>
+              Akademik yolculuğunuzun <span className="serif gold">her aşamasında.</span>
             </h2>
             <p className="lede">
-              Araştırmanızın hangi aşamasında olursanız olun; alanınıza uygun uzman danışmanla eşleşir,
-              tek bir noktadan ilerlersiniz.
+              Lisans tez çalışmasından doçentlik başvurusuna, tüm süreçlerde yöntem ve danışmanlık desteği
+              sunuyoruz.
             </p>
           </Reveal>
           <div className="cat-grid stretch">
             {categories.map((c, i) => {
               const list = servicesByCategory(c.key);
               return (
-                <Reveal key={c.key} delay={(i % 3) * 80}>
+                <Reveal key={c.key} delay={i * 80}>
                   <article className="cat-card">
                     <span className="cat-icon"><Icon name={CATEGORY_ICON[c.key]} size={24} /></span>
                     <h3>{c.title}</h3>
                     <p>{c.short}</p>
                     <ul className="cat-list">
-                      {list.slice(0, 4).map((s) => (
+                      {list.map((s) => (
                         <li key={s.slug}>
                           <Link href={`/hizmetlerimiz/${s.slug}`}>
                             {s.title} <Icon name="arrowRight" size={16} />
@@ -280,7 +259,7 @@ export default function HomePage() {
                       ))}
                     </ul>
                     <Link href={`/hizmetlerimiz#${c.key}`} className="link-arrow">
-                      Kategorideki {list.length} hizmetin tümü <Icon name="arrowRight" size={16} />
+                      Ayrıntılı inceleyin <Icon name="arrowRight" size={16} />
                     </Link>
                   </article>
                 </Reveal>
@@ -306,9 +285,9 @@ export default function HomePage() {
               sistemi olarak ele alıyoruz.
             </p>
             <ul className="checklist">
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Web of Science, Scopus ve TR Dizin&apos;de sistematik tarama</li>
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>PRISMA 2020 uyumlu sistematik derleme ve meta-analiz</li>
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>VOSviewer ve Bibliometrix ile bilim haritalama</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Veri tabanlarında sistematik tarama stratejisi</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Kaynakça ve atıf sistemleri (APA 7 vb.) danışmanlığı</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Alan yazını haritası (literature map) çıkarma</li>
             </ul>
             <Link href="/hizmetlerimiz/literatur-tarama-danismanligi" className="link-arrow">
               Literatür danışmanlığını keşfedin <Icon name="arrowRight" size={16} />
@@ -323,20 +302,20 @@ export default function HomePage() {
             <Image src="/images/istatistiksel-analiz.webp" alt="İstatistiksel analiz grafikleri ve veri tabloları" fill sizes="(max-width: 760px) 100vw, 50vw" />
           </Reveal>
           <Reveal className="split-copy" delay={100}>
-            <p className="eyebrow">Analiz felsefemiz</p>
+            <p className="eyebrow">Çalışma yaklaşımımız</p>
             <h2 className="headline">
-              Veriyi yalnızca hesaplamayın. <span className="serif gold">Doğru yorumlayın.</span>
+              Öğretici, şeffaf, <span className="serif gold">izlenebilir.</span>
             </h2>
             <p className="lede">
-              Her analiz; varsayım kontrolü, gerekçeli yöntem seçimi ve bulguları savunabilmeniz için
-              açıklamalı bir rehberle birlikte teslim edilir.
+              Her analiz ve danışmanlık süreci; gerekçeli yöntem seçimi, açıklamalı çıktılar ve düzenli
+              geri bildirimle yürütülür.
             </p>
             <ul className="checklist">
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Analiz planı ve varsayım kontrol raporu</li>
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Tekrarlanabilir kod, model ve proje dosyaları</li>
-              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>APA 7 ve dergi standardında tablo ve şekiller</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Analiz planı ve yöntem gerekçesi</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>Açıklamalı analiz ve proje dosyaları</li>
+              <li><span className="check-dot"><Icon name="check" size={14} strokeWidth={2.4} /></span>APA 7 ve kurum kılavuzuna göre tablo kontrolü</li>
             </ul>
-            <Link href="/hizmetlerimiz#nicel" className="link-arrow">
+            <Link href="/hizmetlerimiz#analiz" className="link-arrow">
               Analiz hizmetlerini inceleyin <Icon name="arrowRight" size={16} />
             </Link>
           </Reveal>
@@ -370,13 +349,13 @@ export default function HomePage() {
       <section className="section section-dark">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Etik çerçeve</p>
+            <p className="eyebrow">Etik ve mevzuat</p>
             <h2 className="headline">
               Özgün çalışma <span className="serif gold">size ait kalır.</span>
             </h2>
             <p className="lede">
-              Kişi adına tez, makale veya ödev üretmiyoruz. Yöntem, analiz, dil ve süreç danışmanlığıyla
-              kendi çalışmanızı güçlü biçimde tamamlamanızı sağlıyoruz.
+              Kişi adına tez, makale, ödev veya başvuru dosyası hazırlamıyoruz. Yöntem, analiz, dil ve süreç
+              danışmanlığıyla kendi çalışmanızı güçlü biçimde tamamlamanızı sağlıyoruz.
             </p>
           </Reveal>
           <Reveal className="ethic-grid" delay={100}>
@@ -386,14 +365,14 @@ export default function HomePage() {
               <p>Her süreç araştırmacının anlamlı katkısı ve nihai kontrolüyle yürütülür.</p>
             </div>
             <div className="ethic">
-              <Icon name="lock" size={28} />
-              <h3>Gizlilik ve KVKK</h3>
-              <p>Paylaştığınız veri ve belgeler gizli tutulur, yalnızca hizmet amacıyla işlenir.</p>
+              <Icon name="doc" size={28} />
+              <h3>YÖK ve ÜAK düzenlemeleri</h3>
+              <p>Bilimsel araştırma ve yayın etiği ile güncel başvuru şartları esas alınır; şifre talep edilmez.</p>
             </div>
             <div className="ethic">
-              <Icon name="doc" size={28} />
-              <h3>Şeffaf kapsam</h3>
-              <p>Kapsam, takvim ve ücret işe başlamadan yazılı olarak netleştirilir.</p>
+              <Icon name="lock" size={28} />
+              <h3>KVKK ve gizlilik</h3>
+              <p>Paylaştığınız veri ve belgeler gizli tutulur, yalnızca hizmet amacıyla işlenir.</p>
             </div>
           </Reveal>
           <div className="actions-center">

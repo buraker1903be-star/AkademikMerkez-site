@@ -112,13 +112,17 @@ export default function LeadForm({ groups }: { groups: ServiceGroup[] }) {
       <label className="consent">
         <input type="checkbox" required disabled={busy} />
         <span>
-          Kişisel verilerimin{" "}
           <a href="/kvkk-aydinlatma-metni" target="_blank" rel="noreferrer">
             KVKK Aydınlatma Metni
-          </a>{" "}
-          kapsamında işlenmesini kabul ediyorum. *
+          </a>
+          &apos;ni okudum ve anladım. *
         </span>
       </label>
+
+      <p className="form-note">
+        Hizmetlerimiz danışmanlık esaslıdır; kişi adına tez, ödev, makale veya başvuru dosyası hazırlanması
+        talepleri kabul edilmez. e-Devlet, YÖKSİS veya ÜAK şifrelerinizi paylaşmayınız.
+      </p>
 
       <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={busy}>
         {busy ? "Gönderiliyor…" : "Talebimi Gönder"}

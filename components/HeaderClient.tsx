@@ -139,13 +139,20 @@ export default function HeaderClient({
                   </ul>
                 </div>
               ))}
+              <div className="mega-promo">
+                <p className="eyebrow">Ön görüşme</p>
+                <p className="mega-promo-title">İhtiyacınızı paylaşın, kapsamı birlikte netleştirelim.</p>
+                <Link href="/teklif-al" className="btn btn-gold btn-sm" onClick={() => setMega(false)}>
+                  Teklif Al
+                </Link>
+              </div>
             </div>
             <div className="mega-foot">
               <Link href="/hizmetlerimiz" className="link-arrow" onClick={() => setMega(false)}>
                 Tüm hizmetleri keşfedin <Icon name="arrowRight" size={16} />
               </Link>
               <span>
-                {serviceCount} uzmanlık alanı · {menu.length} disiplin
+                {serviceCount} hizmet · {menu.length} ana alan
               </span>
             </div>
           </div>
