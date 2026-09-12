@@ -15,6 +15,12 @@ npm run dev
 `.env.example` dosyasına bakın. `NEXT_PUBLIC_*` değişkenler Vercel proje ayarlarında
 (Settings > Environment Variables) tanımlanmalıdır.
 
+### Ticari unvan
+
+Ticari unvan şu an sitede gösterilmiyor; footer ve KVKK metninde "AkademikMerkez" yazar.
+Unvanı yeniden göstermek için Vercel'de `SITE_LEGAL_NAME` ortam değişkenini tanımlayıp
+yeniden deploy etmek yeterlidir (bkz. `lib/site.ts`).
+
 ## Yayına alma (Vercel)
 
 1. Bu klasörü GitHub'daki `AkademikMerkez-site` reposuna yükleyin.

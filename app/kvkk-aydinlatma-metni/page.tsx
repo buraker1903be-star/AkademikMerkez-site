@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import PageHero from "@/components/PageHero";
+import { OPERATOR_NAME, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
@@ -10,22 +12,20 @@ export const metadata: Metadata = {
 export default function KvkkPage() {
   return (
     <main>
-      <section className="page-hero">
-        <div className="container">
-          <div className="breadcrumb">Anasayfa / KVKK Aydınlatma Metni</div>
-          <h1>KVKK Aydınlatma Metni</h1>
-          <p>6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında bilgilendirme.</p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ name: "KVKK Aydınlatma Metni", href: "/kvkk-aydinlatma-metni" }]}
+        eyebrow="Yasal bilgilendirme"
+        title="KVKK Aydınlatma Metni"
+        lede="6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında bilgilendirme."
+      />
 
-      <section className="section">
+      <section className="section-sm">
         <div className="container prose">
           <p>
-            Akademik Merkez markasının işletmecisi ARVOCULTURE GROUP TEKNOLOJİ SANAYİ VE TİCARET
-            LTD. ŞTİ. ("Veri Sorumlusu") olarak, akademikmerkez.com üzerinden
-            "Teklif Al" formu ile paylaştığınız ad-soyad, telefon, e-posta ve mesaj
-            içeriğindeki kişisel verileriniz; 6698 sayılı Kişisel Verilerin Korunması Kanunu
-            ("KVKK") uyarınca aşağıda açıklanan kapsamda işlenmektedir.
+            Akademik Merkez markasının işletmecisi {OPERATOR_NAME} (&quot;Veri Sorumlusu&quot;) olarak,
+            akademikmerkez.com üzerinden &quot;Teklif Al&quot; formu ile paylaştığınız ad-soyad, telefon,
+            e-posta ve mesaj içeriğindeki kişisel verileriniz; 6698 sayılı Kişisel Verilerin Korunması Kanunu
+            (&quot;KVKK&quot;) uyarınca aşağıda açıklanan kapsamda işlenmektedir.
           </p>
 
           <h2>Verilerin işlenme amacı</h2>
@@ -37,28 +37,23 @@ export default function KvkkPage() {
 
           <h2>Verilerin saklanma süresi</h2>
           <p>
-            Kişisel verileriniz, talebinizin değerlendirilmesi ve varsa aramızda kurulacak
-            hizmet ilişkisinin gerektirdiği süre boyunca, ilgili mevzuatta öngörülen süreler
-            saklı kalmak kaydıyla saklanır.
+            Kişisel verileriniz, talebinizin değerlendirilmesi ve varsa aramızda kurulacak hizmet ilişkisinin
+            gerektirdiği süre boyunca, ilgili mevzuatta öngörülen süreler saklı kalmak kaydıyla saklanır.
           </p>
 
           <h2>Haklarınız</h2>
           <p>
-            KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini
-            öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını öğrenme,
-            yurt içinde/yurt dışında aktarıldığı üçüncü kişileri bilme, eksik/yanlış işlenmişse
-            düzeltilmesini isteme, silinmesini/yok edilmesini isteme haklarına sahipsiniz. Bu
-            haklarınızı kullanmak için{" "}
-            <a href="mailto:uzman@akademikmerkez.com" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
-              uzman@akademikmerkez.com
-            </a>{" "}
-            adresinden bize ulaşabilirsiniz.
+            KVKK&apos;nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse
+            buna ilişkin bilgi talep etme, işlenme amacını öğrenme, yurt içinde/yurt dışında aktarıldığı
+            üçüncü kişileri bilme, eksik/yanlış işlenmişse düzeltilmesini isteme, silinmesini/yok edilmesini
+            isteme haklarına sahipsiniz. Bu haklarınızı kullanmak için{" "}
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a> adresinden bize ulaşabilirsiniz.
           </p>
 
           <h2>Rıza</h2>
           <p>
-            "Teklif Al" formunu göndererek, yukarıda açıklanan amaçlarla kişisel
-            verilerinizin işlenmesine açık rıza vermiş olursunuz.
+            &quot;Teklif Al&quot; formunu göndererek, yukarıda açıklanan amaçlarla kişisel verilerinizin
+            işlenmesine açık rıza vermiş olursunuz.
           </p>
         </div>
       </section>

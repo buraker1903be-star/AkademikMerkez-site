@@ -6,7 +6,7 @@ export default function CountUp({
   to,
   prefix = "",
   suffix = "",
-  duration = 1400,
+  duration = 1600,
 }: {
   to: number;
   prefix?: string;
@@ -14,35 +14,28 @@ export default function CountUp({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState(0);
-  const started = useRef(false);
+  // Sunucu çıktısında gerçek değer yer alır (SEO); animasyon yalnızca tarayıcıda başlar.
+  const [value, setValue] = useState(to);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      setValue(to);
-      return;
-    }
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) return; // Zaten görünürse değeri sabit bırak.
+    setValue(0);
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !started.current) {
-            started.current = true;
-            const start = performance.now();
-            function tick(now: number) {
-              const progress = Math.min((now - start) / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              setValue(Math.round(eased * to));
-              if (progress < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-            observer.unobserve(entry.target);
-          }
-        });
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          setValue(Math.round((1 - Math.pow(1 - progress, 4)) * to));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       },
       { threshold: 0.4 }
     );

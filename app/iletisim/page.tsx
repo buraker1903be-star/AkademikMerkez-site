@@ -1,64 +1,77 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import Cta from "@/components/Cta";
+import Icon from "@/components/Icon";
+import { whatsappHref } from "@/components/WhatsAppButton";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description: "Akademik Merkez ile iletişime geçin veya Teklif Al formunu doldurun.",
+  description:
+    "Akademik Merkez ile e-posta, telefon veya WhatsApp üzerinden iletişime geçin; Teklif Al formuyla talebinizi iletin. Beylikdüzü / İstanbul.",
   alternates: { canonical: "/iletisim" },
 };
 
 export default function ContactPage() {
   return (
     <main>
-      <section className="page-hero">
-        <div className="container">
-          <div className="breadcrumb">Anasayfa / İletişim</div>
-          <h1>İletişim</h1>
-          <p>Sorularınız için bize ulaşın veya doğrudan Teklif Al formunu doldurun.</p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ name: "İletişim", href: "/iletisim" }]}
+        eyebrow="İletişim"
+        title={
+          <>
+            Konuşmaya <span className="serif gold">hazırız.</span>
+          </>
+        }
+        lede="Sorularınız için bize ulaşın veya doğrudan Teklif Al formunu doldurun. Genellikle 24 saat içinde dönüş yapıyoruz."
+      />
 
-      <section className="section">
-        <div className="container grid-3">
-          <div className="card">
-            <div className="card-icon">@</div>
-            <h3>E-posta</h3>
-            <p>
-              <a href="mailto:uzman@akademikmerkez.com" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
-                uzman@akademikmerkez.com
-              </a>
-            </p>
-          </div>
-          <div className="card">
-            <div className="card-icon">T</div>
-            <h3>Telefon</h3>
-            <p>
-              <a href="tel:+905060009499" style={{ color: "var(--gold-dark)", fontWeight: 700 }}>
-                0506 000 94 99
-              </a>
-            </p>
-          </div>
-          <div className="card">
-            <div className="card-icon">A</div>
-            <h3>Adres</h3>
-            <p>
-              Yakuplu Mah. Hürriyet Bulvarı Skyport Residence No:1 D:113
-              <br />
-              34524 Beylikdüzü / İstanbul
-            </p>
-          </div>
-        </div>
-
-        <div className="container" style={{ marginTop: 24 }}>
-          <div className="cta-band">
-            <div>
-              <h3>En hızlı yanıt için</h3>
-              <p>Teklif Al formunu doldurun, uzman ekibimiz doğrudan sizinle iletişime geçsin.</p>
+      <section className="section-sm">
+        <div className="container contact-grid stretch">
+          <Reveal>
+            <a className="contact-card" href={`mailto:${SITE.email}`}>
+              <span className="cat-icon"><Icon name="mail" size={22} /></span>
+              <h2>E-posta</h2>
+              <p>{SITE.email}</p>
+            </a>
+          </Reveal>
+          <Reveal delay={70}>
+            <a className="contact-card" href={`tel:${SITE.phone}`}>
+              <span className="cat-icon"><Icon name="phone" size={22} /></span>
+              <h2>Telefon</h2>
+              <p>{SITE.phoneDisplay}</p>
+            </a>
+          </Reveal>
+          <Reveal delay={140}>
+            <a className="contact-card" href={whatsappHref()} target="_blank" rel="noopener noreferrer">
+              <span className="cat-icon"><Icon name="chat" size={22} /></span>
+              <h2>WhatsApp</h2>
+              <p>Hemen yazın</p>
+            </a>
+          </Reveal>
+          <Reveal delay={210}>
+            <div className="contact-card">
+              <span className="cat-icon"><Icon name="pin" size={22} /></span>
+              <h2>Adres</h2>
+              <address>
+                {SITE.address.street}
+                <br />
+                {SITE.address.postalCode} {SITE.address.district} / {SITE.address.city}
+              </address>
             </div>
-            <Link href="/teklif-al" className="btn btn-primary">Teklif Al →</Link>
-          </div>
+          </Reveal>
         </div>
       </section>
+
+      <Cta
+        title={
+          <>
+            En hızlı yanıt için <span className="serif gold">teklif formu.</span>
+          </>
+        }
+        text="Formu doldurun, uzman ekibimiz doğrudan sizinle iletişime geçsin."
+      />
     </main>
   );
 }
