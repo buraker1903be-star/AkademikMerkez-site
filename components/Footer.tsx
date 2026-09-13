@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} />
+            <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} sizes="180px" />
             <p>
               Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve süreç
               danışmanlığı. Araştırmacının özgün üretimini merkeze alan etik ve şeffaf bir çalışma
@@ -71,6 +71,10 @@ export default function Footer() {
           <address>
             {SITE.address.street}, {SITE.address.postalCode} {SITE.address.district} / {SITE.address.city}
           </address>
+          <span className="footer-credit">
+            Designed by
+            <Image src="/brand/arvoos.png" alt="ArvoOS" width={1901} height={395} sizes="72px" />
+          </span>
         </div>
       </div>
     </footer>

@@ -964,6 +964,9 @@ a.contact-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--
 .footer-disclaimer { padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 12px; line-height: 1.65; color: var(--faint); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 22px; font-size: 12px; color: var(--faint); }
 .footer-bottom address { font-style: normal; }
+.footer-credit { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.footer-credit img { height: 15px; width: auto; opacity: 0.9; transition: opacity 0.2s; }
+.footer-credit:hover img { opacity: 1; }
 
 /* WhatsApp */
 .whatsapp-fab {
