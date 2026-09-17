@@ -12,7 +12,8 @@ npm run dev
 
 ## Ortam değişkenleri
 
-`.env.example` dosyasına bakın. `NEXT_PUBLIC_*` değişkenler Vercel proje ayarlarında
+`.env.example` dosyasına bakın; altı değişkenin her biri için eksik olduğunda
+ne olacağı orada yazılı. `NEXT_PUBLIC_*` değişkenler Vercel proje ayarlarında
 (Settings > Environment Variables) tanımlanmalıdır.
 
 ### Ticari unvan
@@ -21,11 +22,24 @@ Ticari unvan şu an sitede gösterilmiyor; footer ve KVKK metninde "AkademikMerk
 Unvanı yeniden göstermek için Vercel'de `SITE_LEGAL_NAME` (ve varsa `SITE_MERSIS_NO`) ortam
 değişkenini tanımlayıp yeniden deploy etmek yeterlidir (bkz. `lib/site.ts`).
 
+## Kontroller
+
+```
+npm run typecheck
+npm run lint
+```
+
+Her push ve PR'da `.github/workflows/ci.yml` ikisini de çalıştırır. Derleme
+CI'da değil, Vercel tarafında yapılır.
+
 ## Yayına alma (Vercel)
 
 1. Bu klasörü GitHub'daki `AkademikMerkez-site` reposuna yükleyin.
 2. vercel.com'da "Add New... > Project" ile bu repoyu içe aktarın.
-3. Environment Variables kısmına `.env.example`'daki 4 değişkeni girin.
+3. Environment Variables kısmına `.env.example`'daki değişkenleri girin.
+   Zorunlu olan ikisi `NEXT_PUBLIC_SUPABASE_URL` ve
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`; gerisi boş bırakılabilir, her birinin
+   varsayılanı örnek dosyada yazılı.
 4. Deploy edin.
 5. Vercel proje ayarlarından Domains kısmına `akademikmerkez.com` ve `www.akademikmerkez.com`
    ekleyin, verilen DNS kayıtlarını alan adı sağlayıcınızda (doruk.net) tanımlayın.
