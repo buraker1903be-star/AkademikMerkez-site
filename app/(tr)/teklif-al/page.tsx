@@ -5,13 +5,14 @@ import Icon from "@/components/Icon";
 import { whatsappHref } from "@/components/WhatsAppButton";
 import { categories, servicesByCategory } from "@/lib/services";
 import { SITE } from "@/lib/site";
-import LeadForm, { type ServiceGroup } from "./lead-form";
+import LeadForm, { type ServiceGroup } from "@/components/LeadForm";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Teklif Al",
   description:
     "İhtiyacınızı kısaca anlatın; Akademik Merkez uzman ekibi size en uygun danışmanı, süreç planını ve şeffaf teklifi 24 saat içinde sunsun.",
-  alternates: { canonical: "/teklif-al" },
+  alternates: alternatifler("/teklif-al", "tr"),
 };
 
 const NEXT_STEPS = [
@@ -23,7 +24,7 @@ const NEXT_STEPS = [
 export default function TeklifAlPage() {
   const groups: ServiceGroup[] = categories.map((c) => ({
     label: c.title,
-    options: servicesByCategory(c.key).map((s) => s.title),
+    options: servicesByCategory(c.key).map((s) => ({ value: s.title, label: s.title })),
   }));
 
   return (

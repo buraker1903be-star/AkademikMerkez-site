@@ -1,33 +1,37 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/services";
+import { enYolu } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 
-const LAST_MODIFIED = new Date("2026-09-13");
+const LAST_MODIFIED = new Date("2026-10-22");
 
+/*
+  Her sayfa iki dilde ayrı satır ve her satır öbür dildeki karşılığını
+  hreflang olarak taşır (22.10.2026, İngilizce sürüm). Arama motoru iki
+  sayfayı kopya değil, birbirinin çevirisi sayar.
+*/
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: { path: string; priority: number }[] = [
-    { path: "", priority: 1 },
-    { path: "/hizmetlerimiz", priority: 0.9 },
-    { path: "/teklif-al", priority: 0.8 },
-    { path: "/hakkimizda", priority: 0.6 },
-    { path: "/sikca-sorulan-sorular", priority: 0.6 },
-    { path: "/etik-ilkelerimiz", priority: 0.5 },
-    { path: "/iletisim", priority: 0.5 },
-    { path: "/kvkk-aydinlatma-metni", priority: 0.2 },
+  const pages: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
+    { path: "/", priority: 1, changeFrequency: "weekly" },
+    { path: "/hizmetlerimiz", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/teklif-al", priority: 0.8, changeFrequency: "weekly" },
+    { path: "/hakkimizda", priority: 0.6, changeFrequency: "weekly" },
+    { path: "/sikca-sorulan-sorular", priority: 0.6, changeFrequency: "weekly" },
+    { path: "/etik-ilkelerimiz", priority: 0.5, changeFrequency: "weekly" },
+    { path: "/iletisim", priority: 0.5, changeFrequency: "weekly" },
+    { path: "/kvkk-aydinlatma-metni", priority: 0.2, changeFrequency: "weekly" },
+    ...services.map((s) => ({ path: `/hizmetlerimiz/${s.slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
   ];
 
-  return [
-    ...staticPages.map((p) => ({
-      url: `${SITE.url}${p.path}`,
-      lastModified: LAST_MODIFIED,
-      changeFrequency: "weekly" as const,
-      priority: p.priority,
-    })),
-    ...services.map((s) => ({
-      url: `${SITE.url}/hizmetlerimiz/${s.slug}`,
-      lastModified: LAST_MODIFIED,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-  ];
+  const adres = (yol: string) => `${SITE.url}${yol === "/" ? "" : yol}`;
+
+  return pages.flatMap((p) => {
+    const languages = { "tr-TR": adres(p.path), en: adres(enYolu(p.path)) };
+    const ortak = { lastModified: LAST_MODIFIED, changeFrequency: p.changeFrequency, alternates: { languages } };
+    return [
+      { url: adres(p.path), priority: p.priority, ...ortak },
+      /* İngilizce bir kademe aşağıda: sitenin asıl kitlesi Türkiye. */
+      { url: adres(enYolu(p.path)), priority: Math.max(0.1, Math.round((p.priority - 0.1) * 10) / 10), ...ortak },
+    ];
+  });
 }

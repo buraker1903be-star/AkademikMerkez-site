@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Icon, { type IconName } from "./Icon";
+import { METIN, karsiYol, yol, type Dil } from "@/lib/i18n";
+import { hizmetYolu } from "@/lib/hizmetler";
 
 export type MenuGroup = {
   key: string;
@@ -13,18 +15,13 @@ export type MenuGroup = {
   items: { slug: string; title: string }[];
 };
 
-const LINKS = [
-  { href: "/hakkimizda", label: "Hakkımızda" },
-  { href: "/etik-ilkelerimiz", label: "Etik İlkeler" },
-  { href: "/sikca-sorulan-sorular", label: "SSS" },
-  { href: "/iletisim", label: "İletişim" },
-];
-
 export default function HeaderClient({
+  dil,
   menu,
   appUrl,
   serviceCount,
 }: {
+  dil: Dil;
   menu: MenuGroup[];
   appUrl: string;
   serviceCount: number;
@@ -33,6 +30,17 @@ export default function HeaderClient({
   const [mega, setMega] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const m = METIN[dil];
+  const LINKS = [
+    { href: yol(dil, "/hakkimizda"), label: m.hakkimizda },
+    { href: yol(dil, "/etik-ilkelerimiz"), label: m.etik },
+    { href: yol(dil, "/sikca-sorulan-sorular"), label: m.sss },
+    { href: yol(dil, "/iletisim"), label: m.iletisim },
+  ];
+  const teklif = yol(dil, "/teklif-al");
+  const tumHizmetler = yol(dil, "/hizmetlerimiz");
+  /* Dil değiştirici bulunulan sayfanın karşılığına gider (lib/i18n.ts). */
+  const karsi = karsiYol(pathname);
 
   useEffect(() => {
     setOpen(false);
@@ -66,11 +74,11 @@ export default function HeaderClient({
       <div className="nav-wrap" onMouseLeave={() => setMega(false)}>
         <header className={`nav ${scrolled || mega || open ? "is-solid" : ""}`}>
           <div className="container nav-inner">
-            <Link href="/" className="nav-brand" aria-label="Akademik Merkez anasayfa">
+            <Link href={yol(dil, "/")} className="nav-brand" aria-label={m.anasayfaEtiket}>
               <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} sizes="190px" priority />
             </Link>
 
-            <nav aria-label="Ana menü">
+            <nav aria-label={m.anaMenu}>
               <ul className="nav-links">
                 <li>
                   <button
@@ -81,7 +89,7 @@ export default function HeaderClient({
                     onMouseEnter={() => setMega(true)}
                     onClick={() => setMega((v) => !v)}
                   >
-                    Hizmetler <Icon name="chevronDown" size={14} strokeWidth={2} />
+                    {m.hizmetler} <Icon name="chevronDown" size={14} strokeWidth={2} />
                   </button>
                 </li>
                 {LINKS.map((l) => (
@@ -100,19 +108,22 @@ export default function HeaderClient({
             </nav>
 
             <div className="nav-actions">
+              <a className="nav-quiet nav-dil" href={karsi} hrefLang={dil === "en" ? "tr" : "en"} aria-label={m.dilDegistirEtiket}>
+                {dil === "en" ? "TR" : "EN"}
+              </a>
               <a className="nav-quiet" href={`${appUrl}/takip`}>
-                Dosya Takip
+                {m.dosyaTakip}
               </a>
               <a className="btn btn-outline btn-sm nav-staff" href={`${appUrl}/login`}>
-                <Icon name="lock" size={14} strokeWidth={2} /> Personel Giriş
+                <Icon name="lock" size={14} strokeWidth={2} /> {m.personelGiris}
               </a>
-              <Link href="/teklif-al" className="btn btn-primary btn-sm">
-                Teklif Al
+              <Link href={teklif} className="btn btn-primary btn-sm">
+                {m.teklifAl}
               </Link>
               <button
                 type="button"
                 className="nav-toggle"
-                aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+                aria-label={open ? m.menuKapat : m.menuAc}
                 aria-expanded={open}
                 aria-controls="mobile-menu"
                 onClick={() => setOpen((v) => !v)}
@@ -134,7 +145,7 @@ export default function HeaderClient({
                   <ul>
                     {g.items.map((item) => (
                       <li key={item.slug}>
-                        <Link href={`/hizmetlerimiz/${item.slug}`} onClick={() => setMega(false)}>
+                        <Link href={hizmetYolu(dil, item.slug)} onClick={() => setMega(false)}>
                           {item.title}
                         </Link>
                       </li>
@@ -143,56 +154,57 @@ export default function HeaderClient({
                 </div>
               ))}
               <div className="mega-promo">
-                <p className="eyebrow">Ön görüşme</p>
-                <p className="mega-promo-title">İhtiyacınızı paylaşın, kapsamı birlikte netleştirelim.</p>
-                <Link href="/teklif-al" className="btn btn-gold btn-sm" onClick={() => setMega(false)}>
-                  Teklif Al
+                <p className="eyebrow">{m.onGorusme}</p>
+                <p className="mega-promo-title">{m.megaPromo}</p>
+                <Link href={teklif} className="btn btn-gold btn-sm" onClick={() => setMega(false)}>
+                  {m.teklifAl}
                 </Link>
               </div>
             </div>
             <div className="mega-foot">
-              <Link href="/hizmetlerimiz" className="link-arrow" onClick={() => setMega(false)}>
-                Tüm hizmetleri keşfedin <Icon name="arrowRight" size={16} />
+              <Link href={tumHizmetler} className="link-arrow" onClick={() => setMega(false)}>
+                {m.tumHizmetleriKesfet} <Icon name="arrowRight" size={16} />
               </Link>
-              <span>
-                {serviceCount} hizmet · {menu.length} ana alan
-              </span>
+              <span>{m.hizmetSayisi(serviceCount, menu.length)}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div id="mobile-menu" className={`sheet ${open ? "open" : ""}`}>
-        <nav aria-label="Mobil menü">
+        <nav aria-label={m.mobilMenu}>
           <ul className="sheet-links">
             <li>
-              <Link href="/hizmetlerimiz">Hizmetler</Link>
+              <Link href={tumHizmetler}>{m.hizmetler}</Link>
             </li>
             {LINKS.map((l) => (
               <li key={l.href}>
                 <Link href={l.href}>{l.label}</Link>
               </li>
             ))}
+            <li>
+              <a href={karsi} hrefLang={dil === "en" ? "tr" : "en"}>{m.dilDegistir}</a>
+            </li>
           </ul>
-          <p className="sheet-label">Uzmanlık alanları</p>
+          <p className="sheet-label">{m.uzmanlikAlanlari}</p>
           <ul className="sheet-cats">
             {menu.map((g) => (
               <li key={g.key}>
-                <Link href={`/hizmetlerimiz#${g.key}`} onClick={() => setOpen(false)}>
+                <Link href={`${tumHizmetler}#${g.key}`} onClick={() => setOpen(false)}>
                   {g.title} <Icon name="arrowRight" size={16} />
                 </Link>
               </li>
             ))}
           </ul>
           <div className="sheet-actions">
-            <Link href="/teklif-al" className="btn btn-primary btn-lg">
-              Teklif Al
+            <Link href={teklif} className="btn btn-primary btn-lg">
+              {m.teklifAl}
             </Link>
             <a href={`${appUrl}/takip`} className="btn btn-outline">
-              Dosya Takip
+              {m.dosyaTakip}
             </a>
             <a href={`${appUrl}/login`} className="btn btn-outline">
-              Personel Girişi
+              {m.personelGirisi}
             </a>
           </div>
         </nav>

@@ -1,26 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import JsonLd from "@/components/JsonLd";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { siteSchema } from "@/lib/schema";
+import SiteKabugu from "@/components/SiteKabugu";
 import { SITE } from "@/lib/site";
-import "./globals.css";
 
-const sans = Inter({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-sans",
-});
-
-const serif = Instrument_Serif({
-  subsets: ["latin", "latin-ext"],
-  weight: "400",
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-serif",
-});
+// Türkçe sitenin kök düzeni. Gövde (yazı tipleri, menü, alt bilgi, takip
+// kodu) iki dilde ortak: components/SiteKabugu.tsx. İngilizcesi app/en.
 
 const DESCRIPTION =
   "Tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS, MAXQDA, ANSYS ve Python analiz danışmanlığı; literatür, dil editörlüğü ve akademik çeviri.";
@@ -64,6 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
+    alternateLocale: ["en_US"],
     siteName: SITE.name,
     title: "Akademik Merkez | Tez, İstatistik ve Analiz Danışmanlığı",
     description:
@@ -84,32 +68,6 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false, email: false, address: false },
 };
 
-/*
-  Ziyaret istatistiği: ArvoOS Analitik modülü (AkademikMerkez paneli →
-  Analitik). Kod çerez kullanmaz, IP saklamaz; form alanlarının içeriğini
-  okumaz, yalnızca "form gönderildi" sayar. Anahtar gizli değil — hangi
-  siteye yazılacağını söylüyor, kaynak alan adı ArvoOS tarafında ayrıca
-  denetleniyor.
-*/
-const ANALITIK_ANAHTARI = "a81f300a74e542c4a4834501fb805954";
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="tr" className={`${sans.variable} ${serif.variable}`}>
-      <body>
-        <a href="#icerik" className="skip-link">
-          İçeriğe geç
-        </a>
-        <JsonLd data={siteSchema()} />
-        <Header />
-        <div id="icerik">{children}</div>
-        <Footer />
-        <WhatsAppButton />
-        <script defer src="https://app.arvo-os.com/k.js" data-site={ANALITIK_ANAHTARI} />
-        <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
-      </body>
-    </html>
-  );
+  return <SiteKabugu dil="tr">{children}</SiteKabugu>;
 }

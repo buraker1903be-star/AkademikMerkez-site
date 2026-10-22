@@ -5,12 +5,13 @@ import Accordion from "@/components/Accordion";
 import JsonLd from "@/components/JsonLd";
 import Cta from "@/components/Cta";
 import { faqSchema } from "@/lib/schema";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Sıkça Sorulan Sorular",
   description:
     "Akademik Merkez hizmetleri, analiz danışmanlığı süreci, gizlilik, YÖK ve ÜAK düzenlemeleri ve etik danışmanlık çerçevesi hakkında sıkça sorulan sorular.",
-  alternates: { canonical: "/sikca-sorulan-sorular" },
+  alternates: alternatifler("/sikca-sorulan-sorular", "tr"),
 };
 
 const FAQS = [

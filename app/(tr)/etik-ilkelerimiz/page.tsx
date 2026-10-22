@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Etik İlkelerimiz",
   description:
     "Akademik Merkez'in akademik dürüstlük, YÖK ve ÜAK düzenlemelerine uyum, destek beyanı, gizlilik ve şeffaflık konusundaki etik ilkeleri.",
-  alternates: { canonical: "/etik-ilkelerimiz" },
+  alternates: alternatifler("/etik-ilkelerimiz", "tr"),
 };
 
 const PRINCIPLES = [

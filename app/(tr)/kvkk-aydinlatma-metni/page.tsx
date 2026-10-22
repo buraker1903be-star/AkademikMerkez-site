@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { OPERATOR_NAME, SITE } from "@/lib/site";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
   description: "Akademik Merkez KVKK Aydınlatma Metni ve kişisel verilerin işlenmesi hakkında bilgilendirme.",
-  alternates: { canonical: "/kvkk-aydinlatma-metni" },
+  alternates: alternatifler("/kvkk-aydinlatma-metni", "tr"),
   robots: { index: true, follow: true },
 };
 
@@ -100,10 +101,16 @@ export default function KvkkPage() {
             ücretsiz olarak sonuçlandırılır.
           </p>
 
-          <h2>Çerezler ve ticari iletiler</h2>
+          <h2>Çerezler, ziyaret istatistikleri ve ticari iletiler</h2>
           <p>
-            İnternet sitemizde reklam veya takip amaçlı çerez kullanılmamaktadır. Önceden onayınız alınmadan
-            tarafınıza ticari elektronik ileti gönderilmez.
+            İnternet sitemizde reklam veya takip amaçlı çerez kullanılmamaktadır. Sitemizin nasıl
+            kullanıldığını anlamak için ziyaret istatistikleri anonim olarak tutulur: görüntülenen sayfalar,
+            ziyaretin geldiği kaynak (ör. arama motoru, sosyal medya), ülke ve şehir düzeyinde yaklaşık
+            konum, cihaz ve tarayıcı türü ile formun gönderilip gönderilmediği. Bu istatistikler için
+            cihazınıza çerez veya benzeri bir tanımlayıcı kaydedilmez, IP adresiniz saklanmaz ve form
+            alanlarına yazdığınız bilgiler okunmaz; kayıtlar en fazla 400 gün tutulur ve hizmet
+            sağlayıcımız ArvoOS altyapısında işlenir. Önceden onayınız alınmadan tarafınıza ticari
+            elektronik ileti gönderilmez.
           </p>
         </div>
       </section>

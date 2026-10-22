@@ -1,5 +1,7 @@
 // Anasayfa "Analiz stüdyosu" kartlarındaki dekoratif görseller. Tamamı saf SVG/HTML'dir.
 
+import type { Dil } from "@/lib/i18n";
+
 type Token = [string, string?];
 
 const CODE: Token[][] = [
@@ -16,18 +18,33 @@ const CODE: Token[][] = [
   [["print", "b"], ["(model."], ["summary", "f"], ["())"]],
 ];
 
-export function PythonCode() {
+/* İngilizce sayfada örnek kod da İngilizce: Türkçe değişken adı yabancı okura yabancı. */
+const CODE_EN: Token[][] = [
+  [["import", "k"], [" pandas "], ["as", "k"], [" pd"]],
+  [["import", "k"], [" statsmodels.formula.api "], ["as", "k"], [" smf"]],
+  [["from", "k"], [" scipy "], ["import", "k"], [" stats"]],
+  [],
+  [["df = pd."], ["read_csv", "f"], ["("], ['"survey_data.csv"', "s"], [")"]],
+  [["t, p = stats."], ["ttest_ind", "f"], ["(df.group_a, df.group_b)"]],
+  [["print", "b"], ["("], ['f"t = {t:.2f}, p = {p:.3f}"', "s"], [")"]],
+  [],
+  [["# Multiple linear regression", "c"]],
+  [["model = smf."], ["ols", "f"], ["("], ['"success ~ motivation + time"', "s"], [", df)."], ["fit", "f"], ["()"]],
+  [["print", "b"], ["(model."], ["summary", "f"], ["())"]],
+];
+
+export function PythonCode({ dil = "tr" }: { dil?: Dil }) {
   return (
     <div className="code" aria-hidden="true">
       <div className="code-bar">
         <i />
         <i />
         <i />
-        <span>analiz.ipynb</span>
+        <span>{dil === "en" ? "analysis.ipynb" : "analiz.ipynb"}</span>
       </div>
       <pre>
         <code>
-          {CODE.map((line, i) => (
+          {(dil === "en" ? CODE_EN : CODE).map((line, i) => (
             <span key={i}>
               {line.map(([text, kind], j) =>
                 kind ? (
@@ -48,7 +65,7 @@ export function PythonCode() {
   );
 }
 
-export function MeshVisual() {
+export function MeshVisual({ dil = "tr" }: { dil?: Dil }) {
   const shape = "M24 36 H206 Q244 36 244 74 V184 H176 V104 H24 Z";
   return (
     <svg className="viz" viewBox="0 0 320 200" aria-hidden="true">
@@ -76,16 +93,32 @@ export function MeshVisual() {
       <circle cx="210" cy="150" r="11" fill="#fff" stroke="rgba(0,0,0,.28)" />
       <rect x="284" y="36" width="10" height="148" rx="5" fill="url(#am-legend)" />
       <text x="280" y="30" fontSize="9" fill="#86868b" textAnchor="end">
-        Maks.
+        {dil === "en" ? "Max" : "Maks."}
       </text>
       <text x="280" y="198" fontSize="9" fill="#86868b" textAnchor="end">
-        Min.
+        {dil === "en" ? "Min" : "Min."}
       </text>
     </svg>
   );
 }
 
-export function QualVisual() {
+export function QualVisual({ dil = "tr" }: { dil?: Dil }) {
+  if (dil === "en") {
+    return (
+      <div aria-hidden="true">
+        <div className="qual-doc">
+          Without <span className="hl hl-a">my teammates&apos; support</span> I could not have got through
+          this. In the first months <span className="hl hl-b">I felt alone</span>; but{" "}
+          <span className="hl hl-c">my supervisor</span> was with me every step of the way.
+        </div>
+        <div className="qual-codes">
+          <span className="code-tag a">Social support</span>
+          <span className="code-tag b">Loneliness</span>
+          <span className="code-tag c">Mentoring</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div aria-hidden="true">
       <div className="qual-doc">

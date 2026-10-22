@@ -7,12 +7,13 @@ import Cta from "@/components/Cta";
 import Icon, { CATEGORY_ICON } from "@/components/Icon";
 import { categories, services, servicesByCategory } from "@/lib/services";
 import { serviceListSchema } from "@/lib/schema";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Hizmetlerimiz",
   description:
     "Tez ve makale yöntem danışmanlığı, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı, literatür tarama, anket, doçentlik dosyası, dil editörlüğü, çeviri ve kaynakça.",
-  alternates: { canonical: "/hizmetlerimiz" },
+  alternates: alternatifler("/hizmetlerimiz", "tr"),
   openGraph: {
     title: "Akademik Merkez Hizmetleri",
     description: "Tez, analiz ve dil süreçlerinde akademik danışmanlık hizmetleri.",

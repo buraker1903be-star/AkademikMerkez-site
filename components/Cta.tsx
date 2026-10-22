@@ -1,31 +1,44 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import { whatsappHref } from "./WhatsAppButton";
+import { METIN, yol, type Dil } from "@/lib/i18n";
 
-export default function Cta({
-  title = (
+const VARSAYILAN_BASLIK = {
+  tr: (
     <>
       Araştırmanızı <span className="serif gold">birlikte</span> güçlendirelim.
     </>
   ),
-  text = "Kapsam, takvim ve ücret işe başlamadan önce netleşir. Talebinize genellikle 24 saat içinde dönüş yapıyoruz.",
+  en: (
+    <>
+      Let&apos;s strengthen your research <span className="serif gold">together</span>.
+    </>
+  ),
+};
+
+export default function Cta({
+  dil = "tr",
+  title,
+  text,
 }: {
+  dil?: Dil;
   title?: React.ReactNode;
   text?: string;
 }) {
+  const m = METIN[dil];
   return (
     <section className="section-sm">
       <div className="container">
         <Reveal className="cta">
-          <p className="eyebrow">Ön görüşme</p>
-          <h2 className="headline">{title}</h2>
-          <p className="lede">{text}</p>
+          <p className="eyebrow">{m.onGorusme}</p>
+          <h2 className="headline">{title ?? VARSAYILAN_BASLIK[dil]}</h2>
+          <p className="lede">{text ?? m.ctaMetin}</p>
           <div className="hero-actions">
-            <Link href="/teklif-al" className="btn btn-gold btn-lg">
-              Teklif Al
+            <Link href={yol(dil, "/teklif-al")} className="btn btn-gold btn-lg">
+              {m.teklifAl}
             </Link>
-            <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-lg">
-              WhatsApp&apos;tan yazın
+            <a href={whatsappHref(m.whatsappMesaj)} target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-lg">
+              {m.whatsappYazin}
             </a>
           </div>
         </Reveal>

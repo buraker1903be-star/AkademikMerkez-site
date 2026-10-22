@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Icon from "./Icon";
 import type { Service } from "@/lib/services";
+import { hizmetYolu } from "@/lib/hizmetler";
+import { METIN, type Dil } from "@/lib/i18n";
 
-export default function ServiceCard({ service }: { service: Service }) {
+export default function ServiceCard({ service, dil = "tr" }: { service: Service; dil?: Dil }) {
   return (
-    <Link href={`/hizmetlerimiz/${service.slug}`} className="svc-card">
+    <Link href={hizmetYolu(dil, service.slug)} className="svc-card">
       <span className="svc-arrow">
         <Icon name="arrowUpRight" size={16} />
       </span>
-      {service.isNew && <span className="svc-badge">Yeni</span>}
+      {service.isNew && <span className="svc-badge">{METIN[dil].yeni}</span>}
       <h3>{service.title}</h3>
       <p>{service.short}</p>
       <span className="chip-row">

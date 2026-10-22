@@ -6,12 +6,13 @@ import Reveal from "@/components/Reveal";
 import Cta from "@/components/Cta";
 import Icon, { CATEGORY_ICON } from "@/components/Icon";
 import { categories } from "@/lib/services";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
   description:
     "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem ve danışmanlık desteği sunan kurumsal bir akademik danışmanlık merkezidir.",
-  alternates: { canonical: "/hakkimizda" },
+  alternates: alternatifler("/hakkimizda", "tr"),
 };
 
 const VALUES = [

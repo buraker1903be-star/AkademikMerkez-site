@@ -1,38 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import Icon from "./Icon";
-import { categories, servicesByCategory } from "@/lib/services";
+import { kategoridekiler, kategoriler, hizmetYolu } from "@/lib/hizmetler";
+import { METIN, karsiYol, yol, type Dil } from "@/lib/i18n";
 import { OPERATOR_NAME, SITE } from "@/lib/site";
 
-export default function Footer() {
+export default function Footer({ dil = "tr" }: { dil?: Dil }) {
+  const m = METIN[dil];
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
             <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} sizes="180px" />
-            <p>
-              Lisans, yüksek lisans, doktora ve doçentlik süreçlerinde yöntem, analiz, dil ve süreç
-              danışmanlığı. Araştırmacının özgün üretimini merkeze alan etik ve şeffaf bir çalışma
-              çerçevesi.
-            </p>
+            <p>{m.footerTanitim}</p>
             <div className="footer-contact">
               <a href={`mailto:${SITE.email}`}>
                 <Icon name="mail" size={16} /> {SITE.email}
               </a>
               <a href={`tel:${SITE.phone}`}>
-                <Icon name="phone" size={16} /> {SITE.phoneDisplay}
+                <Icon name="phone" size={16} /> {dil === "en" ? `+90 ${SITE.phoneDisplay.replace(/^0/, "")}` : SITE.phoneDisplay}
               </a>
             </div>
           </div>
 
-          {categories.map((c) => (
+          {kategoriler(dil).map((c) => (
             <div key={c.key}>
               <p className="footer-h">{c.title}</p>
               <ul>
-                {servicesByCategory(c.key).map((s) => (
+                {kategoridekiler(dil, c.key).map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/hizmetlerimiz/${s.slug}`}>{s.title}</Link>
+                    <Link href={hizmetYolu(dil, s.slug)}>{s.title}</Link>
                   </li>
                 ))}
               </ul>
@@ -40,36 +38,32 @@ export default function Footer() {
           ))}
 
           <div>
-            <p className="footer-h">Kurumsal</p>
+            <p className="footer-h">{m.kurumsal}</p>
             <ul>
-              <li><Link href="/hizmetlerimiz">Tüm Hizmetler</Link></li>
-              <li><Link href="/hakkimizda">Hakkımızda</Link></li>
-              <li><Link href="/etik-ilkelerimiz">Etik İlkelerimiz</Link></li>
-              <li><Link href="/sikca-sorulan-sorular">Sıkça Sorulan Sorular</Link></li>
-              <li><Link href="/iletisim">İletişim</Link></li>
-              <li><Link href="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</Link></li>
-              <li><Link href="/teklif-al">Teklif Al</Link></li>
-              <li><a href={`${SITE.appUrl}/takip`}>Dosya Takip</a></li>
-              <li><a href={`${SITE.appUrl}/login`}>Personel Girişi</a></li>
+              <li><Link href={yol(dil, "/hizmetlerimiz")}>{m.tumHizmetler}</Link></li>
+              <li><Link href={yol(dil, "/hakkimizda")}>{m.hakkimizda}</Link></li>
+              <li><Link href={yol(dil, "/etik-ilkelerimiz")}>{m.etikUzun}</Link></li>
+              <li><Link href={yol(dil, "/sikca-sorulan-sorular")}>{m.sssUzun}</Link></li>
+              <li><Link href={yol(dil, "/iletisim")}>{m.iletisim}</Link></li>
+              <li><Link href={yol(dil, "/kvkk-aydinlatma-metni")}>{m.kvkk}</Link></li>
+              <li><Link href={yol(dil, "/teklif-al")}>{m.teklifAl}</Link></li>
+              <li><a href={`${SITE.appUrl}/takip`}>{m.dosyaTakip}</a></li>
+              <li><a href={`${SITE.appUrl}/login`}>{m.personelGirisi}</a></li>
+              <li><a href={karsiYol(yol(dil, "/"))} hrefLang={dil === "en" ? "tr" : "en"}>{m.dilDegistir}</a></li>
             </ul>
           </div>
         </div>
 
-        <p className="footer-disclaimer">
-          Akademik Merkez bağımsız bir danışmanlık hizmetidir; YÖK, ÜAK veya herhangi bir üniversiteyle
-          kurumsal bağlantısı yoktur. Hizmetlerimiz danışmanlık esaslıdır; kişi adına tez, makale, ödev
-          veya başvuru dosyası hazırlanmaz ve hiçbir aşamada e-Devlet, YÖKSİS veya ÜAK sistem şifresi talep
-          edilmez. YÖK ve ÜAK&apos;ın güncel düzenlemeleri esas alınır; kabul veya sonuç garantisi verilmez,
-          nihai uygunluk ve başvuru sorumluluğu araştırmacıya aittir.
-        </p>
+        <p className="footer-disclaimer">{m.footerUyari}</p>
 
         <div className="footer-bottom">
           <span>
-            © {new Date().getFullYear()} {OPERATOR_NAME}. Tüm hakları saklıdır.
+            © {new Date().getFullYear()} {OPERATOR_NAME}. {m.haklar}
             {SITE.showLegalName && SITE.mersisNo && <> · MERSİS No: {SITE.mersisNo}</>}
           </span>
           <address>
             {SITE.address.street}, {SITE.address.postalCode} {SITE.address.district} / {SITE.address.city}
+            {dil === "en" ? ", Türkiye" : null}
           </address>
           <span className="footer-credit">
             Designed by

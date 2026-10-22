@@ -10,9 +10,10 @@ import Icon, { CATEGORY_ICON } from "@/components/Icon";
 import { MeshVisual, PythonCode, QualVisual, StatsVisual } from "@/components/Visuals";
 import { categories, services, servicesByCategory } from "@/lib/services";
 import { faqSchema } from "@/lib/schema";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: alternatifler("/", "tr"),
 };
 
 const MARQUEE = [

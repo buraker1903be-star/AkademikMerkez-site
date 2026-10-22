@@ -294,6 +294,8 @@ button { font: inherit; color: inherit; }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
 .nav-quiet { padding: 0 10px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color 0.2s; }
 .nav-quiet:hover { color: var(--ink); }
+/* Dil değiştirici (TR/EN): bulunulan sayfanın öbür dildeki karşılığına gider. Telefonda menünün içinde. */
+.nav-dil { min-width: 34px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line-2); border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
 
 .nav-toggle {
   display: none;

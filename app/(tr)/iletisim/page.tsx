@@ -5,12 +5,13 @@ import Cta from "@/components/Cta";
 import Icon from "@/components/Icon";
 import { whatsappHref } from "@/components/WhatsAppButton";
 import { SITE } from "@/lib/site";
+import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "İletişim",
   description:
     "Akademik Merkez ile e-posta, telefon veya WhatsApp üzerinden iletişime geçin; Teklif Al formuyla talebinizi iletin. Beylikdüzü / İstanbul.",
-  alternates: { canonical: "/iletisim" },
+  alternates: alternatifler("/iletisim", "tr"),
 };
 
 export default function ContactPage() {

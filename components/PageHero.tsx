@@ -2,30 +2,34 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import JsonLd from "./JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
+import { METIN, yol, type Dil } from "@/lib/i18n";
 
 type Crumb = { name: string; href: string };
 
 export default function PageHero({
+  dil = "tr",
   crumbs,
   eyebrow,
   title,
   lede,
   children,
 }: {
+  dil?: Dil;
   crumbs: Crumb[];
   eyebrow?: string;
   title: ReactNode;
   lede?: ReactNode;
   children?: ReactNode;
 }) {
-  const trail = [{ name: "Anasayfa", href: "/" }, ...crumbs];
+  const m = METIN[dil];
+  const trail = [{ name: m.anasayfa, href: yol(dil, "/") }, ...crumbs];
 
   return (
     <section className="page-hero">
       <JsonLd data={breadcrumbSchema(trail)} />
       <div className="page-aurora" aria-hidden="true" />
       <div className="container">
-        <nav aria-label="Sayfa konumu">
+        <nav aria-label={m.sayfaKonumu}>
           <ol className="crumbs">
             {trail.map((c, i) =>
               i === trail.length - 1 ? (
