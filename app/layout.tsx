@@ -84,6 +84,15 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false, email: false, address: false },
 };
 
+/*
+  Ziyaret istatistiği: ArvoOS Analitik modülü (AkademikMerkez paneli →
+  Analitik). Kod çerez kullanmaz, IP saklamaz; form alanlarının içeriğini
+  okumaz, yalnızca "form gönderildi" sayar. Anahtar gizli değil — hangi
+  siteye yazılacağını söylüyor, kaynak alan adı ArvoOS tarafında ayrıca
+  denetleniyor.
+*/
+const ANALITIK_ANAHTARI = "a81f300a74e542c4a4834501fb805954";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr" className={`${sans.variable} ${serif.variable}`}>
@@ -96,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div id="icerik">{children}</div>
         <Footer />
         <WhatsAppButton />
+        <script defer src="https://app.arvo-os.com/k.js" data-site={ANALITIK_ANAHTARI} />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
