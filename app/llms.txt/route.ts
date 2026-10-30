@@ -21,7 +21,8 @@ export function GET() {
     })
     .join("\n\n");
 
-  const yaziListesi = yazilar().map((y) => satir(y.baslik, yaziYolu(y.slug), y.ozet));
+  const yaziListesi = yazilar("tr").map((y) => satir(y.baslik, yaziYolu("tr", y.slug), y.ozet));
+  const enYazilar = yazilar("en").map((y) => satir(y.baslik, yaziYolu("en", y.slug), y.ozet));
 
   const metin = `# ${SITE.name}
 
@@ -48,8 +49,8 @@ ${[
 
 ## Optional
 
-- [English version](${SITE.url}/en): İngilizce tanıtım sayfaları (blog yalnızca Türkçe).
-`;
+- [English version](${SITE.url}/en): İngilizce tanıtım sayfaları.
+${enYazilar.length ? `\n### Blog (English)\n\n${enYazilar.join("\n")}\n` : ""}`;
 
   return new Response(metin, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

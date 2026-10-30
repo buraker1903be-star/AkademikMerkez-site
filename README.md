@@ -73,9 +73,15 @@ CI'da değil, Vercel tarafında yapılır.
 4. Commit + push. Vercel yeniden derler; yazı blog listesine, site haritasına,
    RSS'e (`/blog/rss.xml`), `llms.txt`'e ve bağlı hizmet sayfasının "Bu konuda
    yazdıklarımız" bölümüne kendiliğinden girer.
+5. **İngilizce çeviri (isteğe bağlı):** `content/blog/en/<ingilizce-adres>.md`
+   dosyasını aynı bilgi bloğuyla İngilizce yazın (`hizmetler` yine Türkçe
+   slug'larla) ve `lib/blog-eslesme.ts`'e `"<türkçe-adres>": "<ingilizce-adres>"`
+   satırını ekleyin. İki yazı birbirine bağlanır: dil düğmesi karşılığa gider,
+   arama motoru ikisini birbirinin çevirisi sayar. Çevirisi olmayan yazı
+   yalnızca Türkçe kalır.
 
 Bilgi bloğunda eksik/yanlış alan (tanımsız hizmet, 160'ı aşan açıklama, bozuk
-tarih) **derlemeyi düşürür**: hatalı yazı sessizce yayına çıkmasın diye. Yayın
+tarih) ya da eşlemesi tutmayan bir çeviri **derlemeyi düşürür**: hatalı yazı sessizce yayına çıkmasın diye. Yayın
 tarihi ileride olan yazı atlanır ve o tarihten sonraki ilk derlemede yayına
 girer (kendiliğinden değil; site statik).
 

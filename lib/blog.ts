@@ -9,8 +9,20 @@ import path from "node:path";
 import matter from "gray-matter";
 import { Marked, type Tokens } from "marked";
 import { services, type Faq } from "./services";
+import { HIZMET_SLUG_EN } from "./services-en";
+import { YAZI_SLUG_EN } from "./blog-eslesme";
+import type { Dil } from "./i18n";
 
-const KLASOR = path.join(process.cwd(), "content", "blog");
+/*
+  Türkçe yazılar content/blog/, İngilizceleri content/blog/en/ altında
+  (28.10'daki iki dilli site düzeniyle aynı: Türkçe kökte, İngilizce /en).
+  İngilizce yazı her zaman bir Türkçe yazının çevirisidir; eşleme
+  lib/blog-eslesme.ts'te.
+*/
+const KLASOR: Record<Dil, string> = {
+  tr: path.join(process.cwd(), "content", "blog"),
+  en: path.join(process.cwd(), "content", "blog", "en"),
+};
 
 /*
   Yazarlar tek yerde. Kişi adıyla yazılan yazı (unvanı ve uzmanlığıyla)
@@ -26,18 +38,28 @@ type Yazar = {
   profiller?: string[];
 };
 
-export const YAZARLAR: Record<string, Yazar> = {
+export const YAZARLAR: Record<string, Record<Dil, Yazar>> = {
   editorluk: {
-    ad: "Akademik Merkez Editörlüğü",
-    tur: "kurum",
-    hakkinda: "Yazılar, Akademik Merkez'in yöntem ve analiz danışmanlarınca hazırlanır ve yayımlanmadan önce editörlükçe gözden geçirilir.",
+    tr: {
+      ad: "Akademik Merkez Editörlüğü",
+      tur: "kurum",
+      hakkinda: "Yazılar, Akademik Merkez'in yöntem ve analiz danışmanlarınca hazırlanır ve yayımlanmadan önce editörlükçe gözden geçirilir.",
+    },
+    en: {
+      ad: "Akademik Merkez Editorial Team",
+      tur: "kurum",
+      hakkinda: "Articles are prepared by Akademik Merkez's methodology and analysis consultants and reviewed by the editorial team before publication.",
+    },
   },
 };
 
 export type Baslik = { id: string; metin: string };
 
 export type Yazi = {
+  dil: Dil;
   slug: string;
+  /** Öbür dildeki karşılığın slug'ı; çevirisi yoksa (ya da henüz yayında değilse) yok. */
+  karsilik?: string;
   baslik: string;
   /** Arama sonucunda görünen açıklama (en çok 160 karakter). */
   aciklama: string;
@@ -48,7 +70,10 @@ export type Yazi = {
   /** YYYY-AA-GG; içerik değişmediyse yayın tarihi. */
   guncelleme: string;
   yazar: Yazar;
-  /** İlgili hizmetlerin slug'ları; yazıdan hizmete, hizmetten yazıya bağlantı. */
+  /**
+   * İlgili hizmetlerin TÜRKÇE slug'ları (iki dilde de); yazıdan hizmete,
+   * hizmetten yazıya bağlantı. Adrese çevirmek için hizmetYazisiYolu().
+   */
   hizmetler: string[];
   anahtarKelimeler: string[];
   sss: Faq[];
@@ -122,20 +147,23 @@ function cevir(govde: string) {
   return { html, basliklar };
 }
 
-function oku(dosya: string): Yazi {
+const dosyalar = (dil: Dil) =>
+  fs.existsSync(KLASOR[dil]) ? fs.readdirSync(KLASOR[dil]).filter((d) => d.endsWith(".md")) : [];
+
+function oku(dil: Dil, dosya: string): Yazi {
   const slug = dosya.replace(/\.md$/, "");
+  const ad = `content/blog/${dil === "en" ? "en/" : ""}${dosya}`;
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) {
-    throw new Error(`content/blog/${dosya}: dosya adı adres olacak; yalnızca küçük harf, rakam ve tire.`);
+    throw new Error(`${ad}: dosya adı adres olacak; yalnızca küçük harf, rakam ve tire.`);
   }
-  const { data, content } = matter(fs.readFileSync(path.join(KLASOR, dosya), "utf8"));
-  const ad = `content/blog/${dosya}`;
+  const { data, content } = matter(fs.readFileSync(path.join(KLASOR[dil], dosya), "utf8"));
 
   const aciklama = metin(data.aciklama, "aciklama", ad);
   // Google açıklamayı 150-160 karakterde kesiyor; kesilen cümle tıklanmıyor.
   if (aciklama.length > 160) throw new Error(`${ad}: "aciklama" ${aciklama.length} karakter, en çok 160.`);
 
   const yazarAnahtari = typeof data.yazar === "string" ? data.yazar : "editorluk";
-  const yazar = YAZARLAR[yazarAnahtari];
+  const yazar = YAZARLAR[yazarAnahtari]?.[dil];
   if (!yazar) throw new Error(`${ad}: "${yazarAnahtari}" adlı yazar lib/blog.ts YAZARLAR içinde yok.`);
 
   const hizmetler: string[] = Array.isArray(data.hizmetler) ? data.hizmetler : [];
@@ -154,6 +182,7 @@ function oku(dosya: string): Yazi {
   const kelime = content.split(/\s+/).filter(Boolean).length;
 
   return {
+    dil,
     slug,
     baslik: metin(data.baslik, "baslik", ad),
     aciklama,
@@ -170,33 +199,78 @@ function oku(dosya: string): Yazi {
   };
 }
 
-let onbellek: Yazi[] | null = null;
+/*
+  Eşleme denetimi: tablodaki her satırın iki dosyası da olmalı, her
+  İngilizce dosya tabloda olmalı. Yoksa derleme düşer — dil değiştirici
+  olmayan bir sayfaya götürmesin ya da çeviri "karşılığı yok" diye
+  sessizce yalnız kalmasın.
+*/
+function eslesmeyiDenetle() {
+  const tr = new Set(dosyalar("tr").map((d) => d.replace(/\.md$/, "")));
+  const en = new Set(dosyalar("en").map((d) => d.replace(/\.md$/, "")));
+  const sorunlar: string[] = [];
+  for (const [t, e] of Object.entries(YAZI_SLUG_EN)) {
+    if (!tr.has(t)) sorunlar.push(`content/blog/${t}.md yok`);
+    if (!en.has(e)) sorunlar.push(`content/blog/en/${e}.md yok`);
+  }
+  const eslenen = new Set(Object.values(YAZI_SLUG_EN));
+  for (const e of en) if (!eslenen.has(e)) sorunlar.push(`content/blog/en/${e}.md lib/blog-eslesme.ts'te yok`);
+  if (sorunlar.length) throw new Error(`Blog dil eşlemesi bozuk: ${sorunlar.join("; ")}.`);
+}
+
+let onbellek: Record<Dil, Yazi[]> | null = null;
 
 /*
   Yayımlanmış yazılar, en yeniden eskiye. Yayın tarihi ileride olan yazı
   atlanır; site statik olduğu için o tarihten sonraki İLK DERLEMEDE
   yayına girer (kendiliğinden değil). Gün Türkiye saatiyle: sunucu UTC'de
   ve gece 00:00-03:00 arasında UTC günü bir önceki gündür.
+
+  Karşılık yalnızca İKİ yazı da yayındaysa yazılır: biri ileri tarihliyse
+  dil değiştirici ve hreflang henüz olmayan sayfayı göstermesin.
 */
-export function yazilar(): Yazi[] {
+export function yazilar(dil: Dil = "tr"): Yazi[] {
   if (!onbellek) {
+    eslesmeyiDenetle();
     const bugun = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul" });
-    const dosyalar = fs.existsSync(KLASOR) ? fs.readdirSync(KLASOR).filter((d) => d.endsWith(".md")) : [];
-    onbellek = dosyalar
-      .map(oku)
-      .filter((y) => y.yayin <= bugun)
-      .sort((a, b) => b.yayin.localeCompare(a.yayin) || a.baslik.localeCompare(b.baslik, "tr"));
+    const yayinda = (d: Dil) =>
+      dosyalar(d)
+        .map((f) => oku(d, f))
+        .filter((y) => y.yayin <= bugun)
+        .sort((a, b) => b.yayin.localeCompare(a.yayin) || a.baslik.localeCompare(b.baslik, d));
+    const tr = yayinda("tr");
+    const en = yayinda("en");
+    const trSlugu = Object.fromEntries(Object.entries(YAZI_SLUG_EN).map(([t, e]) => [e, t]));
+    for (const y of tr) {
+      const e = YAZI_SLUG_EN[y.slug];
+      if (e && en.some((x) => x.slug === e)) y.karsilik = e;
+    }
+    for (const y of en) {
+      const t = trSlugu[y.slug];
+      if (tr.some((x) => x.slug === t)) y.karsilik = t;
+    }
+    onbellek = { tr, en };
   }
-  return onbellek;
+  return onbellek[dil];
 }
 
-export const yaziBul = (slug: string) => yazilar().find((y) => y.slug === slug);
+export const yaziBul = (dil: Dil, slug: string) => yazilar(dil).find((y) => y.slug === slug);
 
-/** Bir hizmete bağlanan yazılar: hizmet sayfasının "İlgili yazılar" bölümü. */
-export const hizmetinYazilari = (hizmetSlug: string) => yazilar().filter((y) => y.hizmetler.includes(hizmetSlug));
+/** Bir hizmete (Türkçe slug) bağlanan yazılar: hizmet sayfasının "İlgili yazılar" bölümü. */
+export const hizmetinYazilari = (dil: Dil, trHizmetSlug: string) =>
+  yazilar(dil).filter((y) => y.hizmetler.includes(trHizmetSlug));
 
-export const yaziYolu = (slug: string) => `/blog/${slug}`;
+export const blogYolu = (dil: Dil) => (dil === "en" ? "/en/blog" : "/blog");
+export const yaziYolu = (dil: Dil, slug: string) => `${blogYolu(dil)}/${slug}`;
 
-/** "30 Ekim 2026" */
-export const tarihYazisi = (gun: string) =>
-  new Date(`${gun}T12:00:00Z`).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Istanbul" });
+/** Yazının bağlandığı hizmetin o dildeki slug'ı. */
+export const hizmetSlugu = (dil: Dil, trSlug: string) => (dil === "en" ? HIZMET_SLUG_EN[trSlug] : trSlug);
+
+/** "30 Ekim 2026" / "30 October 2026" */
+export const tarihYazisi = (gun: string, dil: Dil = "tr") =>
+  new Date(`${gun}T12:00:00Z`).toLocaleDateString(dil === "en" ? "en-GB" : "tr-TR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Istanbul",
+  });

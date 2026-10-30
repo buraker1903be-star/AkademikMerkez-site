@@ -44,7 +44,7 @@ export default function Footer({ dil = "tr" }: { dil?: Dil }) {
               <li><Link href={yol(dil, "/hakkimizda")}>{m.hakkimizda}</Link></li>
               <li><Link href={yol(dil, "/etik-ilkelerimiz")}>{m.etikUzun}</Link></li>
               <li><Link href={yol(dil, "/sikca-sorulan-sorular")}>{m.sssUzun}</Link></li>
-              {dil === "tr" && <li><Link href="/blog">{m.blog}</Link></li>}
+              <li><Link href={yol(dil, "/blog")}>{m.blog}</Link></li>
               <li><Link href={yol(dil, "/iletisim")}>{m.iletisim}</Link></li>
               <li><Link href={yol(dil, "/kvkk-aydinlatma-metni")}>{m.kvkk}</Link></li>
               <li><Link href={yol(dil, "/teklif-al")}>{m.teklifAl}</Link></li>

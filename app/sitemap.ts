@@ -37,23 +37,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   /*
-    Blog yalnızca Türkçe: İngilizce satır ve hreflang yok. Tarih sabit
-    LAST_MODIFIED değil, yazının kendi güncelleme günü; arama motoru
-    yeniden taramaya bu tarihe bakarak karar veriyor ve her yazıya aynı
-    tarihi yazmak sinyali anlamsızlaştırır.
+    Blog: tarih sabit LAST_MODIFIED değil, yazının kendi güncelleme günü;
+    arama motoru yeniden taramaya bu tarihe bakarak karar veriyor ve her
+    yazıya aynı tarihi yazmak sinyali anlamsızlaştırır. Çevirisi olan
+    yazı karşılığıyla hreflang taşır; olmayan Türkçe yazı yalnız kalır
+    (İngilizce karşılık yazılmaz, bkz. yalnizTurkce).
   */
-  const liste = yazilar();
-  const blog: MetadataRoute.Sitemap = [
-    ...(liste.length
-      ? [{ url: adres("/blog"), lastModified: new Date(liste.map((y) => y.guncelleme).sort().at(-1)!), changeFrequency: "weekly" as const, priority: 0.7 }]
-      : []),
-    ...liste.map((y) => ({
-      url: adres(yaziYolu(y.slug)),
+  const sonGun = (liste: { guncelleme: string }[]) => new Date(liste.map((y) => y.guncelleme).sort().at(-1)!);
+  const blog: MetadataRoute.Sitemap = [];
+  const tr = yazilar("tr");
+  const en = yazilar("en");
+  if (tr.length || en.length) {
+    const languages = { "tr-TR": adres("/blog"), en: adres("/en/blog") };
+    if (tr.length) blog.push({ url: adres("/blog"), lastModified: sonGun(tr), changeFrequency: "weekly", priority: 0.7, alternates: { languages } });
+    if (en.length) blog.push({ url: adres("/en/blog"), lastModified: sonGun(en), changeFrequency: "weekly", priority: 0.6, alternates: { languages } });
+  }
+  for (const y of [...tr, ...en]) {
+    const karsi = y.karsilik ? adres(yaziYolu(y.dil === "tr" ? "en" : "tr", y.karsilik)) : undefined;
+    const kendi = adres(yaziYolu(y.dil, y.slug));
+    blog.push({
+      url: kendi,
       lastModified: new Date(y.guncelleme),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-  ];
+      changeFrequency: "monthly",
+      priority: y.dil === "tr" ? 0.7 : 0.6,
+      ...(karsi ? { alternates: { languages: y.dil === "tr" ? { "tr-TR": kendi, en: karsi } : { "tr-TR": karsi, en: kendi } } } : {}),
+    });
+  }
 
   return [...ikiDilli, ...blog];
 }

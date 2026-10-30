@@ -6,11 +6,13 @@ import Reveal from "@/components/Reveal";
 import Accordion from "@/components/Accordion";
 import ServiceCard from "@/components/ServiceCard";
 import JsonLd from "@/components/JsonLd";
+import BlogCard from "@/components/BlogCard";
 import Icon from "@/components/Icon";
 import { whatsappHref } from "@/components/WhatsAppButton";
 import { hizmetBul, hizmetler, hizmetYolu, kategori, kategoridekiler } from "@/lib/hizmetler";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 import { alternatifler, yol } from "@/lib/i18n";
+import { hizmetinYazilari } from "@/lib/blog";
 
 export const dynamicParams = false;
 
@@ -42,6 +44,8 @@ export default function ServiceDetailPageEn({ params }: { params: { slug: string
   const category = kategori("en", service.category);
   const siblings = kategoridekiler("en", service.category).filter((s) => s.slug !== service.slug);
   const related = (siblings.length >= 3 ? siblings : [...siblings, ...hizmetler("en").filter((s) => s.category !== service.category)]).slice(0, 3);
+  // Hizmetten yazıya bağlantı; yazılar hizmeti Türkçe slug'ıyla anar.
+  const yazilar = hizmetinYazilari("en", service.trSlug).slice(0, 3);
   /* Form seçeneğinin değeri hizmetin Türkçe adı (components/LeadForm.tsx). */
   const teklif = `${yol("en", "/teklif-al")}?hizmet=${encodeURIComponent(service.trTitle)}`;
 
@@ -163,6 +167,24 @@ export default function ServiceDetailPageEn({ params }: { params: { slug: string
           </aside>
         </div>
       </section>
+
+      {yazilar.length > 0 && (
+        <section className="section-sm">
+          <div className="container">
+            <Reveal className="section-head left">
+              <p className="eyebrow">Blog</p>
+              <h2 className="title-lg">Our articles on this topic</h2>
+            </Reveal>
+            <div className="blog-grid stretch">
+              {yazilar.map((y, i) => (
+                <Reveal key={y.slug} delay={i * 70}>
+                  <BlogCard yazi={y} baslik="h3" />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section section-gray">
         <div className="container">

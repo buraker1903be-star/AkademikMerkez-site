@@ -6,6 +6,7 @@
 // karşılığı aşağıdaki tabloda; dil değiştirici ve hreflang aynı
 // tablodan okur — iki ayrı yerde tutulsa biri eksik kalırdı.
 import { HIZMET_SLUG_EN } from "./services-en";
+import { YAZI_SLUG_EN } from "./blog-eslesme";
 
 export type Dil = "tr" | "en";
 
@@ -18,10 +19,13 @@ const SAYFALAR: [tr: string, en: string][] = [
   ["/iletisim", "/en/contact"],
   ["/kvkk-aydinlatma-metni", "/en/privacy-notice"],
   ["/teklif-al", "/en/get-a-quote"],
+  ["/blog", "/en/blog"],
 ];
 
 const TR_HIZMET = "/hizmetlerimiz/";
 const EN_HIZMET = "/en/services/";
+const TR_BLOG = "/blog/";
+const EN_BLOG = "/en/blog/";
 
 /** Türkçe yolun İngilizce karşılığı (yoksa İngilizce anasayfa). */
 export function enYolu(trYol: string): string {
@@ -30,6 +34,14 @@ export function enYolu(trYol: string): string {
   if (trYol.startsWith(TR_HIZMET)) {
     const en = HIZMET_SLUG_EN[trYol.slice(TR_HIZMET.length)];
     if (en) return EN_HIZMET + en;
+  }
+  /*
+    Çevirisi olmayan yazıdan dil değiştirici İngilizce blog listesine
+    gider. Bu yol hreflang'e YAZILMAZ: o yazılar yalnizTurkce() kullanır.
+  */
+  if (trYol.startsWith(TR_BLOG)) {
+    const en = YAZI_SLUG_EN[trYol.slice(TR_BLOG.length)];
+    return en ? EN_BLOG + en : "/en/blog";
   }
   return "/en";
 }
@@ -42,6 +54,11 @@ export function trYolu(enYol: string): string {
     const slug = enYol.slice(EN_HIZMET.length);
     const tr = Object.entries(HIZMET_SLUG_EN).find(([, en]) => en === slug)?.[0];
     if (tr) return TR_HIZMET + tr;
+  }
+  if (enYol.startsWith(EN_BLOG)) {
+    const slug = enYol.slice(EN_BLOG.length);
+    const tr = Object.entries(YAZI_SLUG_EN).find(([, en]) => en === slug)?.[0];
+    return tr ? TR_BLOG + tr : "/blog";
   }
   return "/";
 }
@@ -64,10 +81,9 @@ export function alternatifler(trYol: string, dil: Dil) {
 }
 
 /**
- * Yalnızca Türkçesi olan sayfa (blog): hreflang'e İngilizce karşılık
- * YAZILMAZ. alternatifler() karşılığı olmayan yolu İngilizce anasayfaya
- * bağlıyor; blog yazısı için bu "bu yazının çevirisi /en'dir" demek olur
- * ve arama motoru iki farklı sayfayı birbirinin çevirisi sayar.
+ * Çevirisi olmayan Türkçe yazı: hreflang'e İngilizce karşılık YAZILMAZ.
+ * alternatifler() böyle bir yazıyı /en/blog'a bağlardı; bu, arama
+ * motoruna "bu yazının çevirisi İngilizce blog listesidir" demek olur.
  */
 export function yalnizTurkce(trYol: string) {
   return { canonical: trYol, languages: { "tr-TR": trYol, "x-default": trYol } };

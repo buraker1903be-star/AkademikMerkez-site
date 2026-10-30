@@ -3,6 +3,7 @@ import { allTools, type Faq, type Service } from "./services";
 import { hizmetYolu, kategori, kategoridekiler, kategoriler } from "./hizmetler";
 import { yol, type Dil } from "./i18n";
 import type { Yazi } from "./blog";
+import { HIZMET_SLUG_EN } from "./services-en";
 
 const ACIKLAMA = {
   tr: "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı ile literatür, dil editörlüğü ve akademik çeviri hizmetleri sunan bağımsız bir akademik danışmanlık merkezidir.",
@@ -142,10 +143,14 @@ export function serviceListSchema(list: Service[], dil: Dil = "tr") {
   };
 }
 
-const BLOG_ID = `${SITE.url}/blog#blog`;
+const blogId = (dil: Dil) => `${SITE.url}${dil === "en" ? "/en/blog" : "/blog"}#blog`;
+const yaziUrl = (dil: Dil, slug: string) => `${SITE.url}${dil === "en" ? "/en/blog" : "/blog"}/${slug}`;
+const DIL_KODU: Record<Dil, string> = { tr: "tr-TR", en: "en" };
 
 function yazarSchema(y: Yazi) {
-  if (y.yazar.tur === "kurum") return { "@type": "Organization", name: y.yazar.ad, url: `${SITE.url}/blog`, parentOrganization: { "@id": ORG_ID } };
+  if (y.yazar.tur === "kurum") {
+    return { "@type": "Organization", name: y.yazar.ad, url: `${SITE.url}${yol(y.dil, "/blog")}`, parentOrganization: { "@id": ORG_ID } };
+  }
   return {
     "@type": "Person",
     name: y.yazar.ad,
@@ -159,10 +164,12 @@ function yazarSchema(y: Yazi) {
   Yazı sayfasının yapısal verisi. Tarihler ve yazar, hem Google'ın
   makale sonuçları hem de yapay zeka arama motorları için "bu bilgi ne
   kadar güncel ve kimden" sorusunun cevabı; ekranda görünenle aynı
-  olmalı, o yüzden ikisi de aynı Yazi nesnesinden okunur.
+  olmalı, o yüzden ikisi de aynı Yazi nesnesinden okunur. Çeviri,
+  aslına workTranslation/translationOfWork ile bağlanır.
 */
 export function blogPostingSchema(y: Yazi) {
-  const url = `${SITE.url}/blog/${y.slug}`;
+  const url = yaziUrl(y.dil, y.slug);
+  const karsi: Dil = y.dil === "en" ? "tr" : "en";
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -174,33 +181,41 @@ export function blogPostingSchema(y: Yazi) {
     mainEntityOfPage: url,
     datePublished: y.yayin,
     dateModified: y.guncelleme,
-    inLanguage: "tr-TR",
+    inLanguage: DIL_KODU[y.dil],
     timeRequired: `PT${y.okumaDakika}M`,
     image: `${SITE.url}/opengraph-image.png`,
     author: yazarSchema(y),
     publisher: { "@id": ORG_ID },
-    isPartOf: { "@id": BLOG_ID },
+    isPartOf: { "@id": blogId(y.dil) },
     ...(y.anahtarKelimeler.length ? { keywords: y.anahtarKelimeler.join(", ") } : {}),
     ...(y.hizmetler.length
-      ? { about: y.hizmetler.map((h) => ({ "@type": "Service", url: `${SITE.url}${hizmetYolu("tr", h)}` })) }
+      ? {
+          about: y.hizmetler.map((h) => ({
+            "@type": "Service",
+            url: `${SITE.url}${hizmetYolu(y.dil, y.dil === "en" ? HIZMET_SLUG_EN[h] : h)}`,
+          })),
+        }
+      : {}),
+    ...(y.karsilik
+      ? { [y.dil === "en" ? "translationOfWork" : "workTranslation"]: { "@id": `${yaziUrl(karsi, y.karsilik)}#yazi` } }
       : {}),
   };
 }
 
-export function blogSchema(liste: Yazi[]) {
+export function blogSchema(liste: Yazi[], dil: Dil = "tr") {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": BLOG_ID,
-    url: `${SITE.url}/blog`,
+    "@id": blogId(dil),
+    url: `${SITE.url}${yol(dil, "/blog")}`,
     name: "Akademik Merkez Blog",
-    inLanguage: "tr-TR",
+    inLanguage: DIL_KODU[dil],
     publisher: { "@id": ORG_ID },
     blogPost: liste.map((y) => ({
       "@type": "BlogPosting",
-      "@id": `${SITE.url}/blog/${y.slug}#yazi`,
+      "@id": `${yaziUrl(dil, y.slug)}#yazi`,
       headline: y.baslik,
-      url: `${SITE.url}/blog/${y.slug}`,
+      url: yaziUrl(dil, y.slug),
       datePublished: y.yayin,
       dateModified: y.guncelleme,
     })),

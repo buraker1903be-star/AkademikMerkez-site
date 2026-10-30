@@ -30,13 +30,18 @@ uçtan uca sınayın.
 
 ## Blog
 
-Yalnızca Türkçe, `/blog`. Yazılar `content/blog/*.md`, derlemede
-`lib/blog.ts` okuyup denetler; ekleme adımları `README.md`'de.
+İki dilli: Türkçe `/blog` (`content/blog/*.md`), İngilizce `/en/blog`
+(`content/blog/en/*.md`). Derlemede `lib/blog.ts` okuyup denetler;
+ekleme adımları `README.md`'de. Sayfa gövdeleri iki dilde ortak
+(`components/BlogListesi.tsx`, `components/YaziSayfasi.tsx`).
 
-- **İngilizce karşılık yazılmaz.** `alternatifler()` karşılığı olmayan yolu
-  `/en`'e bağlıyor; blog sayfaları `yalnizTurkce()` kullanır, site
-  haritasında da İngilizce satırı yok. İngilizce yazı eklenirse önce
-  `lib/i18n.ts`'teki eşleme kurulmalı.
+- **Çeviri eşlemesi tek yerde:** `lib/blog-eslesme.ts`. Saf dosya, çünkü
+  dil değiştirici (istemci) onu `lib/i18n.ts` üzerinden okuyor; `lib/blog.ts`
+  fs kullandığı için tarayıcı paketine giremez. Her İngilizce yazı bir
+  Türkçe yazının çevirisidir; eşlemesi tutmayan dosya derlemeyi düşürür.
+- **Çevirisi olmayan Türkçe yazıya İngilizce karşılık YAZILMAZ.**
+  `alternatifler()` onu `/en/blog`'a bağlardı; bu yazılar `yalnizTurkce()`
+  kullanır (`lib/blog-metadata.ts`), site haritasında da hreflang yok.
 - **Yazılar etik çerçeveyle çelişmez.** Öğretici olur ("nasıl seçilir,
   nasıl raporlanır"); "tezinizi yazarız" çağrışımı yapan başlık ya da
   metin yok (`/etik-ilkelerimiz`). Örnek sayısal sonuçlar "biçimi

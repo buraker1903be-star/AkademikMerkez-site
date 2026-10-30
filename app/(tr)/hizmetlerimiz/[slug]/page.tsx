@@ -44,7 +44,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
   const category = getCategory(service.category);
   const siblings = servicesByCategory(service.category).filter((s) => s.slug !== service.slug);
   // Hizmetten yazıya bağlantı: yazı hizmete bağlanıyor, hizmet de yazıya; iç bağlantı iki yönlü olunca ikisi de güçlenir.
-  const yazilar = hizmetinYazilari(service.slug).slice(0, 3);
+  const yazilar = hizmetinYazilari("tr", service.slug).slice(0, 3);
   const related = (siblings.length >= 3 ? siblings : [...siblings, ...services.filter((s) => s.category !== service.category)]).slice(0, 3);
 
   return (
