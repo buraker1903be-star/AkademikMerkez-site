@@ -5,7 +5,7 @@ import { alternatifler } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
-  description: "Akademik Merkez KVKK Aydınlatma Metni ve kişisel verilerin işlenmesi hakkında bilgilendirme.",
+  description: "AkademikMerkez KVKK Aydınlatma Metni ve kişisel verilerin işlenmesi hakkında bilgilendirme.",
   alternates: alternatifler("/kvkk-aydinlatma-metni", "tr"),
   robots: { index: true, follow: true },
 };
@@ -24,7 +24,7 @@ export default function KvkkPage() {
         <div className="container prose">
           <h2>Veri sorumlusu</h2>
           <p>
-            Akademik Merkez markasının işletmecisi {OPERATOR_NAME} (&quot;Veri Sorumlusu&quot;) olarak,
+            AkademikMerkez markasının işletmecisi {OPERATOR_NAME} (&quot;Veri Sorumlusu&quot;) olarak,
             akademikmerkez.com internet sitesi, &quot;Teklif Al&quot; formu, e-posta, telefon ve WhatsApp
             üzerinden bizimle paylaştığınız kişisel verilerinizi 6698 sayılı Kişisel Verilerin Korunması
             Kanunu (&quot;KVKK&quot;) ve ilgili mevzuata uygun olarak işlemekteyiz.

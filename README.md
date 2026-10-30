@@ -1,4 +1,4 @@
-# Akademik Merkez — Public Site
+# AkademikMerkez — Public Site
 
 Next.js 14 ile hazırlanmış, tamamen statik (SSG) SEO odaklı tanıtım sitesi.
 

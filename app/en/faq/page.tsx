@@ -10,7 +10,7 @@ import { alternatifler, yol } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Frequently asked questions about Akademik Merkez's services, the analysis consulting process, confidentiality, YÖK and ÜAK regulations and our ethical consulting framework.",
+    "Frequently asked questions about AkademikMerkez's services, the analysis consulting process, confidentiality, YÖK and ÜAK regulations and our ethical consulting framework.",
   alternates: alternatifler("/sikca-sorulan-sorular", "en"),
 };
 
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Are you affiliated with YÖK or ÜAK, and do you guarantee results?",
-    a: "No. Akademik Merkez is an independent consultancy with no institutional affiliation to YÖK (Turkey's Council of Higher Education), ÜAK (Inter-University Board) or any university. We take into account the current regulations published by these institutions, but we do not guarantee acceptance, publication, graduation or academic success. Final control and responsibility rest with the researcher.",
+    a: "No. AkademikMerkez is an independent consultancy with no institutional affiliation to YÖK (Turkey's Council of Higher Education), ÜAK (Inter-University Board) or any university. We take into account the current regulations published by these institutions, but we do not guarantee acceptance, publication, graduation or academic success. Final control and responsibility rest with the researcher.",
   },
   {
     q: "Do I need to share my e-Devlet, YÖKSİS or ÜAK password?",

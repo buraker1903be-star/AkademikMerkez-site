@@ -10,7 +10,7 @@ import { alternatifler } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Sıkça Sorulan Sorular",
   description:
-    "Akademik Merkez hizmetleri, analiz danışmanlığı süreci, gizlilik, YÖK ve ÜAK düzenlemeleri ve etik danışmanlık çerçevesi hakkında sıkça sorulan sorular.",
+    "AkademikMerkez hizmetleri, analiz danışmanlığı süreci, gizlilik, YÖK ve ÜAK düzenlemeleri ve etik danışmanlık çerçevesi hakkında sıkça sorulan sorular.",
   alternates: alternatifler("/sikca-sorulan-sorular", "tr"),
 };
 
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "YÖK ve ÜAK ile bağlantınız var mı; sonuç garantisi veriyor musunuz?",
-    a: "Hayır. Akademik Merkez bağımsız bir danışmanlık hizmetidir; YÖK, ÜAK veya herhangi bir üniversiteyle kurumsal bağlantısı yoktur. İlgili kurumların yayımladığı güncel düzenlemeleri dikkate alırız ancak kabul, yayın, mezuniyet veya akademik başarı garantisi vermeyiz. Nihai kontrol ve sorumluluk araştırmacıya aittir.",
+    a: "Hayır. AkademikMerkez bağımsız bir danışmanlık hizmetidir; YÖK, ÜAK veya herhangi bir üniversiteyle kurumsal bağlantısı yoktur. İlgili kurumların yayımladığı güncel düzenlemeleri dikkate alırız ancak kabul, yayın, mezuniyet veya akademik başarı garantisi vermeyiz. Nihai kontrol ve sorumluluk araştırmacıya aittir.",
   },
   {
     q: "e-Devlet, YÖKSİS veya ÜAK şifremi paylaşmam gerekiyor mu?",

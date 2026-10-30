@@ -10,7 +10,7 @@ import { METIN, alternatifler, yol } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Akademik Merkez by email, phone or WhatsApp, or send your request with the Get a Quote form. Beylikdüzü, Istanbul, Türkiye.",
+    "Contact AkademikMerkez by email, phone or WhatsApp, or send your request with the Get a Quote form. Beylikdüzü, Istanbul, Türkiye.",
   alternates: alternatifler("/iletisim", "en"),
 };
 

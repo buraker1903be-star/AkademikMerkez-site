@@ -11,7 +11,7 @@ import { alternatifler } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Hakkımızda",
   description:
-    "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem ve danışmanlık desteği sunan kurumsal bir akademik danışmanlık merkezidir.",
+    "AkademikMerkez; tez, makale ve doçentlik süreçlerinde yöntem ve danışmanlık desteği sunan kurumsal bir akademik danışmanlık merkezidir.",
   alternates: alternatifler("/hakkimizda", "tr"),
 };
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <Reveal className="split-copy prose" delay={100}>
             <h2>Kim olduğumuz</h2>
             <p>
-              Akademik Merkez, lisans, yüksek lisans, doktora öğrencileri ve doçentlik başvurusu hazırlayan
+              AkademikMerkez, lisans, yüksek lisans, doktora öğrencileri ve doçentlik başvurusu hazırlayan
               akademisyenler için kurulmuş bir akademik danışmanlık merkezidir. Amacımız, araştırmacıların
               karşılaştığı yöntem, analiz, dil ve süreç zorluklarını; alanında uzman danışmanlarımızla
               birlikte, doğru ve şeffaf bir şekilde aşmalarına yardımcı olmaktır.
@@ -72,7 +72,7 @@ export default function AboutPage() {
       <section className="section section-gray">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Neden Akademik Merkez</p>
+            <p className="eyebrow">Neden AkademikMerkez</p>
             <h2 className="headline">
               Güven, <span className="serif">ayrıntıda gizli.</span>
             </h2>

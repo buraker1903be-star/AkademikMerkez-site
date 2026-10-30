@@ -30,7 +30,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     keywords: [service.title, ...service.tools, kategori("en", service.category).title, "academic consulting"],
     alternates: alternatifler(`/hizmetlerimiz/${service.trSlug}`, "en"),
     openGraph: {
-      title: `${service.title} | Akademik Merkez`,
+      title: `${service.title} | AkademikMerkez`,
       description: service.short,
       url: hizmetYolu("en", service.slug),
     },

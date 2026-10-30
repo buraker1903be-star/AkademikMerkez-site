@@ -7,18 +7,18 @@ import { alternatifler } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Etik İlkelerimiz",
   description:
-    "Akademik Merkez'in akademik dürüstlük, YÖK ve ÜAK düzenlemelerine uyum, destek beyanı, gizlilik ve şeffaflık konusundaki etik ilkeleri.",
+    "AkademikMerkez'in akademik dürüstlük, YÖK ve ÜAK düzenlemelerine uyum, destek beyanı, gizlilik ve şeffaflık konusundaki etik ilkeleri.",
   alternates: alternatifler("/etik-ilkelerimiz", "tr"),
 };
 
 const PRINCIPLES = [
   {
     t: "Danışmanlık esaslı hizmet modeli",
-    d: "Akademik Merkez olarak sunduğumuz tüm hizmetler; araştırma, yazım veya başvuru sürecinin öğrenci ya da akademisyen tarafından yürütülmesini destekleyen danışmanlık hizmetleridir. Herhangi bir tez, makale, ödev veya başvuru dosyasını müşterimiz adına baştan sona üretip teslim etmeyiz.",
+    d: "AkademikMerkez olarak sunduğumuz tüm hizmetler; araştırma, yazım veya başvuru sürecinin öğrenci ya da akademisyen tarafından yürütülmesini destekleyen danışmanlık hizmetleridir. Herhangi bir tez, makale, ödev veya başvuru dosyasını müşterimiz adına baştan sona üretip teslim etmeyiz.",
   },
   {
     t: "YÖK, ÜAK ve kurum kurallarına uyum",
-    d: "Danışmanlık kapsamı belirlenirken YÖK'ün bilimsel araştırma ve yayın etiğine ilişkin düzenlemeleri, ilgili üniversitenin güncel tez yazım kılavuzu ve etik kuralları ile doçentlik başvurularında ÜAK'ın yürürlükteki doçentlik mevzuatı ve başvuru şartları dikkate alınır. Akademik Merkez'in YÖK veya ÜAK ile kurumsal bağlantısı yoktur; bir başvurunun kabul edileceğini ya da akademik sonuç alınacağını garanti etmez. Çalışmanın içeriği, özgünlüğü, beyanları ve teslimi araştırmacının sorumluluğundadır.",
+    d: "Danışmanlık kapsamı belirlenirken YÖK'ün bilimsel araştırma ve yayın etiğine ilişkin düzenlemeleri, ilgili üniversitenin güncel tez yazım kılavuzu ve etik kuralları ile doçentlik başvurularında ÜAK'ın yürürlükteki doçentlik mevzuatı ve başvuru şartları dikkate alınır. AkademikMerkez'in YÖK veya ÜAK ile kurumsal bağlantısı yoktur; bir başvurunun kabul edileceğini ya da akademik sonuç alınacağını garanti etmez. Çalışmanın içeriği, özgünlüğü, beyanları ve teslimi araştırmacının sorumluluğundadır.",
   },
   {
     t: "Analizde şeffaflık",

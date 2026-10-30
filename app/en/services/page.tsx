@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Thesis and article methodology consulting, statistical analysis, quantitative analysis with SPSS, qualitative analysis with MAXQDA, ANSYS and Python analysis consulting, literature review, surveys, associate professorship files, academic editing, translation and references.",
   alternates: alternatifler("/hizmetlerimiz", "en"),
   openGraph: {
-    title: "Akademik Merkez Services",
+    title: "AkademikMerkez Services",
     description: "Academic consulting services across thesis, analysis and language work.",
     url: yol("en", "/hizmetlerimiz"),
   },

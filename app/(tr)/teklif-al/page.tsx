@@ -11,7 +11,7 @@ import { alternatifler } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Teklif Al",
   description:
-    "İhtiyacınızı kısaca anlatın; Akademik Merkez uzman ekibi size en uygun danışmanı, süreç planını ve şeffaf teklifi 24 saat içinde sunsun.",
+    "İhtiyacınızı kısaca anlatın; AkademikMerkez uzman ekibi size en uygun danışmanı, süreç planını ve şeffaf teklifi 24 saat içinde sunsun.",
   alternates: alternatifler("/teklif-al", "tr"),
 };
 

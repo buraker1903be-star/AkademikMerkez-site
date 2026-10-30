@@ -31,8 +31,8 @@ const STEPS = [
 
 const HOME_FAQS = [
   {
-    q: "Akademik Merkez nedir?",
-    a: "Akademik Merkez; lisans, yüksek lisans, doktora öğrencileri ve akademisyenlere tez, makale ve doçentlik süreçlerinde yöntem, analiz, literatür, dil ve biçim danışmanlığı sunan bağımsız bir akademik danışmanlık merkezidir.",
+    q: "AkademikMerkez nedir?",
+    a: "AkademikMerkez; lisans, yüksek lisans, doktora öğrencileri ve akademisyenlere tez, makale ve doçentlik süreçlerinde yöntem, analiz, literatür, dil ve biçim danışmanlığı sunan bağımsız bir akademik danışmanlık merkezidir.",
   },
   {
     q: "Hangi analiz hizmetlerini sunuyorsunuz?",
@@ -131,7 +131,7 @@ export default function HomePage() {
         <div className="container">
           <Reveal>
             <p className="statement">
-              <strong>Akademik Merkez</strong>, tez, makale ve doçentlik süreçlerinde{" "}
+              <strong>AkademikMerkez</strong>, tez, makale ve doçentlik süreçlerinde{" "}
               <strong>yöntem, analiz, dil ve süreç danışmanlığı</strong> sunan bağımsız bir akademik
               danışmanlık merkezidir. Özgün çalışma <strong>size ait kalır</strong>; biz onu daha güçlü
               kılarız.

@@ -6,7 +6,7 @@ import { alternatifler, yol } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Privacy Notice",
-  description: "Akademik Merkez Privacy Notice: information on how your personal data is processed under KVKK.",
+  description: "AkademikMerkez Privacy Notice: information on how your personal data is processed under KVKK.",
   alternates: alternatifler("/kvkk-aydinlatma-metni", "en"),
   robots: { index: true, follow: true },
 };
@@ -31,7 +31,7 @@ export default function PrivacyNoticePage() {
 
           <h2>Data controller</h2>
           <p>
-            As {OPERATOR_NAME} (the &quot;Data Controller&quot;), the operator of the Akademik Merkez brand, we
+            As {OPERATOR_NAME} (the &quot;Data Controller&quot;), the operator of the AkademikMerkez brand, we
             process the personal data you share with us through the akademikmerkez.com website, the &quot;Get a
             Quote&quot; form, email, telephone and WhatsApp in accordance with Law No. 6698 on the Protection of
             Personal Data (&quot;KVKK&quot;) and related legislation.

@@ -1,7 +1,7 @@
 import { SITE } from "@/lib/site";
 import { METIN, type Dil } from "@/lib/i18n";
 
-const WHATSAPP_MESSAGE = "Merhaba, Akademik Merkez hizmetleri hakkında bilgi almak istiyorum.";
+const WHATSAPP_MESSAGE = "Merhaba, AkademikMerkez hizmetleri hakkında bilgi almak istiyorum.";
 
 export const whatsappHref = (message = WHATSAPP_MESSAGE) =>
   `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;

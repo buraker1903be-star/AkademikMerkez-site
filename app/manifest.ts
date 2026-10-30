@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Akademik Merkez",
-    short_name: "Akademik Merkez",
+    name: "AkademikMerkez",
+    short_name: "AkademikMerkez",
     description: "Tez, istatistik, ANSYS, MAXQDA ve Python analiz danışmanlığı.",
     start_url: "/",
     display: "standalone",

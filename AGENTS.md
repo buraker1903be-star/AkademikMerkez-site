@@ -1,4 +1,4 @@
-# Akademik Merkez — tanıtım sitesi
+# AkademikMerkez — tanıtım sitesi
 
 Next.js 14 ile tamamen statik (SSG), SEO odaklı tanıtım sitesi. Tek dinamik
 parça teklif formu. Kurulum ve ortam değişkenleri için `README.md` ve

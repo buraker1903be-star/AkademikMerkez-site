@@ -12,7 +12,7 @@ export default function Footer({ dil = "tr" }: { dil?: Dil }) {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} sizes="180px" />
+            <Image src="/logo-trimmed.png" alt="AkademikMerkez" width={1897} height={311} sizes="180px" />
             <p>{m.footerTanitim}</p>
             <div className="footer-contact">
               <a href={`mailto:${SITE.email}`}>

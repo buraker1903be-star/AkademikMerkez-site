@@ -10,7 +10,7 @@ import { alternatifler } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "İletişim",
   description:
-    "Akademik Merkez ile e-posta, telefon veya WhatsApp üzerinden iletişime geçin; Teklif Al formuyla talebinizi iletin. Beylikdüzü / İstanbul.",
+    "AkademikMerkez ile e-posta, telefon veya WhatsApp üzerinden iletişime geçin; Teklif Al formuyla talebinizi iletin. Beylikdüzü / İstanbul.",
   alternates: alternatifler("/iletisim", "tr"),
 };
 

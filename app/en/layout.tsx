@@ -18,8 +18,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Akademik Merkez | Thesis, Statistics and Data Analysis Consulting",
-    template: "%s | Akademik Merkez",
+    default: "AkademikMerkez | Thesis, Statistics and Data Analysis Consulting",
+    template: "%s | AkademikMerkez",
   },
   description: DESCRIPTION,
   applicationName: SITE.name,
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["tr_TR"],
     siteName: SITE.name,
-    title: "Akademik Merkez | Thesis, Statistics and Data Analysis Consulting",
+    title: "AkademikMerkez | Thesis, Statistics and Data Analysis Consulting",
     description:
       "Methodology, analysis, language and process consulting for theses, articles and associate professorship applications. SPSS, MAXQDA, ANSYS and Python analysis support.",
     url: `${SITE.url}/en`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akademik Merkez",
+    title: "AkademikMerkez",
     description: "Premium academic consulting and data analysis for theses, articles and academic careers.",
     images: ["/opengraph-image.png"],
   },

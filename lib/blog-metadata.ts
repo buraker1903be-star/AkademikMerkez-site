@@ -20,7 +20,7 @@ export function yaziMetadata(y: Yazi): Metadata {
     alternates,
     openGraph: {
       type: "article",
-      title: `${y.baslik} | Akademik Merkez`,
+      title: `${y.baslik} | AkademikMerkez`,
       description: y.aciklama,
       url: yaziYolu(y.dil, y.slug),
       publishedTime: y.yayin,

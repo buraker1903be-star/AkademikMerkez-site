@@ -11,7 +11,7 @@ import { alternatifler, yol } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Akademik Merkez is an academic consultancy offering methodology and consulting support for theses, articles and associate professorship applications.",
+    "AkademikMerkez is an academic consultancy offering methodology and consulting support for theses, articles and associate professorship applications.",
   alternates: alternatifler("/hakkimizda", "en"),
 };
 
@@ -52,7 +52,7 @@ export default function AboutPageEn() {
           <Reveal className="split-copy prose" delay={100}>
             <h2>Who we are</h2>
             <p>
-              Akademik Merkez is an academic consultancy for undergraduate, master&apos;s and doctoral students
+              AkademikMerkez is an academic consultancy for undergraduate, master&apos;s and doctoral students
               and for academics preparing associate professorship applications. Our aim is to help researchers
               overcome the methodological, analytical, language and process challenges they face, correctly and
               transparently, together with our expert consultants.
@@ -73,7 +73,7 @@ export default function AboutPageEn() {
       <section className="section section-gray">
         <div className="container">
           <Reveal className="section-head">
-            <p className="eyebrow">Why Akademik Merkez</p>
+            <p className="eyebrow">Why AkademikMerkez</p>
             <h2 className="headline">
               Trust lies <span className="serif">in the details.</span>
             </h2>

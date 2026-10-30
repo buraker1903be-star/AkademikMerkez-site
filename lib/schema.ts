@@ -6,8 +6,8 @@ import type { Yazi } from "./blog";
 import { HIZMET_SLUG_EN } from "./services-en";
 
 const ACIKLAMA = {
-  tr: "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı ile literatür, dil editörlüğü ve akademik çeviri hizmetleri sunan bağımsız bir akademik danışmanlık merkezidir.",
-  en: "Akademik Merkez is an independent academic consultancy offering methodology, statistical analysis, quantitative analysis with SPSS, qualitative analysis with MAXQDA, ANSYS and Python analysis consulting, as well as literature review, academic editing and translation for theses, articles and associate professorship applications.",
+  tr: "AkademikMerkez; tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı ile literatür, dil editörlüğü ve akademik çeviri hizmetleri sunan bağımsız bir akademik danışmanlık merkezidir.",
+  en: "AkademikMerkez is an independent academic consultancy offering methodology, statistical analysis, quantitative analysis with SPSS, qualitative analysis with MAXQDA, ANSYS and Python analysis consulting, as well as literature review, academic editing and translation for theses, articles and associate professorship applications.",
 };
 
 const ORG_ID = `${SITE.url}/#organization`;
@@ -27,7 +27,7 @@ export function siteSchema(dil: Dil = "tr") {
         "@type": "ProfessionalService",
         "@id": ORG_ID,
         name: SITE.name,
-        alternateName: SITE.publicEntityName,
+        alternateName: SITE.alternateName,
         ...(SITE.showLegalName ? { legalName: SITE.legalName } : {}),
         url: SITE.url,
         logo: `${SITE.url}/icon-512.png`,
@@ -76,6 +76,7 @@ export function siteSchema(dil: Dil = "tr") {
         "@id": `${SITE.url}/#website`,
         url: SITE.url,
         name: SITE.name,
+        alternateName: SITE.alternateName,
         inLanguage: ["tr-TR", "en"],
         publisher: { "@id": ORG_ID },
       },
@@ -132,7 +133,7 @@ export function serviceListSchema(list: Service[], dil: Dil = "tr") {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: dil === "en" ? "Akademik Merkez services" : "Akademik Merkez hizmetleri",
+    name: dil === "en" ? "AkademikMerkez services" : "AkademikMerkez hizmetleri",
     numberOfItems: list.length,
     itemListElement: list.map((s, i) => ({
       "@type": "ListItem",
@@ -208,7 +209,7 @@ export function blogSchema(liste: Yazi[], dil: Dil = "tr") {
     "@type": "Blog",
     "@id": blogId(dil),
     url: `${SITE.url}${yol(dil, "/blog")}`,
-    name: "Akademik Merkez Blog",
+    name: "AkademikMerkez Blog",
     inLanguage: DIL_KODU[dil],
     publisher: { "@id": ORG_ID },
     blogPost: liste.map((y) => ({

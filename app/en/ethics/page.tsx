@@ -7,18 +7,18 @@ import { alternatifler, yol } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Our Ethical Principles",
   description:
-    "Akademik Merkez's ethical principles on academic integrity, compliance with YÖK and ÜAK regulations, acknowledgement of support, confidentiality and transparency.",
+    "AkademikMerkez's ethical principles on academic integrity, compliance with YÖK and ÜAK regulations, acknowledgement of support, confidentiality and transparency.",
   alternates: alternatifler("/etik-ilkelerimiz", "en"),
 };
 
 const PRINCIPLES = [
   {
     t: "A consulting-based service model",
-    d: "All services offered by Akademik Merkez are consulting services that support the student or academic in carrying out their own research, writing or application process. We never produce a thesis, article, assignment or application file from start to finish and deliver it on a client's behalf.",
+    d: "All services offered by AkademikMerkez are consulting services that support the student or academic in carrying out their own research, writing or application process. We never produce a thesis, article, assignment or application file from start to finish and deliver it on a client's behalf.",
   },
   {
     t: "Compliance with YÖK, ÜAK and institutional rules",
-    d: "When defining the scope of consulting, we take into account the regulations of YÖK (Turkey's Council of Higher Education) on research and publication ethics, the current thesis writing guide and ethical rules of the relevant university, and, for associate professorship applications, the associate professorship regulations and application requirements in force at ÜAK (Inter-University Board). Akademik Merkez has no institutional affiliation with YÖK or ÜAK and does not guarantee that an application will be accepted or that any academic outcome will be achieved. The content, originality, declarations and submission of the work are the researcher's responsibility.",
+    d: "When defining the scope of consulting, we take into account the regulations of YÖK (Turkey's Council of Higher Education) on research and publication ethics, the current thesis writing guide and ethical rules of the relevant university, and, for associate professorship applications, the associate professorship regulations and application requirements in force at ÜAK (Inter-University Board). AkademikMerkez has no institutional affiliation with YÖK or ÜAK and does not guarantee that an application will be accepted or that any academic outcome will be achieved. The content, originality, declarations and submission of the work are the researcher's responsibility.",
   },
   {
     t: "Transparency in analysis",

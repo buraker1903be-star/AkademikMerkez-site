@@ -11,7 +11,7 @@ import { METIN, alternatifler, yol } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Get a Quote",
   description:
-    "Briefly tell us what you need; Akademik Merkez's team of experts will offer you the most suitable consultant, a process plan and a transparent quote within 24 hours.",
+    "Briefly tell us what you need; AkademikMerkez's team of experts will offer you the most suitable consultant, a process plan and a transparent quote within 24 hours.",
   alternates: alternatifler("/teklif-al", "en"),
 };
 

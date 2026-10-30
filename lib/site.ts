@@ -1,6 +1,13 @@
 // Sitenin tamamında kullanılan kurumsal bilgiler tek yerden yönetilir.
 export const SITE = {
-  name: "Akademik Merkez",
+  /*
+    Marka bitişik yazılır (30.10.2026): logo ve alan adı bitişik, metinler
+    eskiden "Akademik Merkez" diyordu. Bitişik ad ayırt edici; "akademik
+    merkez" genel bir ifade. Ayrı yazım arayanlar için yapısal veride
+    alternateName olarak durur.
+  */
+  name: "AkademikMerkez",
+  alternateName: "Akademik Merkez",
   url: "https://akademikmerkez.com",
   appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.akademikmerkez.com",
   email: "uzman@akademikmerkez.com",

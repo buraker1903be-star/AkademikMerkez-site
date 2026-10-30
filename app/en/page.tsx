@@ -14,7 +14,7 @@ import { alternatifler, yol } from "@/lib/i18n";
 
 // İngilizce anasayfa: Türkçesi app/(tr)/page.tsx ile aynı yapı, yalnızca metin.
 export const metadata: Metadata = {
-  title: { absolute: "Akademik Merkez | Thesis, Statistics and Data Analysis Consulting" },
+  title: { absolute: "AkademikMerkez | Thesis, Statistics and Data Analysis Consulting" },
   description:
     "Independent academic consultancy: methodology, statistical analysis, SPSS, MAXQDA, ANSYS and Python consulting, literature review, academic editing and translation for theses, articles and associate professorship applications.",
   alternates: alternatifler("/", "en"),
@@ -35,8 +35,8 @@ const STEPS = [
 
 const HOME_FAQS = [
   {
-    q: "What is Akademik Merkez?",
-    a: "Akademik Merkez is an independent academic consultancy offering methodology, analysis, literature, language and formatting consulting to undergraduate, master's and doctoral students and to academics, for theses, articles and associate professorship applications.",
+    q: "What is AkademikMerkez?",
+    a: "AkademikMerkez is an independent academic consultancy offering methodology, analysis, literature, language and formatting consulting to undergraduate, master's and doctoral students and to academics, for theses, articles and associate professorship applications.",
   },
   {
     q: "Which analysis services do you offer?",
@@ -136,7 +136,7 @@ export default function EnglishHomePage() {
         <div className="container">
           <Reveal>
             <p className="statement">
-              <strong>Akademik Merkez</strong> is an independent academic consultancy providing{" "}
+              <strong>AkademikMerkez</strong> is an independent academic consultancy providing{" "}
               <strong>methodology, analysis, language and process consulting</strong> for theses, articles
               and associate professorship applications. Your original work <strong>stays yours</strong>; we
               make it stronger.

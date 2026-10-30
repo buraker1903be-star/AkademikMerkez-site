@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Tez ve makale yöntem danışmanlığı, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı, literatür tarama, anket, doçentlik dosyası, dil editörlüğü, çeviri ve kaynakça.",
   alternates: alternatifler("/hizmetlerimiz", "tr"),
   openGraph: {
-    title: "Akademik Merkez Hizmetleri",
+    title: "AkademikMerkez Hizmetleri",
     description: "Tez, analiz ve dil süreçlerinde akademik danışmanlık hizmetleri.",
     url: "/hizmetlerimiz",
   },

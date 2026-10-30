@@ -36,7 +36,7 @@ export function rssYaniti(dil: Dil) {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Akademik Merkez Blog</title>
+    <title>AkademikMerkez Blog</title>
     <link>${SITE.url}${blogYolu(dil)}</link>
     <atom:link href="${SITE.url}${blogYolu(dil)}/rss.xml" rel="self" type="application/rss+xml" />
     <description>${k.aciklama}</description>

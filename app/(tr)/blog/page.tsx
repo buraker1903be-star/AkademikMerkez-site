@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS, MAXQDA ve akademik yazım üzerine uygulamalı rehber yazılar.",
   alternates: { ...alternatifler("/blog", "tr"), types: { "application/rss+xml": "/blog/rss.xml" } },
-  openGraph: { title: "Blog | Akademik Merkez", url: "/blog" },
+  openGraph: { title: "Blog | AkademikMerkez", url: "/blog" },
 };
 
 export default function BlogPage() {

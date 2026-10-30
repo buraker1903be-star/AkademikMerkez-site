@@ -76,7 +76,7 @@ export default function HeaderClient({
         <header className={`nav ${scrolled || mega || open ? "is-solid" : ""}`}>
           <div className="container nav-inner">
             <Link href={yol(dil, "/")} className="nav-brand" aria-label={m.anasayfaEtiket}>
-              <Image src="/logo-trimmed.png" alt="Akademik Merkez" width={1897} height={311} sizes="190px" priority />
+              <Image src="/logo-trimmed.png" alt="AkademikMerkez" width={1897} height={311} sizes="190px" priority />
             </Link>
 
             <nav aria-label={m.anaMenu}>

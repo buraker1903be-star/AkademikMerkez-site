@@ -26,7 +26,7 @@ export type Service = {
 };
 
 // Not: Aşağıdaki hizmetler danışmanlık/yöntem desteği çerçevesinde sunulur.
-// Akademik Merkez; öğrencinin veya akademisyenin adına çalışma üretmez,
+// AkademikMerkez; öğrencinin veya akademisyenin adına çalışma üretmez,
 // yalnızca yöntem, analiz, dil ve süreç danışmanlığı sağlar. Bu çerçevede
 // YÖK ve ÜAK'ın güncel düzenlemeleri ile kurumların kuralları gözetilir;
 // nihai akademik sorumluluk araştırmacıdadır.
