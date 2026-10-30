@@ -2,6 +2,7 @@ import { SITE } from "./site";
 import { allTools, type Faq, type Service } from "./services";
 import { hizmetYolu, kategori, kategoridekiler, kategoriler } from "./hizmetler";
 import { yol, type Dil } from "./i18n";
+import type { Yazi } from "./blog";
 
 const ACIKLAMA = {
   tr: "Akademik Merkez; tez, makale ve doçentlik süreçlerinde yöntem, istatistiksel analiz, SPSS ile nicel analiz, MAXQDA ile nitel analiz, ANSYS ve Python analiz danışmanlığı ile literatür, dil editörlüğü ve akademik çeviri hizmetleri sunan bağımsız bir akademik danışmanlık merkezidir.",
@@ -137,6 +138,71 @@ export function serviceListSchema(list: Service[], dil: Dil = "tr") {
       position: i + 1,
       url: `${SITE.url}${hizmetYolu(dil, s.slug)}`,
       name: s.title,
+    })),
+  };
+}
+
+const BLOG_ID = `${SITE.url}/blog#blog`;
+
+function yazarSchema(y: Yazi) {
+  if (y.yazar.tur === "kurum") return { "@type": "Organization", name: y.yazar.ad, url: `${SITE.url}/blog`, parentOrganization: { "@id": ORG_ID } };
+  return {
+    "@type": "Person",
+    name: y.yazar.ad,
+    ...(y.yazar.unvan ? { jobTitle: y.yazar.unvan } : {}),
+    ...(y.yazar.profiller?.length ? { sameAs: y.yazar.profiller } : {}),
+    worksFor: { "@id": ORG_ID },
+  };
+}
+
+/*
+  Yazı sayfasının yapısal verisi. Tarihler ve yazar, hem Google'ın
+  makale sonuçları hem de yapay zeka arama motorları için "bu bilgi ne
+  kadar güncel ve kimden" sorusunun cevabı; ekranda görünenle aynı
+  olmalı, o yüzden ikisi de aynı Yazi nesnesinden okunur.
+*/
+export function blogPostingSchema(y: Yazi) {
+  const url = `${SITE.url}/blog/${y.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#yazi`,
+    headline: y.baslik,
+    description: y.aciklama,
+    abstract: y.ozet,
+    url,
+    mainEntityOfPage: url,
+    datePublished: y.yayin,
+    dateModified: y.guncelleme,
+    inLanguage: "tr-TR",
+    timeRequired: `PT${y.okumaDakika}M`,
+    image: `${SITE.url}/opengraph-image.png`,
+    author: yazarSchema(y),
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": BLOG_ID },
+    ...(y.anahtarKelimeler.length ? { keywords: y.anahtarKelimeler.join(", ") } : {}),
+    ...(y.hizmetler.length
+      ? { about: y.hizmetler.map((h) => ({ "@type": "Service", url: `${SITE.url}${hizmetYolu("tr", h)}` })) }
+      : {}),
+  };
+}
+
+export function blogSchema(liste: Yazi[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": BLOG_ID,
+    url: `${SITE.url}/blog`,
+    name: "Akademik Merkez Blog",
+    inLanguage: "tr-TR",
+    publisher: { "@id": ORG_ID },
+    blogPost: liste.map((y) => ({
+      "@type": "BlogPosting",
+      "@id": `${SITE.url}/blog/${y.slug}#yazi`,
+      headline: y.baslik,
+      url: `${SITE.url}/blog/${y.slug}`,
+      datePublished: y.yayin,
+      dateModified: y.guncelleme,
     })),
   };
 }

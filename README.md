@@ -44,6 +44,41 @@ CI'da değil, Vercel tarafında yapılır.
 5. Vercel proje ayarlarından Domains kısmına `akademikmerkez.com` ve `www.akademikmerkez.com`
    ekleyin, verilen DNS kayıtlarını alan adı sağlayıcınızda (doruk.net) tanımlayın.
 
+## Blog: yeni yazı nasıl eklenir?
+
+1. `content/blog/` altına `<adres>.md` dosyası açın (ör. `anket-gecerlik-guvenirlik.md`
+   → `akademikmerkez.com/blog/anket-gecerlik-guvenirlik`). Dosya adında yalnızca
+   küçük harf, rakam ve tire.
+2. Dosyanın başına bilgi bloğunu yazın; örnek için mevcut yazılara bakın:
+
+   ```
+   ---
+   baslik: "Yazının başlığı"
+   aciklama: "Arama sonucunda görünen açıklama, en çok 160 karakter."
+   ozet: "Kısaca kutusu: sorunun 2-3 cümlelik doğrudan cevabı."
+   yayin: "2026-11-15"
+   guncelleme: "2026-12-01"   # isteğe bağlı, içerik değişince
+   yazar: editorluk           # lib/blog.ts YAZARLAR
+   hizmetler:                 # ilgili hizmet slug'ları (lib/services.ts)
+     - spss-analizi
+   anahtarKelimeler: [SPSS, ...]
+   sss:
+     - q: "Soru?"
+       a: "Cevap."
+   ---
+   ```
+3. Gövdeyi Markdown ile yazın. Ara başlıklar `##` ile ve mümkünse soru biçiminde
+   ("Hangi test seçilmeli?"); her başlığın hemen altında cevap. Tablo, liste ve
+   alıntı kullanılabilir.
+4. Commit + push. Vercel yeniden derler; yazı blog listesine, site haritasına,
+   RSS'e (`/blog/rss.xml`), `llms.txt`'e ve bağlı hizmet sayfasının "Bu konuda
+   yazdıklarımız" bölümüne kendiliğinden girer.
+
+Bilgi bloğunda eksik/yanlış alan (tanımsız hizmet, 160'ı aşan açıklama, bozuk
+tarih) **derlemeyi düşürür**: hatalı yazı sessizce yayına çıkmasın diye. Yayın
+tarihi ileride olan yazı atlanır ve o tarihten sonraki ilk derlemede yayına
+girer (kendiliğinden değil; site statik).
+
 ## Teklif Al formu nasıl çalışır?
 
 Form, Supabase'de tanımlı `submit_public_lead` fonksiyonunu (bkz. ArvoOS reposundaki

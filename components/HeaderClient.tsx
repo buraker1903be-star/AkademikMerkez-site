@@ -35,6 +35,8 @@ export default function HeaderClient({
     { href: yol(dil, "/hakkimizda"), label: m.hakkimizda },
     { href: yol(dil, "/etik-ilkelerimiz"), label: m.etik },
     { href: yol(dil, "/sikca-sorulan-sorular"), label: m.sss },
+    // Blog yalnızca Türkçe; İngilizce menüde bağlantı Türkçe sayfaya düşürürdü.
+    ...(dil === "tr" ? [{ href: "/blog", label: m.blog }] : []),
     { href: yol(dil, "/iletisim"), label: m.iletisim },
   ];
   const teklif = yol(dil, "/teklif-al");

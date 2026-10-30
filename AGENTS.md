@@ -28,6 +28,23 @@ sütuna başvuran fonksiyon yüzünden sessizce düştü. Bu formda veya
 `submit_public_lead`'de değişiklik yaptığınızda gerçek bir deneme talebiyle
 uçtan uca sınayın.
 
+## Blog
+
+Yalnızca Türkçe, `/blog`. Yazılar `content/blog/*.md`, derlemede
+`lib/blog.ts` okuyup denetler; ekleme adımları `README.md`'de.
+
+- **İngilizce karşılık yazılmaz.** `alternatifler()` karşılığı olmayan yolu
+  `/en`'e bağlıyor; blog sayfaları `yalnizTurkce()` kullanır, site
+  haritasında da İngilizce satırı yok. İngilizce yazı eklenirse önce
+  `lib/i18n.ts`'teki eşleme kurulmalı.
+- **Yazılar etik çerçeveyle çelişmez.** Öğretici olur ("nasıl seçilir,
+  nasıl raporlanır"); "tezinizi yazarız" çağrışımı yapan başlık ya da
+  metin yok (`/etik-ilkelerimiz`). Örnek sayısal sonuçlar "biçimi
+  göstermek için" diye işaretlenir.
+- **Tarih, yazar ve özet ekranda da görünür.** Yapısal veride
+  (`blogPostingSchema`) yazıp sayfada göstermemek güven sinyalini boşa
+  çıkarır; ikisi aynı `Yazi` nesnesinden okunur.
+
 ## Ticari unvan
 
 Ticari unvan kaynak kodda tutulmuyor. `SITE_LEGAL_NAME` (ve varsa

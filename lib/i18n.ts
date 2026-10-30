@@ -63,6 +63,16 @@ export function alternatifler(trYol: string, dil: Dil) {
   };
 }
 
+/**
+ * Yalnızca Türkçesi olan sayfa (blog): hreflang'e İngilizce karşılık
+ * YAZILMAZ. alternatifler() karşılığı olmayan yolu İngilizce anasayfaya
+ * bağlıyor; blog yazısı için bu "bu yazının çevirisi /en'dir" demek olur
+ * ve arama motoru iki farklı sayfayı birbirinin çevirisi sayar.
+ */
+export function yalnizTurkce(trYol: string) {
+  return { canonical: trYol, languages: { "tr-TR": trYol, "x-default": trYol } };
+}
+
 /** Ortak bileşenlerin metinleri. Sayfa içerikleri kendi dosyalarında. */
 export const METIN = {
   tr: {
@@ -75,6 +85,7 @@ export const METIN = {
     sss: "SSS",
     sssUzun: "Sıkça Sorulan Sorular",
     iletisim: "İletişim",
+    blog: "Blog",
     kvkk: "KVKK Aydınlatma Metni",
     teklifAl: "Teklif Al",
     dosyaTakip: "Dosya Takip",
@@ -115,6 +126,7 @@ export const METIN = {
     sss: "FAQ",
     sssUzun: "Frequently Asked Questions",
     iletisim: "Contact",
+    blog: "Blog",
     kvkk: "Privacy Notice",
     teklifAl: "Get a Quote",
     dosyaTakip: "Track My File",

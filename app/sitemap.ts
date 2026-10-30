@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { services } from "@/lib/services";
 import { enYolu } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
+import { yaziYolu, yazilar } from "@/lib/blog";
 
 const LAST_MODIFIED = new Date("2026-10-22");
 
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const adres = (yol: string) => `${SITE.url}${yol === "/" ? "" : yol}`;
 
-  return pages.flatMap((p) => {
+  const ikiDilli = pages.flatMap((p) => {
     const languages = { "tr-TR": adres(p.path), en: adres(enYolu(p.path)) };
     const ortak = { lastModified: LAST_MODIFIED, changeFrequency: p.changeFrequency, alternates: { languages } };
     return [
@@ -34,4 +35,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: adres(enYolu(p.path)), priority: Math.max(0.1, Math.round((p.priority - 0.1) * 10) / 10), ...ortak },
     ];
   });
+
+  /*
+    Blog yalnızca Türkçe: İngilizce satır ve hreflang yok. Tarih sabit
+    LAST_MODIFIED değil, yazının kendi güncelleme günü; arama motoru
+    yeniden taramaya bu tarihe bakarak karar veriyor ve her yazıya aynı
+    tarihi yazmak sinyali anlamsızlaştırır.
+  */
+  const liste = yazilar();
+  const blog: MetadataRoute.Sitemap = [
+    ...(liste.length
+      ? [{ url: adres("/blog"), lastModified: new Date(liste.map((y) => y.guncelleme).sort().at(-1)!), changeFrequency: "weekly" as const, priority: 0.7 }]
+      : []),
+    ...liste.map((y) => ({
+      url: adres(yaziYolu(y.slug)),
+      lastModified: new Date(y.guncelleme),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [...ikiDilli, ...blog];
 }
