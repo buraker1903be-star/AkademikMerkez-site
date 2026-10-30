@@ -41,14 +41,14 @@ type Yazar = {
 export const YAZARLAR: Record<string, Record<Dil, Yazar>> = {
   editorluk: {
     tr: {
-      ad: "Akademik Merkez Editörlüğü",
+      ad: "AkademikMerkez Editörlüğü",
       tur: "kurum",
-      hakkinda: "Yazılar, Akademik Merkez'in yöntem ve analiz danışmanlarınca hazırlanır ve yayımlanmadan önce editörlükçe gözden geçirilir.",
+      hakkinda: "Yazılar, AkademikMerkez'in yöntem ve analiz danışmanlarınca hazırlanır ve yayımlanmadan önce editörlükçe gözden geçirilir.",
     },
     en: {
-      ad: "Akademik Merkez Editorial Team",
+      ad: "AkademikMerkez Editorial Team",
       tur: "kurum",
-      hakkinda: "Articles are prepared by Akademik Merkez's methodology and analysis consultants and reviewed by the editorial team before publication.",
+      hakkinda: "Articles are prepared by AkademikMerkez's methodology and analysis consultants and reviewed by the editorial team before publication.",
     },
   },
 };
